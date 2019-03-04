@@ -11,17 +11,29 @@ Overview
 
   Estimated time to complete: 15-30 MINUTES
 
+Flow is a software-defined networking product tightly integrated into Nutanix AHV and Prism Central. Flow provides rich visualization, automation, and security for VMs running on AHV.
+Microsegmentation is a component of Flow that simplifies policy management. Using multiple Prism Central categories (logical groups), you can create a powerful distributed firewall that gives administrators an application-centric policy management tool for securing VM traffic.
+Combining this with Calm allows automated deployment of applications that are secured as they are created.
+
 In this exercise you will create a security policy to restrict communication between the application VMs.
+
+Lab Setup
++++++++++
+
+This lab depends on the availability of a multi-tier **Task Manger** web application.
+
+Refer to the :ref:`taskman` lab for instructions on importing and launching the completed **Task Manager** blueprint.
+
+Once you have initiated the **Task Manager** deployment, you can proceed with the lab below. **You do not need to wait for the blueprint deployment to complete to begin this lab.**
 
 Securing An Application
 +++++++++++++++++++++++
 
-Now that you have deployed your Task Manager application, lets secure the communications between the different servers.
+Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines into security policies.
+Start using these categories right away, or add your own categories for custom grouping.
 
 Defining Category Values
 ........................
-
-Flow provides multiple out of the box categories for... <?>
 
 In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Categories**.
 
@@ -31,7 +43,7 @@ Select the checkbox for **AppType** and click **Actions > Update**.
 
 Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-Specify **TaskMan-**\ *Initials* as the value name.
+Specify *Initials*-**TaskMan**  as the value name.
 
 .. figure:: images/13.png
 
@@ -41,11 +53,11 @@ Select the checkbox for **AppTier** and click **Actions > Update**.
 
 Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-Specify **TMWeb-**\ *Initials* as the value name. This category will be applied to the application's web tier.
+Specify *Initials*-**TMWeb**  as the value name. This category will be applied to the application's web tier.
 
-Click :fa:`plus-circle` and specify **TMDB-**\ *Initials*. This category will be applied to the application's MySQL database.
+Click :fa:`plus-circle` and specify *Initials*-**TMDB**. This category will be applied to the application's MySQL database.
 
-Click :fa:`plus-circle` and specify **TMLB-**\ *Initials*. This category will be applied to the application's HAProxy load balancer.
+Click :fa:`plus-circle` and specify *Initials*-**TMLB**. This category will be applied to the application's HAProxy load balancer.
 
 .. figure:: images/14.png
 
@@ -54,7 +66,7 @@ Click **Save**.
 Creating a Security Policy
 ..........................
 
-While you wait for <blah blah blah>.
+While you wait for the Task Manager application to be deployed from the Calm blueprint, create the security policies that will protect the application.
 
 In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies**.
 
@@ -62,9 +74,9 @@ Click **Create Security Policy > Secure an Application**.
 
 Fill out the following fields:
 
-- **Name** - AppTaskMan-\ *Initials*
+- **Name** - *Initials*-AppTaskMan
 - **Purpose** - Restrict unnecessary access to Task Manager
-- **Secure this app** - AppType: TaskMan-\ *Initials*
+- **Secure this app** - AppType: *Initials*-TaskMan
 - Do **NOT** select **Filter the app type by category**.
 
 .. figure:: images/18.png
@@ -79,9 +91,9 @@ To allow for more granular configuration of the security policy, click **Set rul
 
 Click **+ Add Tier**.
 
-Select **AppTier: TMLB-**\ *Initials* from the drop down.
+Select **AppTier:**\ *Initials*-**TMLB** from the drop down.
 
-Repeat for **AppTier: TMWeb-**\ *Initials* and **AppTier: TMDB-**\ *Initials*.
+Repeat for **AppTier:**\ *Initials*-**TMWeb** and **AppTier:**\ *Initials*-**TMDB**.
 
 .. figure:: images/20.png
 
@@ -97,7 +109,7 @@ Specify the **Environment:Production** and click **Add**.
 
   Sources can also be specified by IP or subnet, but Categories allow for greater flexibility as this data can follow a VM regardless of changes to its network location.
 
-To create an inbound rule, select the **+** icon that appears to the left of **AppTier: TMLB-**\ *Initials*.
+To create an inbound rule, select the **+** icon that appears to the left of **AppTier:**\ *Initials*-**TMLB**.
 
 .. figure:: images/21.png
 
@@ -127,15 +139,13 @@ Fill out the following fields:
 
   The **/32** denotes a single IP as opposed to a subnet range.
 
-  This step also could have been achieved by assigning a relevant category to your Prism Central VM. This would also simplify the policy if dealing with multiple Prism Central VMs as you would have 1 rule applied to multiple IPs.
-
 .. figure:: images/23.png
 
 Click **Add**.
 
-Select the **+** icon that appears to the left of **AppTier: TMLB-**\ *Initials*, specify **TCP** port **22** and click **Save**.
+Select the **+** icon that appears to the left of **AppTier:**\ *Initials*-**TMLB**, specify **TCP** port **22** and click **Save**.
 
-Repeat for **AppTier: TMWeb-**\ *Initials* and **AppTier: TMDB-**\ *Initials* to allow Calm to communicate with the web tier and database VMs.
+Repeat for **AppTier:**\ *Initials*-**TMWeb** and **AppTier:**\ *Initials*-**TMDB** to allow Calm to communicate with the web tier and database VMs.
 
 .. figure:: images/24.png
 
@@ -152,7 +162,7 @@ Fill out the following fields:
 
 Click **Add**.
 
-Select the **+** icon that appears to the right of **AppTier: TMDB-**\ *Initials*, specify **UDP** port **53** and click **Save** to allow DNS traffic.
+Select the **+** icon that appears to the right of **AppTier:**\ *Initials*-**TMDB**, specify **UDP** port **53** and click **Save** to allow DNS traffic.
 
 .. figure:: images/26.png
 
@@ -162,9 +172,9 @@ To define intra-app communication, click **Set Rules within App**.
 
 .. figure:: images/27.png
 
-Click **AppTier: TMLB-**\ *Initials* and select **No** to prevent communication between VMs in this tier. There is only a single load balancer VM within the tier.
+Click **AppTier:**\ *Initials*-**TMLB** and select **No** to prevent communication between VMs in this tier. There is only a single load balancer VM within the tier.
 
-While **AppTier: TMLB-**\ *Initials* is still selected, click the :fa:`plus-circle` icon to the right of **AppTier: TMWeb-**\ *Initials* to create a tier to tier rule.
+While **AppTier:**\ *Initials*-**TMLB** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:**\ *Initials*-**TMWeb** to create a tier to tier rule.
 
 Fill out the following fields to allow communication on TCP port 80 between the load balancer and web tiers:
 
@@ -175,9 +185,9 @@ Fill out the following fields to allow communication on TCP port 80 between the 
 
 Click **Save**.
 
-Click **AppTier: TMWeb-**\ *Initials* and select **No** to prevent communication between VMs in this tier. While there are multiple web server VMs, they do not need to communicate with each other.
+Click **AppTier:**\ *Initials*-**TMWeb** and select **No** to prevent communication between VMs in this tier. While there are multiple web server VMs, they do not need to communicate with each other.
 
-While **AppTier: TMWeb-**\ *Initials* is still selected, click the :fa:`plus-circle` icon to the right of **AppTier: TMDB-**\ *Initials* to create another tier to tier rule.
+While **AppTier:**\ *Initials*-**TMWeb** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:**\ *Initials*-**TMDB** to create another tier to tier rule.
 
 Fill out the following fields to allow communication on TCP port 3306 to allow the database connection between the web servers and the MySQL database:
 
@@ -217,15 +227,15 @@ Using the checkboxes, select the 4 VMs associated with the application (HAProxy,
 
   .. figure:: images/16b.png
 
-Specify **AppType:TaskMan-**\ *Initials* in the search bar and click **Save** icon to bulk assign the category to all 4 VMs.
+Specify **AppType:**\ *Initials*-**TaskMan** in the search bar and click **Save** icon to bulk assign the category to all 4 VMs.
 
-Select ONLY the *Initials*\ **-HAProxy** VM, select **Actions > Manage Categories**, specify the **AppTier:TMLB-**\ *Initials* category and click **Save**.
+Select ONLY the *Initials*\ **-HAProxy** VM, select **Actions > Manage Categories**, specify the **AppTier:**\ *Initials*-**TMLB** category and click **Save**.
 
 .. figure:: images/17.png
 
-Repeat this procedure to assign **AppTier:TMWeb-**\ *Initials* to your web tier VMs.
+Repeat this procedure to assign **AppTier:**\ *Initials*-**TMWeb** to your web tier VMs.
 
-Repeat this procedure to assign **AppTier:TMDB-**\ *Initials* to your MySQL VM.
+Repeat this procedure to assign **AppTier:**\ *Initials*-**TMDB** to your MySQL VM.
 
 Finally, repeat this procedure to assign **Environment:Dev** to your Windows client VM.
 
@@ -239,7 +249,7 @@ Testing the Application
 
 From **Prism Central > Virtual Infrastructure > VMs**, note the IP address of your *Initials*\ **-HAPROXY-0...** and *Initials*\ **-MYSQL-0...** VMs.
 
-Launch the console for your *Initials*\ **-WinClient-0** VM.
+Launch the console for your *Initials*\ **-WinClient-0** VM. This Vm was provisioned as part of the Task Manager application blueprint.
 
 From the *Initials*\ **-WinClient-0** console open a browser and access \http://*HAPROXY-VM-IP*/.
 
@@ -256,13 +266,13 @@ Open a second **Command Prompt** and run ``ping -t HAPROXY-VM-IP`` to verify con
 Using Flow Visualization
 ........................
 
-Return to **Prism Central** and select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies > AppTaskMan-**\ *Initials*.
+Return to **Prism Central** and select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies >**\ *Initials*-**AppTaskMan**.
 
 Verify that **Environment: Dev** appears as an inbound source. The source and line appear in yellow to indicate that traffic has been detected from your client VM.
 
 .. figure:: images/32.png
 
-Mouse over the line connecting **Environment: Dev** to **AppTier: TMLB-**\ *Initials* to view the protocol and connection information.
+Mouse over the line connecting **Environment: Dev** to **AppTier:**\ *Initials*-**TMLB** to view the protocol and connection information.
 
 Click the yellow flow line to view a graph of connection attempts over the past 24 hours.
 
@@ -276,7 +286,7 @@ Click **Update** to edit the policy.
 
 Click **Next** and wait for the detected traffic flows to populate.
 
-Mouse over the **Environment: Dev** source that connects to **AppTier: TMLB-**\ *Initials* and click the :fa:`check` icon that appears.
+Mouse over the **Environment: Dev** source that connects to **AppTier:**\ *Initials*-**TMLB** and click the :fa:`check` icon that appears.
 
 .. figure:: images/35.png
 
@@ -289,7 +299,7 @@ Applying Flow Policies
 
 In order to enforce the policy you have defined, the policy must be applied.
 
-Select **AppTaskMan-**\ *Initials* and click **Actions > Apply**.
+Select *Initials*-**AppTaskMan**  and click **Actions > Apply**.
 
 .. figure:: images/36.png
 

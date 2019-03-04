@@ -13,8 +13,8 @@ Overview
 
 In this task we will place a VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy.
 
-Quarantine a VM and Explore the Quarantine Policy
-+++++++++++++++++++++++++++++++++++++++++++++++++
+Quarantining a VM
++++++++++++++++++
 
 In this task we will place a VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy.
 
@@ -24,7 +24,7 @@ Open a **Command Prompt** and run ``ping -t HAPROXY-VM-IP`` to verify connectivi
 
 .. note::
 
-  If the ping is unsuccessful you may need to update your Inbound Rule for **Environment:Dev** to **AppTier:TMLB-**\ *Initials* to include **Any** as the **Type** and **Code** for **ICMP** traffic as shown below. Apply the updated **AppTaskMan-**\ *Initials* policy and the ping should resume.
+  If the ping is unsuccessful you may need to update your Inbound Rule for **Environment:Dev** to **AppTier:**\ *Initials*-**TMLB** to include **Any** as the **Type** and **Code** for **ICMP** traffic as shown below. Apply the updated **AppTaskMan-**\ *Initials* policy and the ping should resume.
 
   .. figure:: images/41.png
 
@@ -42,7 +42,7 @@ In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > 
 
 Click **Update** to edit the Quarantine policy.
 
-To illustrate the capabilities of this special Flow policy, you will add your client VM as a "forensic tool." In other environments, VMs allowed inbound access to quarantined VMs could be used to host forensic tools such as... <?>
+To illustrate the capabilities of this special Flow policy, you will add your client VM as a "forensic tool". In production, VMs allowed inbound access to quarantined VMs could be used to run security and forensic suites such as Kali Linux or SANS SIFT.
 
 Under **Inbound**, click **+ Add Source**.
 
@@ -55,7 +55,7 @@ To what targets can this source be connected? What is the difference between the
 
 Note that adding a VM to the **Strict** Quarantine policy disables all inbound and outbound communication to a VM. The **Strict** policy would apply to an VMs whose presence on the network poses a threat to the environment.
 
-Click the :fa:`plus-circle` icon to the right of **Quarantine: Forensic** to create an Inbound Rule.
+Click the :fa:`plus-circle` icon to the left of **Quarantine: Forensic** to create an Inbound Rule.
 
 Click **Save** to allow any protocol on any port between the client VM and the **Quarantine: Forensic** category.
 

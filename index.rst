@@ -34,7 +34,6 @@
   :hidden:
 
   what_is_flow/what_is_flow
-  flow_lab_staging/flow_lab_staging
   flow_enable/flow_enable
   flow_secure_app/flow_secure_app
   flow_isolate_environments/flow_isolate_environments

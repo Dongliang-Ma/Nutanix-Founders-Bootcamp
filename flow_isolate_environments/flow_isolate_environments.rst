@@ -16,7 +16,9 @@ In this exercise you will create a new environment category and assign this to t
 Isolating Environments
 ++++++++++++++++++++++
 
-<When would someone want to isolate environments versus locking down applications?>
+Use isolation policies when one group of VMs must be completely blocked from communicating with another group of VMs without any whitelist exceptions.
+One great example of using isolation policies is to block VMs tagged Environment\:Dev from talking to VMs in Environment\:Production.
+Do not use isolation policies if you want to create exceptions between the two groups, instead use an Application Policy which allows a whitelist model.
 
 In this exercise you will create a new environment category and assign this to the Task Manager application. Then you will create and implement an isolation security policy that uses the newly created category in order to restrict unauthorized access.
 
@@ -29,7 +31,7 @@ Select the checkbox for **Environment** and click **Actions > Update**.
 
 Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-Specify **Prod-**\ *Initials* as the value name.
+Specify *Initials*-**Prod** as the value name.
 
 .. figure:: images/37.png
 
@@ -41,13 +43,13 @@ Click **Filters** and search for *Initials-* to display your virtual machines.
 
 .. note::
 
-  If you previously created a Label for your application VMs you can also search for that label. Alternatively you can search for the **AppType:TaskMan-**\ *Initials* category from the Filters pane.
+  If you previously created a Label for your application VMs you can also search for that label. Alternatively you can search for the **AppType:** *Initials*-**TaskMan** category from the Filters pane.
 
   .. figure:: images/38.png
 
 Using the checkboxes, select the 4 VMs associated with the application (HAProxy, MYSQL, WebServer-0, WebServer-1) and select **Actions > Manage Categories**.
 
-Specify **Environment:Prod-**\ *Initials* in the search bar and click **Save** icon to bulk assign the category to all 4 VMs.
+Specify **Environment:**\ *Initials*-**Prod** in the search bar and click **Save** icon to bulk assign the category to all 4 VMs.
 
 .. figure:: images/39.png
 
@@ -60,10 +62,10 @@ Click **Create Security Policy > Isolate Environments**.
 
 Fill out the following fields:
 
-- **Name** - Isolate-dev-prod-\ *Initials*
-- **Purpose** - Isolate dev from prod-\ *Initials*
+- **Name** - *Initials*-Isolate-dev-prod
+- **Purpose** - *Initials* - Isolate dev from prod
 - **Isolate This Category** - Environment:Dev
-- **From This Category** - Environment:Prod-\ *Initials*
+- **From This Category** - Environment:*Initials*-Prod
 - Do **NOT** select **Apply this isolation only within a subset of the datacenter**. This option provides additional granularity by only applying to VMs assigned a third, mutual category.
 
 .. figure:: images/40.png
@@ -74,14 +76,14 @@ Return to the *Initials*\ **-WinClient-0** console.
 
 Is the Task Manager application accessible? Why not?
 
-Using these simple policies it is possible to... <?>
+Using these simple policies it is possible to block traffic between groups of VMs such as production and development, to isolate a lab system, or provide isolation for compliance.
 
 Deleting a Policy
 .................
 
 In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies**.
 
-Select **Isolate-dev-prod-**\ *Initials* and click **Actions > Delete**.
+Select *Initials*-**Isolate-dev-prod-** and click **Actions > Delete**.
 
 Type **DELETE** in the confirmation dialogue and click **OK** to disable the policy.
 
