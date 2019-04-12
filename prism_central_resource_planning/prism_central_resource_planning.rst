@@ -19,12 +19,12 @@ Capacity Runway
 
 Use Prism Central’s Capacity Runway feature to learn about cluster resource planning and recommendations.
 
-In **Prism Central > Planning > Capacity Runway**.
+#. In **Prism Central > Planning > Capacity Runway**.
 
 - Note the runway summaries showing the days left for each cluster.
 - How long does the current cluster has before it runs out of memory, CPU, and storage?
 
-Click one of the clusters.
+#. Click one of the clusters.
 
 .. note::
 
@@ -34,28 +34,28 @@ Click one of the clusters.
 
   Clicking Storage, CPU, or Memory Runway displays the chart for that resource.
 
-Click **Optimize Resources** to see a list of recommended management tasks for reallocating resources, such as optimizing over-provisioned VMs, deleting inactive VMs, or adding resources to constrained VMs.
+#. Click **Optimize Resources** to see a list of recommended management tasks for reallocating resources, such as optimizing over-provisioned VMs, deleting inactive VMs, or adding resources to constrained VMs.
 
-Close the Capacity Runway view.
+#. Close the Capacity Runway view.
 
 What If Planning
 ................
 
-Push the initial guess of the capacity planning task to add hypothetical workloads and see how the prediction changes.
+#. Push the initial guess of the capacity planning task to add hypothetical workloads and see how the prediction changes.
 
-In **Prism Central > Planning > Scenarios**, then click **New Scenario**.
+#. In **Prism Central > Planning > Scenarios**, then click **New Scenario**.
 
-Next, fill out the following fields:
+#. Next, fill out the following fields:
 
 - **Cluster** - Select a Cluster Model
 - **Target** - 6 months
 - **Vendor Type** - Nutanix
 
-Now lets add a 150 seat Citrix XenDesktop workload..
+#. Now lets add a 150 seat Citrix XenDesktop workload..
 
-Click **+ Add Workload**.
+#. Click **+ Add Workload**.
 
-Next, fill out the following fields and click **Add Workload**:
+#. Next, fill out the following fields and click **Add Workload**:
 
 - **Workload** - VDI
 - **Vendor** - XenDesktop
@@ -64,20 +64,20 @@ Next, fill out the following fields and click **Add Workload**:
 - **Number of Users** - 150
 - **On** - One Month from now
 
-Repeat this process, adding workloads until the runway falls short of the six-month target.
+#. Repeat this process, adding workloads until the runway falls short of the six-month target.
 
-**Save** this scenario.
+#. **Save** this scenario.
 
-Note the **Resources** section, which shows the existing hardware.
+#. #. Note the **Resources** section, which shows the existing hardware.
 
-Click **Recommend** to see a suggested NX configuration to extend the runway.
+#. Click **Recommend** to see a suggested NX configuration to extend the runway.
 
-Now lets experiment with changing the target and workloads and generating recommendations:
+#. Now lets experiment with changing the target and workloads and generating recommendations:
 
 - Additional 150 seats in three months.
 - Change in demand every three months.
 
-Generate a PDF report to see detailed capacity planning information.
+#. Generate a PDF report to see detailed capacity planning information.
 
 Takeaways
 +++++++++

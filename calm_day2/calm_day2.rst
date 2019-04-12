@@ -1,8 +1,8 @@
 .. _calm_day2:
 
-----------------------
-Calm: Day 2 Operations
-----------------------
+---------------------------------
+Calm: Day 2 Operations (Optional)
+---------------------------------
 
 Overview
 ++++++++
@@ -27,280 +27,286 @@ Imagine you're the administrator of the Task Manager application that we've been
 
 During the creation of the Task Manager blueprint, the **WebServer** service was configured with a minimum number of 2 replicas, with a maximum of 4. As a result, Calm will create 2 WebServer VMs during the initial deployment. In the event the 2 replicas are not enough to handle the load of your end users, a **Scale Out** operation is required.
 
-In the **Application Overview > Application Profile** section, expand the **Default** Application Profile.
+#. In the **Application Overview > Application Profile** section, expand the **Default** Application Profile.
 
-.. figure:: images/510scaleout0.png
+   .. figure:: images/510scaleout0.png
 
-Select :fa:`plus-circle` next to **Actions** to add a new, custom action.  On the **Configuration Pane** to the right, rename the new Action to be **Scale Out**.
+#. Select :fa:`plus-circle` next to **Actions** to add a new, custom action.  On the **Configuration Pane** to the right, rename the new Action to be **Scale Out**.
 
-.. figure:: images/510scaleout1.png
+   .. figure:: images/510scaleout1.png
 
-In the box **below** the **WebServer** service tile, click the **+ Task** button to add a scaling task, and fill out the following fields:
+#. In the box **below** the **WebServer** service tile, click the **+ Task** button to add a scaling task, and fill out the following fields:
 
-- **Task Name** - web_scale_out
-- **Scaling Type** - Scale Out
-- **Scaling Count** - 1
+   - **Task Name** - web_scale_out
+   - **Scaling Type** - Scale Out
+   - **Scaling Count** - 1
 
-.. figure:: images/510scaleout2.png
+   .. figure:: images/510scaleout2.png
 
-.. note::
+   .. note::
 
-  The **+ Task** button that appears below the service tile is only used for scaling the number of replicas up and down, so it is important to select the correct option.
+     The **+ Task** button that appears below the service tile is only used for scaling the number of replicas up and down, so it is important to select the correct option.
 
-When a user later runs the **Scale Out** task, a new **WebServer** VM will get created, and the **Package Install** tasks for that service will be executed.  However, we do need to modify the **HAProxy** configuration in order to start taking advantage of this new web server.
+   When a user later runs the **Scale Out** task, a new **WebServer** VM will get created, and the **Package Install** tasks for that service will be executed.  However, we do need to modify the **HAProxy** configuration in order to start taking advantage of this new web server.
 
-**Within** the **HAProxy** service tile, click the **+ Task** button, then fill out the following fields:
+#. **Within** the **HAProxy** service tile, click the **+ Task** button, then fill out the following fields:
 
-- **Task Name** - add_webserver
-- **Type** - Execute
-- **Script Type** - Shell
-- **Credential** - CENTOS
+   - **Task Name** - add_webserver
+   - **Type** - Execute
+   - **Script Type** - Shell
+   - **Credential** - CENTOS
 
-Copy and paste the following script into the **Script** field:
+#. Copy and paste the following script into the **Script** field:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-  #!/bin/bash
-  set -ex
+     #!/bin/bash
+     set -ex
 
-  host=$(echo "@@{WebServer.address}@@" | awk -F "," '{print $NF}')
-  port=80
-  echo " server host-${host} ${host}:${port} weight 1 maxconn 100 check" | sudo tee -a /etc/haproxy/haproxy.cfg
+     host=$(echo "@@{WebServer.address}@@" | awk -F "," '{print $NF}')
+     port=80
+     echo " server host-${host} ${host}:${port} weight 1 maxconn 100 check" | sudo tee -a /etc/haproxy/haproxy.cfg
 
-  sudo systemctl daemon-reload
-  sudo systemctl restart haproxy
+     sudo systemctl daemon-reload
+     sudo systemctl restart haproxy
 
-The script will parse the last IP address in the WebServer address array and append it to the haproxy.cfg file.  However, we want to be sure that this doesn't happen until **after** the new WebServer is fully up, otherwise the HAProxy server may send requests to a non-functioning WebServer.
+   The script will parse the last IP address in the WebServer address array and append it to the haproxy.cfg file.  However, we want to be sure that this doesn't happen until **after** the new WebServer is fully up, otherwise the HAProxy server may send requests to a non-functioning WebServer.
 
-To solve this issue, create an edge to force a dependency on the **web_scale_out** task completing prior to the **add_webserver** task.
+#. To solve this issue, create an edge to force a dependency on the **web_scale_out** task completing prior to the **add_webserver** task.
 
-Your **Workspace** should now look like this:
+   Your **Workspace** should now look like this:
 
-.. figure:: images/510scaleout3.png
+   .. figure:: images/510scaleout3.png
 
 Scaling In
 ++++++++++
 
 It's the end of your busy season, and you'd like to optimize your resource utilization by scaling back the number of deployed Web Servers.
 
-Select :fa:`plus-circle` to add a custom action named **Scale In** to the Default **Application Profile**.
+#. Select :fa:`plus-circle` to add a custom action named **Scale In** to the Default **Application Profile**.
 
-.. figure:: images/510scalein1.png
+   .. figure:: images/510scalein1.png
 
-**Below** the **WebServer** service tile, click the **+ Task** button to add a scaling task, and fill out the following fields:
+#. **Below** the **WebServer** service tile, click the **+ Task** button to add a scaling task, and fill out the following fields:
 
-- **Task Name** - web_scale_in
-- **Scaling Type** - Scale In
-- **Scaling Count** - 1
+   - **Task Name** - web_scale_in
+   - **Scaling Type** - Scale In
+   - **Scaling Count** - 1
 
-.. figure:: images/510scalein2.png
+   .. figure:: images/510scalein2.png
 
-When a user later runs the **Scale In** task, the last **WebServer** replica will have its **Package Uninstall** task run, the VM will be shut down, and then deleted, which will reclaim resources.  However, we do need to modify the **HAProxy** configuration to ensure that we're no longer sending traffic to the to-be-deleted Web Server.
+   When a user later runs the **Scale In** task, the last **WebServer** replica will have its **Package Uninstall** task run, the VM will be shut down, and then deleted, which will reclaim resources.  However, we do need to modify the **HAProxy** configuration to ensure that we're no longer sending traffic to the to-be-deleted Web Server.
 
-**Within** the **HAProxy** service tile, click the **+ Task** button, then fill out the following fields:
+#. **Within** the **HAProxy** service tile, click the **+ Task** button, then fill out the following fields:
 
-- **Task Name** - del_webserver
-- **Type** - Execute
-- **Script Type** - Shell
-- **Credential** - CENTOS
+   - **Task Name** - del_webserver
+   - **Type** - Execute
+   - **Script Type** - Shell
+   - **Credential** - CENTOS
 
-Copy and paste the following script into the **Script** field:
+#. Copy and paste the following script into the **Script** field:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-  #!/bin/bash
-  set -ex
+     #!/bin/bash
+     set -ex
 
-  host=$(echo "@@{WebServer.address}@@" | awk -F "," '{print $NF}')
-  sudo sed -i "/$host/d" /etc/haproxy/haproxy.cfg
+     host=$(echo "@@{WebServer.address}@@" | awk -F "," '{print $NF}')
+     sudo sed -i "/$host/d" /etc/haproxy/haproxy.cfg
 
-  sudo systemctl daemon-reload
-  sudo systemctl restart haproxy
+     sudo systemctl daemon-reload
+     sudo systemctl restart haproxy
 
-Similar to the scale out script, this script will parse the last IP in the WebServer address array and use the `sed <http://www.grymoire.com/Unix/Sed.html>`_ command to remove the corresponding entry from haproxy.cfg.
+   Similar to the scale out script, this script will parse the last IP in the WebServer address array and use the `sed <http://www.grymoire.com/Unix/Sed.html>`_ command to remove the corresponding entry from haproxy.cfg.
 
-Again, similar to the scale out script, we want to ensure requests stop being sent to the VM **before** it is removed.
+   Again, similar to the scale out script, we want to ensure requests stop being sent to the VM **before** it is removed.
 
-To solve this issue, create an edge to force a dependency on the **del_webserver** task completing prior to the **web_scale_in** task.
+#. To solve this issue, create an edge to force a dependency on the **del_webserver** task completing prior to the **web_scale_in** task.
 
-Your **Workspace** should now look like this:
+   Your **Workspace** should now look like this:
 
-.. figure:: images/510scalein3.png
+   .. figure:: images/510scalein3.png
 
-Click **Save** and ensure no errors or warnings pop-up. If they do, resolve the issue, and **Save** again.
+#. Click **Save** and ensure no errors or warnings pop-up. If they do, resolve the issue, and **Save** again.
 
 Upgrading
 +++++++++
 
 Your company has a mandate to keep all application code up to date, to help minimize security vulnerabilities. Your company also has a strict change control process, meaning you can only update your application during the weekend. You currently spend a significant portion of your time on one Saturday every month completing application update procedures during a maintenance window. Let's look at how you can reclaim your weekend by modeling the application upgrade with Calm.
 
-Select :fa:`plus-circle` to add a custom action named **Upgrade** to the Default **Application Profile**.
+#. Select :fa:`plus-circle` to add a custom action named **Upgrade** to the Default **Application Profile**.
 
-The first thing we're going to need to do is to stop the respective processes on each of our Services.  **Within each** of our 3 Services, click the **+ Task** button to add a new task, and fill in the following information:
+   The first thing we're going to need to do is to stop the respective processes on each of our Services.
 
-+------------------+-----------+---------------+-------------+
-| **Service Name** | MySQL     | WebServer     | HAProxy     |
-+------------------+-----------+---------------+-------------+
-| **Task Name**    | StopMySQL | StopWebServer | StopHAProxy |
-+------------------+-----------+---------------+-------------+
-| **Type**         | Execute   | Execute       | Execute     |
-+------------------+-----------+---------------+-------------+
-| **Script Type**  | Shell     | Shell         | Shell       |
-+------------------+-----------+---------------+-------------+
-| **Credential**   | CENTOS    | CENTOS        | CENTOS      |
-+------------------+-----------+---------------+-------------+
-| **Script**       | See Below | See Below     | See Below   |
-+------------------+-----------+---------------+-------------+
+#. **Within each** of our 3 Services, click the **+ Task** button to add a new task, and fill in the following information:
 
-**StopMySQL Script:**
+   +------------------+-----------+---------------+-------------+
+   | **Service Name** | MySQL     | WebServer     | HAProxy     |
+   +------------------+-----------+---------------+-------------+
+   | **Task Name**    | StopMySQL | StopWebServer | StopHAProxy |
+   +------------------+-----------+---------------+-------------+
+   | **Type**         | Execute   | Execute       | Execute     |
+   +------------------+-----------+---------------+-------------+
+   | **Script Type**  | Shell     | Shell         | Shell       |
+   +------------------+-----------+---------------+-------------+
+   | **Credential**   | CENTOS    | CENTOS        | CENTOS      |
+   +------------------+-----------+---------------+-------------+
+   | **Script**       | See Below | See Below     | See Below   |
+   +------------------+-----------+---------------+-------------+
 
-.. code-block:: bash
+   **StopMySQL Script:**
 
-   #!/bin/bash
-   set -ex
+   .. code-block:: bash
 
-   sudo systemctl stop mysqld
+      #!/bin/bash
+      set -ex
 
-**StopWebServer Script:**
+      sudo systemctl stop mysqld
 
-.. code-block:: bash
+   **StopWebServer Script:**
 
-   #!/bin/bash
-   set -ex
+   .. code-block:: bash
 
-   sudo systemctl stop php-fpm
-   sudo systemctl stop nginx
+      #!/bin/bash
+      set -ex
 
-**StopHAProxy Script:**
+      sudo systemctl stop php-fpm
+      sudo systemctl stop nginx
 
-.. code-block:: bash
+   **StopHAProxy Script:**
 
-   #!/bin/bash
-   set -ex
+   .. code-block:: bash
 
-   sudo systemctl stop haproxy
+      #!/bin/bash
+      set -ex
 
-Once complete, your **Workspace** should look like this:
+      sudo systemctl stop haproxy
 
-.. figure:: images/upgrade1.png
+   Once complete, your **Workspace** should look like this:
 
-Similar to both scaling and initial deployment operations, we do not want to get into a situation where the WebServer goes down before the HAProxy, nor do we want the MySQL database to go down before the WebServers.
+   .. figure:: images/upgrade1.png
 
-Create edges between services such that HAProxy stops before WebServers, and all WebServers stop before MySQL:
+   Similar to both scaling and initial deployment operations, we do not want to get into a situation where the WebServer goes down before the HAProxy, nor do we want the MySQL database to go down before the WebServers.
 
-.. figure:: images/upgrade2.png
+#. Create edges between services such that HAProxy stops before WebServers, and all WebServers stop before MySQL:
 
-Now that our critical services are stopped, we'll want to perform our updates.  Again, **within each** Service, add a new Task.  All of the 3 tasks are identical other than the name:
+   .. figure:: images/upgrade2.png
 
-+------------------+--------------+------------------+----------------+
-| **Service Name** | MySQL        | WebServer        | HAProxy        |
-+------------------+--------------+------------------+----------------+
-| **Task Name**    | UpgradeMySQL | UpgradeWebServer | UpgradeHAProxy |
-+------------------+--------------+------------------+----------------+
-| **Type**         | Execute      | Execute          | Execute        |
-+------------------+--------------+------------------+----------------+
-| **Script Type**  | Shell        | Shell            | Shell          |
-+------------------+--------------+------------------+----------------+
-| **Credential**   | CENTOS       | CENTOS           | CENTOS         |
-+------------------+--------------+------------------+----------------+
-| **Script**       | See Below    | See Below        | See Below      |
-+------------------+--------------+------------------+----------------+
+   Now that our critical services are stopped, we'll want to perform our updates.
 
-**Script for all 3 Upgrade Tasks:**
+#. Again, **within each** Service, add a new Task.  All of the 3 tasks are identical other than the name:
 
-.. code-block:: bash
+   +------------------+--------------+------------------+----------------+
+   | **Service Name** | MySQL        | WebServer        | HAProxy        |
+   +------------------+--------------+------------------+----------------+
+   | **Task Name**    | UpgradeMySQL | UpgradeWebServer | UpgradeHAProxy |
+   +------------------+--------------+------------------+----------------+
+   | **Type**         | Execute      | Execute          | Execute        |
+   +------------------+--------------+------------------+----------------+
+   | **Script Type**  | Shell        | Shell            | Shell          |
+   +------------------+--------------+------------------+----------------+
+   | **Credential**   | CENTOS       | CENTOS           | CENTOS         |
+   +------------------+--------------+------------------+----------------+
+   | **Script**       | See Below    | See Below        | See Below      |
+   +------------------+--------------+------------------+----------------+
 
-   #!/bin/bash
-   set -ex
+   **Script for all 3 Upgrade Tasks:**
 
-   sudo yum update -y
+   .. code-block:: bash
 
-This script will use the Red Hat/CentOS package management tool, `yum <https://access.redhat.com/solutions/9934>`_ to search for and install updates to all installed packages.
+      #!/bin/bash
+      set -ex
 
-Your **Workspace** should now look like this:
+      sudo yum update -y
 
-.. figure:: images/upgrade3.png
+   This script will use the Red Hat/CentOS package management tool, `yum <https://access.redhat.com/solutions/9934>`_ to search for and install updates to all installed packages.
 
-From an a task ordering perspective, do we need to draw any orchestration edges? Notice in the screenshot above that Calm automatically draws and edge from the **Stop** task to the **Upgrade** task, which is good as that's required. However, do we need any side to side dependencies?
+   Your **Workspace** should now look like this:
 
-If you said "no", you're correct. The critical components are starting and stopping of the Services, there's no reason to have each Service upgrade one at a time.
+   .. figure:: images/upgrade3.png
 
-Unless you specify otherwise, Calm will always run tasks in parallel to save time.
+   From an a task ordering perspective, do we need to draw any orchestration edges? Notice in the screenshot above that Calm automatically draws and edge from the **Stop** task to the **Upgrade** task, which is good as that's required. However, do we need any side to side dependencies?
 
-Now that our Services have been upgraded, it's time to start them. Again, we'll add a Task **within each** Service, with the following values:
+   If you said "no", you're correct. The critical components are starting and stopping of the Services, there's no reason to have each Service upgrade one at a time.
 
-+------------------+--------------+------------------+----------------+
-| **Service Name** | MySQL        | WebServer        | HAProxy        |
-+------------------+--------------+------------------+----------------+
-| **Task Name**    | StartMySQL   | StartWebServer   | StartHAProxy   |
-+------------------+--------------+------------------+----------------+
-| **Type**         | Execute      | Execute          | Execute        |
-+------------------+--------------+------------------+----------------+
-| **Script Type**  | Shell        | Shell            | Shell          |
-+------------------+--------------+------------------+----------------+
-| **Credential**   | CENTOS       | CENTOS           | CENTOS         |
-+------------------+--------------+------------------+----------------+
-| **Script**       | See Below    | See Below        | See Below      |
-+------------------+--------------+------------------+----------------+
+   Unless you specify otherwise, Calm will always run tasks in parallel to save time.
 
-**StartMySQL Script:**
+   Now that our Services have been upgraded, it's time to start them.
 
-.. code-block:: bash
+#. Again, we'll add a Task **within each** Service, with the following values:
 
-   #!/bin/bash
-   set -ex
+   +------------------+--------------+------------------+----------------+
+   | **Service Name** | MySQL        | WebServer        | HAProxy        |
+   +------------------+--------------+------------------+----------------+
+   | **Task Name**    | StartMySQL   | StartWebServer   | StartHAProxy   |
+   +------------------+--------------+------------------+----------------+
+   | **Type**         | Execute      | Execute          | Execute        |
+   +------------------+--------------+------------------+----------------+
+   | **Script Type**  | Shell        | Shell            | Shell          |
+   +------------------+--------------+------------------+----------------+
+   | **Credential**   | CENTOS       | CENTOS           | CENTOS         |
+   +------------------+--------------+------------------+----------------+
+   | **Script**       | See Below    | See Below        | See Below      |
+   +------------------+--------------+------------------+----------------+
 
-   sudo systemctl start mysqld
+   **StartMySQL Script:**
 
-**StartWebServer Script:**
+   .. code-block:: bash
 
-.. code-block:: bash
+      #!/bin/bash
+      set -ex
 
-   #!/bin/bash
-   set -ex
+      sudo systemctl start mysqld
 
-   sudo systemctl start php-fpm
-   sudo systemctl start nginx
+   **StartWebServer Script:**
 
-**StartHAProxy Script:**
+   .. code-block:: bash
 
-.. code-block:: bash
+      #!/bin/bash
+      set -ex
 
-   #!/bin/bash
-   set -ex
+      sudo systemctl start php-fpm
+      sudo systemctl start nginx
 
-   sudo systemctl start haproxy
+   **StartHAProxy Script:**
 
-Your **Workspace** should now look like this:
+   .. code-block:: bash
 
-.. figure:: images/upgrade4.png
+      #!/bin/bash
+      set -ex
 
-This time, we **DO** require additional orchestration edges. As previously discussed, we would not want our HAProxy service up before our WebServers, or our WebServers up before our MySQL database.
+      sudo systemctl start haproxy
 
-Create orchestration edges starting with MySQL, then the WebServers, and lastly the HAProxy:
+   Your **Workspace** should now look like this:
 
-.. figure:: images/upgrade5.png
+   .. figure:: images/upgrade4.png
 
-Click **Save** and ensure no errors or warnings pop-up.  If they do, resolve the issue, and **Save** again.
+   This time, we **DO** require additional orchestration edges. As previously discussed, we would not want our HAProxy service up before our WebServers, or our WebServers up before our MySQL database.
+
+#. Create orchestration edges starting with MySQL, then the WebServers, and lastly the HAProxy:
+
+   .. figure:: images/upgrade5.png
+
+#. Click **Save** and ensure no errors or warnings pop-up.  If they do, resolve the issue, and **Save** again.
 
 Launching and Managing the Application
 ++++++++++++++++++++++++++++++++++++++
 
-From the upper toolbar in the Blueprint Editor, click **Launch**.
+#. From the upper toolbar in the Blueprint Editor, click **Launch**.
 
-Specify a unique **Application Name** (e.g. *Initials*\ -CalmLinuxIntro1) and your **User_initials** Runtime variable value for VM naming.
+#. Specify a unique **Application Name** (e.g. *Initials*\ -CalmLinuxIntro1) and your **User_initials** Runtime variable value for VM naming.
 
-Click **Create**.
+#. Click **Create**.
 
-Once the application reaches a **Running** status, navigate to the **Manage** tab, and run the **Scale Out** action.
+#. Once the application reaches a **Running** status, navigate to the **Manage** tab, and run the **Scale Out** action.
 
-Changes to the application can be monitored on the **Audit** tab.
+   Changes to the application can be monitored on the **Audit** tab.
 
-Once the scaling operation has completed, you can log into the HAProxy VM and verify the new Web Server has been added to ``/etc/haproxy/haproxy.cfg``.
+   Once the scaling operation has completed, you can log into the HAProxy VM and verify the new Web Server has been added to ``/etc/haproxy/haproxy.cfg``.
 
-Run the **Upgrade** action to update each service.
+#. Run the **Upgrade** action to update each service.
 
-Finally, run the **Scale In** action to remove the additional Web Server VM.
+#. Finally, run the **Scale In** action to remove the additional Web Server VM.
 
 (Optional) Variable Scaling
 +++++++++++++++++++++++++++
@@ -325,29 +331,3 @@ What are the key things you should know about **Nutanix Calm**?
 - Whether it's a built in task, like scaling, or a custom task, like upgrades, Calm can be directed to perform the operations in specific order, or if order doesn't matter, perform them in parallel to save on time.
 
 - What operation are you currently doing on a regular basis?  It's likely that it can be modeled in Calm, saving you countless hours.  Take back your weekend!
-
-Cleanup
-+++++++
-
-.. raw:: html
-
-  <strong><font color="red">Once your lab completion has been validated, PLEASE do your part to remove any unneeded VMs to ensure resources are available for all users on your shared cluster.</font></strong>
-
-Delete your application deployment in Calm.
-
-Getting Connected
-+++++++++++++++++
-
-Have a question about **Nutanix Calm**? Please reach out to the resources below:
-
-+---------------------------------------------------------------------------------+
-|  Calm Product Contacts                                                          |
-+================================+================================================+
-|  Slack Channel                 |  #Calm                                         |
-+--------------------------------+------------------------------------------------+
-|  Product Manager               |  Jasnoor Gill, jasnoor.gill@nutanix.com        |
-+--------------------------------+------------------------------------------------+
-|  Product Marketing Manager     |  Chris Brown, christopher.brown@nutanix.com    |
-+--------------------------------+------------------------------------------------+
-|  Technical Marketing Engineer  |  Michael Haigh, michael.haigh@nutanix.com      |
-+--------------------------------+------------------------------------------------+

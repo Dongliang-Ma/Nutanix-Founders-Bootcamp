@@ -13,24 +13,23 @@
 
 .. toctree::
   :maxdepth: 2
-  :caption: Calm Lab
-  :name: _calm_lab
+  :caption: Calm
+  :name: _calm
   :hidden:
 
   what_is_calm/what_is_calm
   calm_enable/calm_enable
   calm_projects/calm_projects
   calm_linux/calm_linux
+  calm_win/calm_win
   calm_day2/calm_day2
   calm_escript/calm_escript
-  calm_win/calm_win
-  calm_windows_blueprint/calm_windows_blueprint
   calm_marketplace/calm_marketplace
 
 .. toctree::
   :maxdepth: 2
-  :caption: Flow Lab
-  :name: _flow_lab
+  :caption: Flow
+  :name: _flow
   :hidden:
 
   what_is_flow/what_is_flow
@@ -45,8 +44,6 @@
   :caption: Optional Labs
   :name: _optional_labs
   :hidden:
-
-  calm_sshkey_creation/calm_sshkey_creation
 
 
 
@@ -215,31 +212,31 @@ Access Instructions
 
 The Nutanix Hosted POC environment can be accessed a number of different ways:
 
-Citrix XenDesktop
+Parallels VDI
 .................
 
-https://citrixready.nutanix.com - *Accessible via the Citrix Receiver client or HTML5*
+Login to: https://xld-uswest1.nutanix.com (for PHX) or https://xld-useast1.nutanix.com (for RTP)
 
 **Nutanix Employees** - Use your NUTANIXDC credentials
-
 **Non-Employees** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
 
-Employee Pulse Secure VPN
+Pulse Secure VPN
 ..........................
 
-https://sslvpn.nutanix.com - Use your CORP credentials
+To download the client: login to https://xlv-uswest1.nutanix.com or https://xlv-useast1.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
 
-Non-Employee Pulse Secure VPN
-..............................
+Download and install the client.
 
-https://lab-vpn.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
+In Pulse Secure Client, **Add** a connection:
 
-Under **Client Application Sessions**, click **Start** to the right of **Pulse Secure** to download the client.
-
-Install and open **Pulse Secure**.
-
-Add a connection:
+For PHX:
 
 - **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - HPOC VPN
-- **Server URL** - lab-vpn.nutanix.com
+- **Name** - X-Labs - PHX
+- **Server URL** - xlv-uswest1.nutanix.com
+
+For RTP:
+
+- **Type** - Policy Secure (UAC) or Connection Server
+- **Name** - X-Labs - RTP
+- **Server URL** - xlv-useast1.nutanix.com

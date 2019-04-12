@@ -4,12 +4,10 @@
 Flow: Enable
 -------------
 
+*The estimated time to complete this lab is 10 minutes.*
+
 Overview
 ++++++++
-
-.. note::
-
-  Estimated time to complete: 10-20 MINUTES
 
 In this exercise you will enable Nutanix Flow.
 
@@ -22,15 +20,15 @@ Flow is built into Prism Central and requires no additional appliances or consol
 
   Flow can only be enabled once per Prism Central instance. If **Flow** displays a green check mark next to it, that means Flow has already been enabled for the Prism Central instance being used. Proceed to :ref:`flow_secure_app`.
 
-In **Prism Central**, click the **?** drop down menu and select **Flow**.
+#. In **Prism Central**, click the **?** drop down menu and select **Flow**.
 
-.. figure:: images/10.png
+   .. figure:: images/10.png
 
-Note that enabling Flow will require an additional 1GB of memory for each Prism Central VM, but there is no action required by the user as this occurs automatically.
+   Enabling Flow will require an additional 1GB of memory for each Prism Central VM, but there is no action required by the user as this occurs automatically.
 
-Select **Enable Flow** and click **Enable**.
+#. Select **Enable Flow** and click **Enable**.
 
-.. figure:: images/11.png
+   .. figure:: images/11.png
 
 Takeaways
 +++++++++

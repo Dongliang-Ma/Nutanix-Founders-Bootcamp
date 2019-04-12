@@ -20,46 +20,47 @@ Creating A Project
 
 Projects are the logical construct that integrate Calm with Nutanix's native Self-Service Portal (SSP) capabilities, allowing an administrator to assign both infrastructure resources and the roles/permissions of Active Directory users/groups to specific Blueprints and Applications.
 
-Within the Calm UI, Select |proj-icon| **Projects** from the sidebar.
+#. Within the Calm UI, Select |proj-icon| **Projects** from the sidebar.
 
 .. figure:: images/510projects1.png
 
-Click + Create Project
+#. Click + Create Project
 
-Fill out the following fields:
+#. Fill out the following fields:
 
-- **Project Name** - Calm-*initials*
-- **Description** - Calm-*initials*
+- **Project Name** - *initials*-Calm
+- **Description** - *initials*-Calm
 
-Under **Users, Groups, and Roles**, click **+ User**.
+#. Under **Users, Groups, and Roles**, click **+ User**.
 
-Fill out the following fields and click **Save**:
+#. Fill out the following fields and click **Save**:
 
 - **Name** - SSP Admins
 - **Role** - Project Admin
 
-Click **+ User**, fill out the following fields and click **Save**:
+#. Click **+ User**, fill out the following fields and click **Save**:
 
 - **Name** - SSP Developers
 - **Role** - Developer
 
-Click **+ User**, fill out the following fields and click **Save**:
+#. Click **+ User**, fill out the following fields and click **Save**:
 
 - **Name** - SSP Power Users
 - **Role** - Consumer
 
-Click **+ User**, fill out the following fields and click **Save**:
+#. Click **+ User**, fill out the following fields and click **Save**:
 
 - **Name** - SSP Basic Users
 - **Role** - Operator
 
-Under **Infrastructure**, fill out the following fields:
+#. Under **Infrastructure**, fill out the following fields:
+
 - **Select which resources you want this project to consume** - Local only
 - **AHV Cluster** - *<Cluster Name>*
 
-Under **Network**, select the **Primary** and if available, the **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the **Calm** project.
+#. Under **Network**, select the **Primary** and if available, the **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the **Calm** project.
 
-Click **Save**.
+#. Click **Save**.
 
 .. figure:: images/510projects2.png
 
