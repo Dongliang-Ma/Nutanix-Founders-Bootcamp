@@ -250,3 +250,11 @@ For RTP:
 - **Type** - Policy Secure (UAC) or Connection Server
 - **Name** - X-Labs - RTP
 - **Server URL** - xlv-useast1.nutanix.com
+
+
+Nutanix Version Info
+++++++++++++++++++++
+
+- **AHV Version** - AHV 20170830.185 (5.9+/5.10+)
+- **AOS Version** - 5.10.2
+- **PC Version** - 5.10.2
