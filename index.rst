@@ -91,6 +91,7 @@ Agenda
 
 - Introductions
 - Prism Pro
+- Files
 - Nutanix Calm
 - Nutanix Flow
 
