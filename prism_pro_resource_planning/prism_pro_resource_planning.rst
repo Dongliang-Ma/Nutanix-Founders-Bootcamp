@@ -1,7 +1,7 @@
-.. _prism_central_resource_planning:
+.. _prism_pro_resource_planning:
 
 --------------------------------
-Prism Central: Resource Planning
+Prism Pro: Resource Planning
 --------------------------------
 
 Overview

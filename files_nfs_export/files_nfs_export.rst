@@ -26,23 +26,24 @@ Creating the Export
    - **Max Size (Optional)** - Leave blank
    - **Select Protocol** - NFS
 
-   .. figure:: images/23.png
+   .. figure:: images/24.png
 
 #. Click **Next**.
 
 #. Fill out the following fields:
 
-   - Select **Use "Distributed" share/export type instead of "Standard"**
+   - Select **Enable Self Service Restore**
+      - These snapshots appear as a .snapshot directory for NFS clients.
    - **Authentication** - System
    - **Default Access (For All Clients)** - No Access
    - Select **+ Add exceptions**
-   - **Clients with Read-Write Access** - *The first 3 octets of your cluster network*\ .* (e.g. 10.42.78.\*)
+   - **Clients with Read-Write Access** - *The first 3 octets of your cluster network*\ .* (e.g. 10.38.1.\*)
 
-   .. figure:: images/24.png
-
-   A Distributed share type is more appropriate in this scenario if you have a dedicated top level directory for each host saving their logs on this share, allowing for effective load balancing across the Files cluster.
+   .. figure:: images/25.png
 
    By default an NFS export will allow read/write access to any host that mounts the export, but this can be restricted to specific IPs or IP ranges.
+
+#. Click **Next**.
 
 #. Review the **Summary** and click **Create**.
 
@@ -51,9 +52,7 @@ Testing the Export
 
 You will first provision a CentOS VM to use as a client for your Files export.
 
-.. note::
-
-  If you have already deployed the :ref:`linux_tools_vm` as part of another lab, you may use this VM as your NFS client instead.
+.. note:: If you have already deployed the :ref:`linux_tools_vm` as part of another lab, you may use this VM as your NFS client instead.
 
 #. In **Prism > VM > Table**, click **+ Create VM**.
 
@@ -65,14 +64,12 @@ You will first provision a CentOS VM to use as a client for your Files export.
    - **Number of Cores per vCPU** - 1
    - **Memory** - 2 GiB
    - Select **+ Add New Disk**
-
-     - **Operation** - Clone from Image Service
-     - **Image** - CentOS
-     - Select **Add**
+      - **Operation** - Clone from Image Service
+      - **Image** - CentOS
+      - Select **Add**
    - Select **Add New NIC**
-
-     - **VLAN Name** - Secondary
-     - Select **Add**
+      - **VLAN Name** - Primary
+      - Select **Add**
 
 #. Click **Save**.
 
@@ -122,52 +119,3 @@ You will first provision a CentOS VM to use as a client for your Files export.
 #. Return to **Prism > File Server > Share > logs** to monitor performance and usage.
 
    Note that the utilization data is updated every 10 minutes.
-
-(Optional) Expanding a Files Cluster
-++++++++++++++++++++++++++++++++++++
-
-Files offers the ability to scale up and scale out a deployment. Scaling up the CPU and memory of Files VMs allows an environment to support higher storage throughput and number of concurrent sessions. Currently, Files VMs can be scaled up to a maximum of 12 vCPU and 96GB of RAM each.
-
-The true power of Files scalability is the ability to simply add more Files VMs, scaling out much like the underlying Nutanix distributed storage fabric. An individual Files cluster can scale out up to the number of physical nodes in the Nutanix cluster, ensuring that no more than 1 Files VM runs on a single node during normal operation.
-
-#. Return to **Prism > File Server** and select *Initials*\ **-Files**.
-
-#. Click **Update > Number of File Server VMs**.
-
-   .. figure:: images/25.png
-
-#. Increment the number of Files VMs from 3 to 4 and click **Next**.
-
-   .. figure:: images/26.png
-
-   Note that an additional IP will be consumed for both the client and storage networks to support the added Files VM.
-
-#. Click **Next > Save**.
-
-   The cluster will now deploy and power on a 4th Files VM. Status can be monitored in **Prism > Tasks**.
-
-   .. note::
-
-     Files cluster expansion should take approximately 10 minutes to complete.
-
-   Following the expansion, verify client connections can now be load balanced to the new VM.
-
-#. Connect to your *Initials*\ **-ToolsVM** via RDP or console.
-
-#. Open **Control Panel > Administrative Tools > DNS**.
-
-#. Fill out the following fields and click **OK**:
-
-   - Select **The following computer**
-   - Specify **dc.ntnxlab.local**
-   - Select **Connect to the specified computer now**
-
-   .. figure:: images/28.png
-
-#. Open **DC.ntnxlab.local > Forward Lookup Zones > ntnxlab.local** and verify there are now four entries for *Initials*\ -**files**. Files leverages round robin DNS to load balance connections across Files VMs.
-
-   .. figure:: images/29.png
-
-   .. note::
-
-     If only three entries are present, you can automatically update DNS entries from **Prism > File Server** by selecting your Files cluster and clicking **DNS**.

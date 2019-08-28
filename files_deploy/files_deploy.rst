@@ -4,7 +4,7 @@
 Files: Deploy
 -------------
 
-*Estimated time to complete all Flow labs: 1 HOUR*
+*Estimated time to complete all Files labs: 1 HOUR*
 
 Overview
 ++++++++
@@ -29,7 +29,7 @@ Deploy Files
 
    .. figure:: images/1.png
 
-   For the purpose of saving time, the Files 3.2.0.1 package has already been uploaded to your cluster. Files binaries can be downloaded directly through Prism or uploaded manually.
+   For the purpose of saving time, the Files 3.5.2 package has already been uploaded to your cluster. Files binaries can be downloaded directly through Prism or uploaded manually.
 
    .. figure:: images/2.png
 
@@ -106,7 +106,7 @@ Deploy Files
 
    .. figure:: images/9.png
 
-   .. note:: Similar to NFSv3, in Unmanaged mode, users are only identified by UID/GID. In Files 3.2, NFS connections will still require an NFSv4 capable client.
+   .. note:: In unmanaged mode, users are only identified by UID/GID. In Files 3.5, Files supports both NFSv3 and NFSv4
 
 #. Click **Next**.
 
@@ -126,6 +126,19 @@ Deploy Files
 
      If you receive a warning regarding DNS record validation failure, this can be safely ignored. The shared cluster does not use the same DNS servers as your Files cluster, and as a result is unable to resolve the DNS entries created when deploying Files.
 
+#. While waiting for the file server deployment, if you have not already done so deploy the Windows Tools VM.
+
+#. Connect to the Windows Tools VM via RDP or console
+
+#. Download the sample files for File Analytics to the Tools VM:
+
+   - `https://peerresources.blob.core.windows.net/sample-data/SampleData_Small.zip <https://peerresources.blob.core.windows.net/sample-data/SampleData_Small.zip>`_
+
+#. Download the File Analytics json and qcow files to the Tools VM
+
+   - `nutanix-file-analytics-2.0.0-metadata.json <http://10.42.194.11/workshop_staging/fileanalytics-2.0.0.json>`_
+   - `nutanix-file-analytics-2.0.0.qcow2 <http://10.42.194.11/workshop_staging/nutanix-file_analytics-el7.6-release-2.0.0.qcow2>`_
+
 #. Upon completion, return to **Prism > File Server** and select the *Initials*\ **-Files** server and click **Protect**.
 
    .. figure:: images/12.png
@@ -137,8 +150,7 @@ Deploy Files
 Takeaways
 +++++++++
 
+What are the key things you should know about **Nutanix Files**?
+
 - Files can be rapidly deployed on top of existing Nutanix clusters, providing SMB and NFS storage for user shares, home directories, departmental shares, applications, and any other general purpose file storage needs.
-
 - Files is not a point solution. VM, File, Block, and Object storage can all be delivered by the same platform using the same management tools, reducing complexity and management silos.
-
-- Files can scale up and scale out with One Click performance optimization.

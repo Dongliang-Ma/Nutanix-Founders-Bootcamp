@@ -61,15 +61,18 @@ Testing the Share
 
    .. figure:: images/17.png
 
-#. Test accessing the Marketing share by opening the share and copying or creating files and directories. The **NTNXLAB\\Administrator** user was specified as a Files Administrator during deployment of the Files cluster, giving it read/write access to all shares by default.
+#. Test accessing the Marketing share by extracting the SampleData_Small.zip files downloaded in the previous step into the share.
 
-   Managing access for other users is no different than any other SMB share.
+   .. figure:: images/18.png
+
+   - The **NTNXLAB\\Administrator** user was specified as a Files Administrator during deployment of the Files cluster, giving it read/write access to all shares by default.
+   - Managing access for other users is no different than any other SMB share.
 
 #. Right-click **Marketing > Properties**.
 
 #. Select the **Security** tab and click **Advanced**.
 
-   .. figure:: images/18.png
+   .. figure:: images/19.png
 
 #. Select **Users (**\ *Initials*\ **-Files\\Users)** and click **Remove**.
 
@@ -77,7 +80,7 @@ Testing the Share
 
 #. Click **Select a principal** and specify **Everyone** in the **Object Name** field. Click **OK**.
 
-   .. figure:: images/19.png
+   .. figure:: images/20.png
 
 #. Fill out the following fields and click **OK**:
 
@@ -88,7 +91,7 @@ Testing the Share
    - Select **Read**
    - Select **Write**
 
-   .. figure:: images/20.png
+   .. figure:: images/21.png
 
 #. Click **OK > OK > OK** to save the permission changes.
 
@@ -105,10 +108,10 @@ Testing the Share
    - **Quota** - 10 GiB
    - **Enforcement Type** - Hard Limit
 
-   .. figure:: images/21.png
+   .. figure:: images/22.png
 
 #. Click **Save**.
 
 #. With the Marketing share still selected, review the **Share Details**, **Usage** and **Performance** tabs to understand the available on a per share basis, including the number of files & connections, storage utilization over time, latency, throughput, and IOPS.
 
-   .. figure:: images/22.png
+   .. figure:: images/23.png
