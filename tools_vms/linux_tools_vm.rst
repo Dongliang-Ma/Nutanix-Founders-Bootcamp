@@ -38,61 +38,72 @@ Fill out the following fields:
     - **VLAN Name** - Secondary
     - Select **Add**
 
+- Check **Custom Script**
+    - Select **Type or Paste Script**
+    - Paste Below script, and click **Save**
+
+.. code-block:: bash
+
+  #cloud-config
+  users:
+    - name: nutanix
+      sudo: ['ALL=(ALL) NOPASSWD:ALL']
+      ssh-authorized-keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCm+7N2tjmJw5jhPmD8MS6urZQJB42ABh73ffGQSJ0XUHgdEDfjUDFkLK0wyJCe0sF5QJnh07UQn0F0BUnBi+VwehPGeODh6S43OP5YS/14L0fyntFI06B9lckx/ygRNu82sHxXCX+6VVUFPOPC+sz6j1DQswKY9d4cEYnaMBGSzqRxrqAIf6aWIKTJTYKPFY0zaUZ6ow2iwS0Nlh5EqaXsEBWkqMmr7/auP9GV/adUgzFrGLJklYBdfH575SIK6/PZL6wNT0jE9LmFlEm7dI01ZWPclBuV16FzRyrnzmWr/ebY62A04vYBtR0vyfEfsW2ZgxgD6aAE6+ytj0v19y0elRtOaeTySN/HlXh7owKWCHnlXNpTUiSDP8SQ8LRARkhQu3KEDL0ppGCrSF87oFkp1gPzf92U+UK3LaNMMjZXMOy0zLoLEdLtbQo6S8iHggDoX4NI4sWWxcX0mtadvjy/nIOvskk9IXasQh0u0MT9ARQY5VXPluKDtEVdeow9UbvgJ1xxNkphUgsWjCiy+sjgapsuZvWqKM6TPT1i24XYaau+/Fa0vhjLb8vCMWrrtkRwGt4re243NDYcYWTzVZUFuUK0w1wqt77KgjCCeyJdsZNwrh15v780Fjqpec3EGVA0xyNbF0jn/tsnYy9jPh/6Cv767EratI97JhUxoB4gXw== no-reply@acme.com
+      lock-passwd: false
+      passwd: $6$4guEcDvX$HBHMFKXp4x/Eutj0OW5JGC6f1toudbYs.q.WkvXGbUxUTzNcHawKRRwrPehIxSXHVc70jFOp3yb8yZgjGUuET.
+  ​
+  yum_repos:
+    epel-release:
+      baseurl: http://download.fedoraproject.org/pub/epel/7/$basearch
+      enabled: true
+      failovermethod: priority
+      gpgcheck: true
+      gpgkey: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+      name: Extra Packages for Enterprise Linux 7 - Release
+  ​
+  package_update: true
+  package_upgrade: true
+  ​
+  hostname: centos7-tools-vm
+  ​
+  packages:
+    - gcc-c++
+    - make
+    - unzip
+    - bash-completion
+    - python-pip
+    - s3cmd
+    - stress
+    - awscli
+    - ntp
+    - ntpdate
+    - nodejs
+    - python36
+    - python36-setuptools
+  ​
+  runcmd:
+    - npm install -g request express
+    - systemctl stop firewalld
+    - systemctl disable firewalld
+    - /sbin/setenforce 0
+    - sed -i -e 's/enforcing/disabled/g' /etc/selinux/config
+    - /bin/python3.6 -m ensurepip
+    - pip install -U pip
+    - pip install boto3 python-magic
+    - ntpdate -u -s 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
+    - systemctl restart ntpd
+  ​
+  final_message: CentOS 7 Tools Machine setup successfully!
+
+
 Click **Save** to create the VM.
 
 Power on the VM.
 
-Installing Tools
-++++++++++++++++
+Verify Tools Install
+++++++++++++++++++++
 
-Login to the VM via ssh or Console session, using the following credentials:
+Open Console session.
 
-- **Username** - root
-- **password** - nutanix/4u
-
-Install the software needed by running the following commands:
-
-.. code-block:: bash
-
-  yum update -y
-  yum install -y ntp ntpdate unzip stress nodejs python-pip s3cmd awscli
-  npm install -g request
-  npm install -g express
-
-
-Configuring NTP
-...............
-
-Enable and configure NTP by running the following commands:
-
-.. code-block:: bash
-
-  systemctl start ntpd
-  systemctl enable ntpd
-  ntpdate -u -s 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
-  systemctl restart ntpd
-
-Disabling Firewall and SELinux
-..............................
-
-Disable the firewall and SELinux by running the following commands:
-
-.. code-block:: bash
-
-  systemctl disable firewalld
-  systemctl stop firewalld
-  setenforce 0
-  sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
-
-Installing Python
-.................
-
-Install Python by running the following commands:
-
-.. code-block:: bash
-
-  yum -y install python36
-  python3.6 -m ensurepip
-  yum -y install python36-setuptools
-  pip install -U pip
-  pip install boto3
+Watch as the Cloud-Init script is run, and once you see **CentOS 7 Tools Machine setup successfully!** you are done.
