@@ -1,7 +1,7 @@
 .. _prism_pro_effeciency_anomaly:
 
 --------------------------------------------
-Prism Pro: VM Efficiancy & Anomaly Detection
+Prism Pro: VM Efficiency & Anomaly Detection
 --------------------------------------------
 
 Overview
