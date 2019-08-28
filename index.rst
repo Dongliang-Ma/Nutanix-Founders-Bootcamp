@@ -51,9 +51,6 @@
   calm_projects/calm_projects
   calm_linux/calm_linux
   calm_win/calm_win
-#  calm_day2/calm_day2
-#  calm_escript/calm_escript
-#  calm_marketplace/calm_marketplace
 
 .. toctree::
   :maxdepth: 2
