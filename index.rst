@@ -17,7 +17,9 @@
   :hidden:
 
   what_is_prism_pro/what_is_prism_pro
+  prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
   prism_pro_resource_planning/prism_pro_resource_planning
+  prism_pro_xplay/prism_pro_xplay
 
 .. toctree::
   :maxdepth: 2

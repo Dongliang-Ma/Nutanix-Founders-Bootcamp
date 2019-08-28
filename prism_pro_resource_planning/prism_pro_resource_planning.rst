@@ -9,6 +9,22 @@ Overview
 
 This lab will introduce Prism Central’s resource planning features that help you stay on top of cluster utilization and more accurately predict cluster expansions.
 
+Lab Setup
++++++++++
+
+This lab requires a VM to be provisioned and will be stressed later in the lab to produce CPU and memory metrics.
+
+Applications provisioned as part of the  :ref:`linux_tools_vm` will be used to accomplish this.
+
+#. Please follow the instructions to deploy the :ref:`linux_tools_vm` before moving on with this lab.
+
+
+#. Right click the following URL to open a new tab and navigate to the webpage at http://10.42.247.70 and enter the details in the Setup portion of the form. Then click 'Begin Setup' once you have filled in all the fields. This will get your environment ready for this lab. **Keep this tab open during entire Prism Pro lab to return to as directed in later portions.**
+
+   .. figure:: images/ppro_08.png
+
+#. After hitting continue, it will take a bit of time for the setup to complete. In the meantime, switch back to Prism Central and go through the labs.
+
 Prism Central Resource Planning
 +++++++++++++++++++++++++++++++
 
@@ -19,65 +35,61 @@ Capacity Runway
 
 Use Prism Central’s Capacity Runway feature to learn about cluster resource planning and recommendations.
 
+Lets view the Capacity Runway of your lab cluster.
+
 #. In **Prism Central > Planning > Capacity Runway**.
 
 - Note the runway summaries showing the days left for each cluster.
 - How long does the current cluster has before it runs out of memory, CPU, and storage?
 
-#. Click one of the clusters.
+#. Click on the **Prism-Pro-Cluster** cluster.
 
-.. note::
+. You can now take a look at the Runway for Storage, CPU, and Memory.
 
-  The most constrained resource is highlighted on the left side.
+   .. figure:: images/ppro_12.png
 
-.. note::
+#. When selecting the Memory tab, you can see a Red Exclamation mark, indicating where this cluster will run out of Memory. You can hover the chart at this point to see on which day this will occur.
 
-  Clicking Storage, CPU, or Memory Runway displays the chart for that resource.
+   .. figure:: images/ppro_13.png
 
-#. Click **Optimize Resources** to see a list of recommended management tasks for reallocating resources, such as optimizing over-provisioned VMs, deleting inactive VMs, or adding resources to constrained VMs.
+#. Click on the **‘Optimize Resources’** button on left. This is where you can see the inefficient VMs in the environment with suggestions on how you can optimize these resources to be as efficient as possible.
 
-#. Close the Capacity Runway view.
+   .. figure:: images/ppro_14.png
+
+#. Close the optimize resources popup.
 
 What If Planning
 ................
 
-#. Push the initial guess of the capacity planning task to add hypothetical workloads and see how the prediction changes.
+#. Under the **‘Adjust Resources’** section in the left side of this page, click the **‘Get Started’** button. We can now use this to start planning for new workloads and see how runway will need to be extended in the future.
 
-#. In **Prism Central > Planning > Scenarios**, then click **New Scenario**.
+#. Click the **add/adjust** button in the left side underneath the ‘Workloads’ item.
 
-#. Next, fill out the following fields:
+   .. figure:: images/ppro_15.png
 
-- **Cluster** - Select a Cluster Model
-- **Target** - 6 months
-- **Vendor Type** - Nutanix
+#. Add one for VDI and select 1000 Users. You can also set a date for when this workload should be added to the system. Save this workload when you are done.
 
-#. Now lets add a 150 seat Citrix XenDesktop workload..
+   .. figure:: images/ppro_16.png
 
-#. Click **+ Add Workload**.
+   .. figure:: images/ppro_17.png
 
-#. Next, fill out the following fields and click **Add Workload**:
+#. Add another workload of your choice.
 
-- **Workload** - VDI
-- **Vendor** - XenDesktop
-- **User Type** - Power Users
-- **Provision Type** - Machine Creation Services (MCS)
-- **Number of Users** - 150
-- **On** - One Month from now
+#. Now click the **‘Recommend’** button on the right side of the page.
 
-#. Repeat this process, adding workloads until the runway falls short of the six-month target.
+   .. figure:: images/ppro_18.png
 
-#. **Save** this scenario.
+#. Once the Recommendation is available, toggle between list and chart view to get a better overview of your Scenario.
 
-#. #. Note the **Resources** section, which shows the existing hardware.
+   .. figure:: images/ppro_19.png
 
-#. Click **Recommend** to see a suggested NX configuration to extend the runway.
+#. Click the **Generate PDF** button in the upper right hand corner. This will open a new tab with a PDF report for the scenario/workloads you have created.
 
-#. Now lets experiment with changing the target and workloads and generating recommendations:
+   .. figure:: images/ppro_19b.png
 
-- Additional 150 seats in three months.
-- Change in demand every three months.
+#. View your report.
 
-#. Generate a PDF report to see detailed capacity planning information.
+   .. figure:: images/ppro_20.png
 
 Takeaways
 +++++++++
