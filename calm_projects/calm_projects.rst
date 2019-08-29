@@ -57,7 +57,7 @@ Projects are the logical construct that integrate Calm with Nutanix's native Sel
 
 #. Under **Infrastructure**, click the blue **Select Provider** button, and then **Nutanix**.
 
-In the box that appears, click the white **Select Clusters & Subnets** button, and in the pop-up, select your AHV cluster.  Once your cluster is selected, choose the **Primary** network, and if available, the **Secondary** network, and click **Confirm**.
+#. In the box that appears, click the white **Select Clusters & Subnets** button, and in the pop-up, select your AHV cluster.  Once your cluster is selected, choose the **Primary** network, and if available, the **Secondary** network, and click **Confirm**.
 
    .. figure:: images/projects_cluster_subnet_selection.png
 
