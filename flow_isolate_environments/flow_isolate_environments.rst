@@ -54,7 +54,7 @@ Creating an Isolation Policy
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies**.
 
-#. Click **Create Security Policy > Isolate Environments**.
+#. Click **Create Security Policy > Isolate Environments (Isolation Policy) > Create**.
 
 #. Fill out the following fields:
 
