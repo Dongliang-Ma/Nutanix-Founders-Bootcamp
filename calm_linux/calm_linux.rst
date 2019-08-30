@@ -472,7 +472,7 @@ To take advantage of a scale out web tier, your application needs to be able to 
 #. Select the new service and fill out the following **VM** fields in the **Configuration Panel**:
 
    - **Service Name** - HAProxy
-   - **Name** - HAPROXYAHV
+   - **Name** - HAProxyAHV
    - **Cloud** - Nutanix
    - **OS** - Linux
    - **VM Name** - @@{User_initials}@@-HAProxy-@@{calm_array_index}@@
@@ -505,7 +505,7 @@ To take advantage of a scale out web tier, your application needs to be able to 
 
 #. Specify a **Package Name** and click **Configure install**.
 
-   - **Package Name** - HAPROXY_PACKAGE
+   - **Package Name** - HAProxy_PACKAGE
 
 #. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
 
