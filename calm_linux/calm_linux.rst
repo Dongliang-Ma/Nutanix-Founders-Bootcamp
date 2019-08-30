@@ -120,8 +120,6 @@ Variables can be used in scripts executed against objects using the **@@{variabl
    | Database\_name         | String        | homestead     |            |             |
    +------------------------+-------------------------------+------------+-------------+
 
-   ::
-
    .. figure:: images/5.png
 
 #. Click **Save**.
