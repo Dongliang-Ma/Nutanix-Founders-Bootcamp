@@ -18,13 +18,13 @@ Flow is built into Prism Central and requires no additional appliances or consol
 
 .. note::
 
-  Flow can only be enabled once per Prism Central instance. If **Flow** displays a green check mark next to it, that means Flow has already been enabled for the Prism Central instance being used. Proceed to :ref:`flow_secure_app`.
+  Flow can only be enabled once per Prism Central instance. If **Microsegmentation** displays a green check mark next to it, that means Flow has already been enabled for the Prism Central instance being used. Proceed to :ref:`flow_secure_app`.
 
-#. In **Prism Central**, click the **?** drop down menu and select **Flow**.
+#. In **Prism Central**, click the **?** drop down menu and select **Microsegmentation**.
 
    .. figure:: images/10.png
 
-   Enabling Flow will require an additional 1GB of memory for each Prism Central VM, but there is no action required by the user as this occurs automatically.
+   Enabling Flow will require an additional 1GB of memory for each Prism Central VM, but there is no action required by the user as this occurs automatically. Additionally, the enable process verifies that each connected AHV host has at least 1GB of free RAM.
 
 #. Select **Enable Flow** and click **Enable**.
 

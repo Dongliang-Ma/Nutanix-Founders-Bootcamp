@@ -9,7 +9,7 @@ Flow: Quarantine VM
 Overview
 ++++++++
 
-In this task we will place a VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy.
+Quarantine places a VM in a restricted policy, giving the admin an option to either block all traffic or allow a limited subset of traffic. Strict quarantine blocks a VM from all communication, while forensic quarantine allows a pre-defined list of inbound and outbound traffic. 
 
 Quarantining a VM
 +++++++++++++++++

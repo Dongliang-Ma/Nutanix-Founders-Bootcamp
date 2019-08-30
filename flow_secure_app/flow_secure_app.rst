@@ -9,8 +9,8 @@ Flow: Secure App
 Overview
 ++++++++
 
-Flow is a software-defined networking product tightly integrated into Nutanix AHV and Prism Central. Flow provides rich visualization, automation, and security for VMs running on AHV.
-Microsegmentation is a component of Flow that simplifies policy management. Using multiple Prism Central categories (logical groups), you can create a powerful distributed firewall that gives administrators an application-centric policy management tool for securing VM traffic.
+Flow is a application-centric network security product tightly integrated into Nutanix AHV and Prism Central. Flow provides rich network traffic visualization, automation, and security for VMs running on AHV.
+Microsegmentation is a component of Flow that uses simple policy-based management to secure VM networking. Using multiple Prism Central categories (logical groups), you can create a powerful distributed firewall that gives administrators an application-centric policy management tool for securing VM traffic.
 Combining this with Calm allows automated deployment of applications that are secured as they are created.
 
 In this exercise you will create a security policy to restrict communication between the application VMs.
@@ -27,8 +27,7 @@ Once you have initiated the **Task Manager** deployment, you can proceed with th
 Securing An Application
 +++++++++++++++++++++++
 
-Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines into security policies.
-Start using these categories right away, or add your own categories for custom grouping.
+Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines. Security policies are applied using these VM groups. Start using these pre-existing categories right away, or add your own categories for custom grouping.
 
 Defining Category Values
 ........................
@@ -74,7 +73,7 @@ While you wait for the Task Manager application to be deployed from the Calm blu
 
 #. In **Prism Central**, select :fa:`bars` **> Policies > Security Policies**.
 
-#. Click **Create Security Policy > Secure an Application**.
+#. Click **Create Security Policy > Secure Applications (App Policy) > Create**.
 
 #. Fill out the following fields:
 
