@@ -34,9 +34,9 @@ This lab assumes basic familiarity with Nutanix Calm.
 
 #. Fill out the following fields and click **Proceed**:
 
-   - **Name** - *Initials*\ -EScript
+   - **Name** - *Initials*-EScript
    - **Description** - My First EScript Blueprint
-   - **Project** - default
+   - **Project** - *Initials*-Calm
 
 #. From the toolbar along the top of the blueprint, click **Credentials**.
 
@@ -45,7 +45,7 @@ This lab assumes basic familiarity with Nutanix Calm.
    - **Credential Name** - PC_Creds
    - **Username** - admin
    - **Secret Type** - Password
-   - **Password** - techX2019!
+   - **Password** - *Your Prism Central admin Password*
 
    .. figure:: images/credentials.png
 
@@ -108,8 +108,9 @@ In this exercise, we're going to be creating a custom action for our application
 #. On the **Configuration Pane** to the right, name the action **RESTList**, and add a single variable:
 
    - **Name** - kind
+   - **Data Type** - String
    - **Value** - apps
-   - Select **Runtime**
+   - Select **Runtime** by toggling the running man icon in the upper right to blue
 
    .. figure:: images/restlist.png
 
@@ -194,7 +195,7 @@ In this exercise, we're going to create an additional custom action to make a di
      if resp.ok:
 
       # Cycle through the project "entities", and check if its name matches the current project
-      for project in json.loads(resp.content)['entities']:
+      for project in json.loads(resp.content)['entities']:  
         if project['spec']['name'] == '@@{calm_project_name}@@':
 
           # If there's a default subnet reference, print UUID to set variable and exit success, otherwise error out
