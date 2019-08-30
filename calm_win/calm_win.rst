@@ -11,29 +11,6 @@ Overview
 
 **In this exercise you will explore the basics of working with Windows workloads in Nutanix Calm by building and deploying a blueprint that installs and configures a multi-tier** `bug tracker <http://bugnetproject.com/documentation/>`_ **web app using Microsoft SQL Server database & IIS webserver. This lab assumes you are familiar with basic Calm functionality or have completed the** :ref:`calm_linux` **lab.**
 
-Verifying the Default Project
-+++++++++++++++++++++++++++++
-
-#. In **Prism Central**, select :fa:`bars` **> Services > Calm**.
-
-   .. figure:: images/project0.png
-
-#. Click |projects| **Projects** in the left hand toolbar and select the **default** project.
-
-   .. note::
-
-     Mousing over an icon will display its title.
-
-#. Under **AHV Cluster** verify your assigned cluster is selected from the drop-down list, otherwise select it.
-
-   .. figure:: images/project1.png
-
-#. Under **Network**, verify the **Primary** and **Secondary** networks are selected and the **Primary** network is the default. Otherwise, make the selections as shown below.
-
-   .. figure:: images/project2.png
-
-#. If changes were made, click **Save**.
-
 Creating the Blueprint
 ++++++++++++++++++++++
 
@@ -43,7 +20,7 @@ Creating the Blueprint
 
    - **Name** - *Initials*-CalmWindowsIntro
    - **Description** - [BugNET](\http://@@{MSIIS.address}@@/bugnet)
-   - **Project** - default
+   - **Project** - *Initials*-Calm
 
    .. note::
 
@@ -84,17 +61,17 @@ Creating the Blueprint
 
 #. Using the **Default** Application Profile, specify the following **Variables** in the **Configuration Panel**:
 
-   +---------------------+---------------------+---------------------+---------------------+
-   | **Name**            | **Value**           | **Secret**          | **Runtime**         |
-   +=====================+=====================+=====================+=====================+
-   | DbName              | BugNET              | No                  | Yes                 |
-   +---------------------+---------------------+---------------------+---------------------+
-   | DbUsername          | BugNETUser          | No                  | Yes                 |
-   +---------------------+---------------------+---------------------+---------------------+
-   | DbPassword          | Nutanix/4u$         | Yes                 | Yes                 |
-   +---------------------+---------------------+---------------------+---------------------+
-   | User_initials       | *Leave blank*       | No                  | Yes                 |
-   +---------------------+---------------------+---------------------+---------------------+
+   +---------------------+---------------+----------------+---------------+---------------+
+   | **Name**            | **Data Type** | **Value**      | **Secret**    | **Runtime**   |
+   +=====================+===============+=================+==============+===============+
+   | DbName              | String        | BugNET         | No            | Yes           |
+   +---------------------+---------------+----------------+---------------+---------------+
+   | DbUsername          | String        | BugNETUser     | No            | Yes           |
+   +---------------------+---------------+----------------+---------------+---------------+
+   | DbPassword          | String        | Nutanix/4u$    | Yes           | Yes           |
+   +---------------------+---------------+----------------+---------------+---------------+
+   | User_initials       | String        | *Leave blank*  | No            | Yes           |
+   +---------------------+---------------+----------------+---------------+---------------+
 
    .. figure:: images/variables.png
 

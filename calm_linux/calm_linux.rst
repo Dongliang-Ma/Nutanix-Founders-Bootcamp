@@ -13,31 +13,6 @@ Nutanix Calm allows you to seamlessly select, provision, and manage your busines
 
 **In this lab you will explore the basics of Nutanix Calm by building and deploying a blueprint that installs and configures a multi-tier Task Manager web app using MySQL, nginix, and HAProxy.**
 
-Verifying the Default Project
-+++++++++++++++++++++++++++++
-
-Projects define a set users with a common set of requirements or a common structure and function, such as a team of engineers collaborating on an engineering project. The project also specifies the roles to associate with its members, networks that they can use, infrastructure to deploy onto, and (optionally) usage limits on infrastructure resources.
-
-#. In **Prism Central**, select :fa:`bars` **> Services > Calm**.
-
-   .. figure:: images/project0.png
-
-#. Click |projects| **Projects** in the left hand toolbar and select the **default** project.
-
-   .. note::
-
-     Mousing over an icon will display its title.
-
-#. Under **AHV Cluster** verify your assigned cluster is selected from the drop-down list, otherwise select it.
-
-   .. figure:: images/project1.png
-
-#. Under **Network**, verify the **Primary** and **Secondary** networks are selected and the **Primary** network is the default. Otherwise, make the selections as shown below.
-
-   .. figure:: images/project2.png
-
-#. If changes were made, click **Save**.
-
 Creating a Blueprint
 ++++++++++++++++++++
 
@@ -61,7 +36,7 @@ You can use blueprints to model the applications of various complexities; from s
 
    - **Name** - *Initials*-CalmLinuxIntro
    - **Description** - [Task Manager Application](\http://@@{HAProxy.address}@@/)
-   - **Project** - default
+   - **Project** - *Initials*-Calm
 
    .. figure:: images/2.png
 
@@ -127,30 +102,23 @@ Defining Variables
 Variables allow extensibility of Blueprints, meaning a single Blueprint can be used for multiple purposes and environments depending on the configuration of its variables.
 Variables can either be static values saved as part of the Blueprint or they can be specified at **Runtime** (when the Blueprint is launched).  Variables are specific to a given **Application Profile**, which is the platform on which the blueprint will be deployed. For example, a blueprint capable of being deployed to both AHV and AWS would have 2 Application Profiles. Each profile could have individual variables and VM configurations.
 
-By default, variables are stored in plaintext and visible in the Configuration Pane. Setting a variable as **Secret** will mask the value and is ideal for variables such as passwords.
+By default, variables are stored as a **String** and are visible in the Configuration Pane. Setting a variable as **Secret** will mask the value and is ideal for variables such as passwords. In addition to the String and Secret options, there are Integer, Multi-line String, Date, Time, and Date Time **Data Types**, and more advanced **Input Types**, however these are outside the scope of this lab.
 
 Variables can be used in scripts executed against objects using the **@@{variable_name}@@** construct. Calm will expand and replace the variable with the appropriate value before sending to the VM.
 
-#. In the **Configuration Pane** on the right side of the Blueprint Editor, under **Variables**, add the following variables:
+#. In the **Configuration Pane** on the right side of the Blueprint Editor, under **Variables**, add the following variables (**Runtime** is specified by toggling the **Running Man** icon to Blue):
 
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | **Variable Name**      | **Value**                                            | **Secret** | **Runtime** |
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | User_initials          | xyz                                                  |            |      X      |
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | Mysql\_user            | root                                                 |            |             |
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | Mysql\_password        | nutanix/4u                                           |     X      |             |
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | Database\_name         | homestead                                            |            |             |
-   +------------------------+------------------------------------------------------+------------+-------------+
-   | INSTANCE\_PUBLIC\_KEY  | Use your own public key (that matches the private    |            |             |
-   |                        | key), or use the provided key below.                 |            |             |
-   +------------------------+------------------------------------------------------+------------+-------------+
-
-   ::
-
-     ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAii7qFDhVadLx5lULAG/ooCUTA/ATSmXbArs+GdHxbUWd/bNGZCXnaQ2L1mSVVGDxfTbSaTJ3En3tVlMtD2RjZPdhqWESCaoj2kXLYSiNDS9qz3SK6h822je/f9O9CzCTrw2XGhnDVwmNraUvO5wmQObCDthTXc72PcBOd6oa4ENsnuY9HtiETg29TZXgCYPFXipLBHSZYkBmGgccAeY9dq5ywiywBJLuoSovXkkRJk3cd7GyhCRIwYzqfdgSmiAMYgJLrz/UuLxatPqXts2D8v1xqR9EPNZNzgd4QHK4of1lqsNRuz2SxkwqLcXSw0mGcAL8mIwVpzhPzwmENC5Orw== rsa-key-20190108
+   +------------------------+-------------------------------+------------+-------------+
+   | **Variable Name**      | **Data Type** | **Value**     | **Secret** | **Runtime** |
+   +------------------------+-------------------------------+------------+-------------+
+   | User_initials          | String        | xyz           |            |      X      |
+   +------------------------+-------------------------------+------------+-------------+
+   | Mysql\_user            | String        | root          |            |             |
+   +------------------------+-------------------------------+------------+-------------+
+   | Mysql\_password        | String        | nutanix/4u    |     X      |             |
+   +------------------------+-------------------------------+------------+-------------+
+   | Database\_name         | String        | homestead     |            |             |
+   +------------------------+-------------------------------+------------+-------------+
 
    .. figure:: images/5.png
 
@@ -231,12 +199,12 @@ Creating the Database Service
          users:
            - name: centos
              ssh-authorized-keys:
-               - @@{INSTANCE_PUBLIC_KEY}@@
+               - @@{CENTOS.public_key}@@
              sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
        .. note::
 
-         This will leverage Cloud-Init to populate the SSH public key variable as an authorized key, meaning the corresponding private key can be used to authenticate to the host.
+         When using an SSH Private Key Credential, Calm is able to decode that private key into the matching public key, and makes the decoded value accessable via the @@{Credential_Name.public_key}@@ macro. Cloud-Init is then leveraged to populate the SSH public key value as an authorized key, allowing for the corresponding private key to be used to authenticate to the host.
 
    - Select :fa:`plus-circle` under **Network Adapters (NICs)**
    - **NIC 1** - Primary
@@ -369,7 +337,7 @@ You will now follow similar steps to define a web server service.
          users:
            - name: centos
              ssh-authorized-keys:
-               - @@{INSTANCE_PUBLIC_KEY}@@
+               - @@{CENTOS.public_key}@@
              sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
    - Select :fa:`plus-circle` under **Network Adapters (NICs)**
@@ -504,7 +472,7 @@ To take advantage of a scale out web tier, your application needs to be able to 
 #. Select the new service and fill out the following **VM** fields in the **Configuration Panel**:
 
    - **Service Name** - HAProxy
-   - **Name** - HAPROXYAHV
+   - **Name** - HAProxyAHV
    - **Cloud** - Nutanix
    - **OS** - Linux
    - **VM Name** - @@{User_initials}@@-HAProxy-@@{calm_array_index}@@
@@ -526,7 +494,7 @@ To take advantage of a scale out web tier, your application needs to be able to 
          users:
            - name: centos
              ssh-authorized-keys:
-               - @@{INSTANCE_PUBLIC_KEY}@@
+               - @@{CENTOS.public_key}@@
              sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
    - Select :fa:`plus-circle` under **Network Adapters (NICs)**
@@ -537,7 +505,7 @@ To take advantage of a scale out web tier, your application needs to be able to 
 
 #. Specify a **Package Name** and click **Configure install**.
 
-   - **Package Name** - HAPROXY_PACKAGE
+   - **Package Name** - HAProxy_PACKAGE
 
 #. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
 

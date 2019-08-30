@@ -22,47 +22,50 @@ Projects are the logical construct that integrate Calm with Nutanix's native Sel
 
 #. Within the Calm UI, Select |proj-icon| **Projects** from the sidebar.
 
-.. figure:: images/510projects1.png
+   .. figure:: images/510projects1.png
 
 #. Click + Create Project
 
 #. Fill out the following fields:
 
-- **Project Name** - *initials*-Calm
-- **Description** - *initials*-Calm
+   - **Project Name** - *initials*-Calm
+   - **Description** - *initials*-Calm
 
 #. Under **Users, Groups, and Roles**, click **+ User**.
 
 #. Fill out the following fields and click **Save**:
 
-- **Name** - SSP Admins
-- **Role** - Project Admin
+   - **Name** - SSP Admins
+   - **Role** - Project Admin
 
 #. Click **+ User**, fill out the following fields and click **Save**:
 
-- **Name** - SSP Developers
-- **Role** - Developer
+   - **Name** - SSP Developers
+   - **Role** - Developer
 
 #. Click **+ User**, fill out the following fields and click **Save**:
 
-- **Name** - SSP Power Users
-- **Role** - Consumer
+   - **Name** - SSP Power Users
+   - **Role** - Consumer
 
 #. Click **+ User**, fill out the following fields and click **Save**:
 
-- **Name** - SSP Basic Users
-- **Role** - Operator
+   - **Name** - SSP Basic Users
+   - **Role** - Operator
 
-#. Under **Infrastructure**, fill out the following fields:
+   .. figure:: images/projects_name_users.png
 
-- **Select which resources you want this project to consume** - Local only
-- **AHV Cluster** - *<Cluster Name>*
+#. Under **Infrastructure**, click the blue **Select Provider** button, and then **Nutanix**.
 
-#. Under **Network**, select the **Primary** and if available, the **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the **Calm** project.
+#. In the box that appears, click the white **Select Clusters & Subnets** button, and in the pop-up, select your AHV cluster.  Once your cluster is selected, choose the **Primary** network, and if available, the **Secondary** network, and click **Confirm**.
+
+   .. figure:: images/projects_cluster_subnet_selection.png
+
+#. Within the **Selected Subnets** table, select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the **Calm** project.
+
+   .. figure:: images/projects_infrastructure.png
 
 #. Click **Save**.
-
-.. figure:: images/510projects2.png
 
 .. note::
 
