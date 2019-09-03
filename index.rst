@@ -98,7 +98,7 @@ What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS & PC 5.10.x
+    - AOS & PC 5.11
 
 - Optional Lab Updates:
 
@@ -273,6 +273,6 @@ For RTP:
 Nutanix Version Info
 ++++++++++++++++++++
 
-- **AHV Version** - AHV 20170830.185 (5.9+/5.10+)
-- **AOS Version** - 5.10.2
-- **PC Version** - 5.10.2
+- **AHV Version** - AHV 20170830.279 (5.10+)
+- **AOS Version** - 5.11
+- **PC Version** - 5.11
