@@ -30,13 +30,6 @@
   files_deploy/files_deploy
   files_smb_share/files_smb_share
   files_nfs_export/files_nfs_export
-
-.. toctree::
-  :maxdepth: 2
-  :caption:  File Analytics Labs
-  :name: _file_analytics_labs
-  :hidden:
-
   file_analytics_deploy/file_analytics_deploy
   file_analytics_scan/file_analytics_scan
 
