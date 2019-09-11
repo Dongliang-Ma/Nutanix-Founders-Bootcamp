@@ -26,7 +26,7 @@ Deploy File Analytics
 
    - **Name** - Initials
    - **Storage Container** – Will automatically select the container used by your file server instance
-   - **Network List** – Primary - Managed
+   - **Network List** – Secondary - Managed
 
 #. Select **Show Advanced Settings**
 
