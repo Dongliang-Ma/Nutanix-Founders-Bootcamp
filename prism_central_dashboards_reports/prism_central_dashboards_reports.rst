@@ -1,53 +1,50 @@
 .. _prism_central_dashboards_reports:
 
 -------------------------------------
-Prism Central: Dashboards and Reports
+Prism Central: 仪表板和报表
 -------------------------------------
 
-Overview
+简介
 ++++++++
 
-This lab will introduce Prism Central’s Dashboards and Reporting features.
+本实验将介绍Prism Central的面板和报表功能.
 
-Prism Central Dashboards
+Prism Central 面板
 ++++++++++++++++++++++++
 
-Prism Central dashboards allow you to quickly view the current state of the systems registered under that Prism Central instance.
+Prism Central 仪表板允许您快速查看在Prism Central实例下注册的系统的当前状态。
 
-The kind of information that you can obtain from a dashboard depends upon your interests.
-
-It can include alerts about anything related to the health of a cluster, all the way to performance information.
+您可以从仪表板获得的信息类型取决于您的兴趣。它可以包括与集群运行状况相关的任何事件的警报，一直到性能信息。
 
 .. figure:: images/510PC1.png
 
-Create a Custom Dashboard
+创建定制化仪表板
 .........................
 
-Dashboards can also be customized.
+仪表板也可以定制化
 
-#. #. In **Prism Central > :fa:`fa-navicon` > Dashboard**, or click the **Home X**
+#. #. 在**Prism Central > :fa:`fa-navicon` > Dashboard**, 或点击 **Home X**
 
-The main dashboard is the first dashboard presented when the system first installed.
+主仪表板是系统首次安装时显示的第一个仪表板。
 
-#. This dashboard can be customized as well, but instead we will each create new dashboard.
+#. 此仪表板也可以自定义，但我们会创建新的仪表板。
 
-#. Click on **:fa: `fa-gear` Manage Dashboards** to open the Manage Dashboards window.
+#. 点击 **:fa: `fa-gear` Manage Dashboards** 打开“管理仪表板”窗口
 
-#. Once there click on **+ New Dashboard**
+#. 点击 **+ New Dashboard**
 
-#. Enter "Dashboard-*intials*" for the name and click **Save**.
+#. 输入 "Dashboard-*intials*" 作为名称，然后单击 **Save**.
 
 .. figure:: images/510PC2.png
 
-#. Now let’s add some Widgets.
+#. 现在我们添加一些窗口小部件.
+
 
 .. note::
 
-  Widgets refer to the different sections of a dashboard.
-  A widget can be a graph, an alert board, or simply an information table showing nuggets of information.
-  You can choose to have widgets informing you on whatever piece of information you are interested, simply choose from the available entities.
+  窗口小部件指的是仪表板的不同部分。窗口小部件可以是图形，警报板，也可以是显示信息块的信息表。您可以选择让小部件通知您感兴趣的任何信息，只需从可用的实体中进行选择即可。
 
-#. Click **Add Widgets**.
+#. 点击 **Add Widgets**.
 
 #. From the list of available Widgets on the left hand side, notice there are three types of Widgets:
 
@@ -55,83 +52,79 @@ The main dashboard is the first dashboard presented when the system first instal
 - CLUSTER WIDGETS
 - APP WIDGETS
 
-#. Choose any widget that may interest you in the **CUSTOM WIDGETS** section, and note that a custom set of parameters appears on the right hand side to specify.
+#. 选择**CUSTOM WIDGETS**里您可能感兴趣的任何小部件，并注意右侧显示一组自定义参数以指定。
 
-#. Select amongst the options as desired and click **Add to Dashboard**.
+#. 根据需要在选项中进行选择，然后单击 **Add to Dashboard**.
 
 .. figure:: images/510PC4.png
 
-#. Next select another widget, now from the **CLUSTER WIDGETS** list. This time click on **Or, Add & Return to Dashboard.** to return to your newly created dashboard.
+#. 接下来，从**CLUSTER WIDGETS** 列表中选择另一个小部件。 这次单击**Or, Add & Return to Dashboard.** 返回新创建的仪表板。
 
 .. note::
 
-  There is a **+ Add Widgets** button in the top right corner of Prism Central that can be used to add more widgets at any time.
+  Prism Central的右上角有一个 **+ Add Widgets** 按钮，可以随时添加更多小部件。
 
-  Also, note that hovering over any widget on the dashboard will show a little gray X on the top right corner that can be used to delete the widget.
+  另请注意，将鼠标悬停在仪表板上的任何小部件上都会在右上角显示一个灰色的X，可用于删除小部件。
 
 .. figure:: images/510PC5.png
 
-Prism Central Reports
+Prism Central 报表
 +++++++++++++++++++++
 
-Prism Central allows you to generate historical reports about your cluster environment that can be used to aid administrators in monitoring the health and performance of the clusters they manage.
+Prism Central允许您生成有关群集环境的历史报告，可用于帮助管理员监控他们管理的群集的运行状况和性能。此类报告可包括资源消耗，异常行为和其他有价值的操作见解。这些报告可以手动生成，也可以从Prism Central自动生成，以便在最方便时通过电子邮件发送。
 
-Such reports can include resource consumption, abnormal behavior, and other valuable operational insights.
+#. 在 **Prism Central > :fa:`fa-navicon` > Operations > Reports**.
 
-These reports can be manually generated or they can be automated from Prism Central to be sent out via email when it’s most convenient.
-
-#. In **Prism Central > :fa:`fa-navicon` > Operations > Reports**.
-
-#. There you will see the two pre-defined reports available for you to use immediately:
+#. 在那里，您将看到两个预定义的报告可供您立即使用:
 
 - Cluster Efficiency Summary
 - Environment Summary
 
 .. figure:: images/510reports1.png
 
-#. Lets run the **Cluster Efficiency Summary** report.
+#. 让我们运行 **Cluster Efficiency Summary** 报表.
 
-#. Select **Cluster Efficiency Summary**, then click **Run** from the **Actions** drop-down menu.
+#. 选择 **Cluster Efficiency Summary**, 点击在 **Actions** 下拉菜单中的**Run** .
 
 .. figure:: images/monitoring_01.png
 
-#. Next, fill out the following fields and click **Run** from the **Actions** dropdown:
+#. 接下来，填写以下字段并从 **Actions** 下拉菜单单击 **Run** :
 
 - **Report instance Name** - *initials* - Cluster Efficiency 
 - **Time Period for Report** - Last 24 Hours
 
-#. Click **Run**.
+#. 点击 **Run**.
 
-#. Now lets run the **Environment Summary** report.
+#. 现在我们来运行 **Environment Summary** 报表.
 
-#. Select **Environment Summary**, then click **Run** from the **Actions** drop-down menu.
+#. 选择 **Environment Summary**, 从**Actions** 下拉菜单点击 **Run** .
 
-#. Next, fill out the following fields and click **Run**:
+#. 接下来，填写以下字段并单击 **Run**:
 
 - **Report instance Name** - *initials* - Environment Summary
 - **Time Period for Report** - Last 24 Hours
 
-#. Click **Run**.
+#. 点击 **Run**.
 
-#. Once the reports are complete, select each report, and do the following:
+#. 报告完成后，选择每个报告，然后执行以下操作:
 
-#. Click **View Instances.** from the **Actions** drop-down menu.
+#. 点击 **View Instances.** 从 **Actions** 的下拉菜单.
 
-- To view the report in a separate tab, click the name of the report.
-- To download the report, select its check box, then click **Download** at the upper right of the screen.
+- 要在单独的选项卡中查看报告，请单击报告的名称。
+- 要下载报告，请选中其复选框，然后单击右上页面的 **Download**。
 
-#. Review the contents of the reports you created in this exercise.
+#. 查看您在本练习中创建的报告的内容。
 
-Create a Custom Report
+生成定制化报表
 ......................
 
-#. To create a new custom report, click **+ New Report**.
+#. 要创建新的自定义报告，请单击 **+ New Report**.
 
-#. Change the name of the report from **New Report** to *initials*-**Report**
+#. 修改报表名字 **New Report** 为 *initials*-**Report**
 
 .. figure:: images/510reports3.png
 
-#. From the **CUSTOM VIEWS** menu on the left, click **Line Chart** and fill in the following:
+#. 从 **CUSTOM VIEWS** 目录左边, 点击**Line Chart** 填写下面信息:
 
 - **Entity Type** - Cluster
 - **Metric** - Memory Usage
@@ -139,48 +132,49 @@ Create a Custom Report
 - **Number of Entities** – 10
 - **Sort Order** - Ascending
 
-#. Click **Add**
+#. 点击 **Add**
 
 .. figure:: images/510reports2.png
 
-#. From the **PRE-DEFINED VIEWS**, click on any entities that look interesting to you.
+#. 从 **PRE-DEFINED VIEWS**, 点击任何你感兴趣的entities对象。
 
 .. note::
 
-  Since these are pre-defined, there are no extra configuration steps needed and they get added to the report immediately.
+  由于这些是预定义的，因此不需要额外的配置步骤，它们会立即添加到报告中。
 
-#. Click on the **Add Schedule** button in the top right corner to add an automatic schedule to process the reports.
+#. 点击位于右边角落的 **Add Schedule** 按钮添加自动生成报告计划。
 
-#. Select any desired frequency, time, and duration to run the report.
+#. 选择任何所需的频率，时间和持续时间以运行报告。
 
 .. figure:: images/510reports4.png
 
-.. note::
+.. note:: 
 
-  If SMTP is configured appropriately in Prism Central, this automated report can also get sent to any valid email address entered.
+  如果在Prism Central中正确配置了SMTP，则此自动报告也可以发送到输入的任何有效电子邮件地址。
 
-#. Click **Save** when done customizing your report.
+#. 定制完你的报表之后点击 **Save** 。
 
-#. Now your report has been saved, but note that there are no instances of it. This is because we have not run the report yet.
+#. 现在您的报告已保存，但请注意，它没有任何实例。 这是因为我们还没有运行报告。
 
-#. To run the report, click on **Run** from the top right corner.
+#. 点击右上角的**Run**来运行报告。
 
 .. figure:: images/510reports5.png
 
 .. note::
 
-  Cloning a report is useful to leverage an existing report and edit it to customize it further.
+  克隆报告对于利用现有报告并对其进行编辑以进一步进行自定义非常有用。
 
-#. When the report finishes, you will see the first instance of this reported available for viewing by clicking **PDF** under Download.
+#. 报告完成后，您将通过单**下载**下的**PDF** 看到报告的第一个实例可供查看。
 
-#. Then click on the X on the top right corner to exit.
+#. 然后单击右上角的X退出。
 
-#. If you leave the report as is, it will get automatically run and sent to a provided email address at the specific frequency and time set.
+#. 如果您按原样保留报告，它将自动运行并以设置的特定频率和时间发送到提供的电子邮件地址。
 
-#. The reports themselves can also be customized under **Report Settings** if different colors or logos are desired.
+#. 如果需要不同的颜色或徽标，也可以在**Report Settings**下自定义报告。
 
-Takeaways
+
+概要总结
 +++++++++
 
-- The Prism Central Customizable Dashboards allow you to setup user and team specific dashboards with the information they care about.
-- The Prism Central report management feature provides you with an ability to configure and deliver the historical reports containing information about the infrastructure resources straight into your mailbox according to the schedules configured.
+- Prism Central可自定义仪表板允许您使用他们关心的信息设置用户和团队特定仪表板。
+- Prism Central报告管理功能使您能够根据配置的计划配置和提供包含有关基础结构资源的信息的历史报告。

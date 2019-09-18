@@ -6,7 +6,7 @@
   :name: _prism_central
   :hidden:
 
-  what_is_prism_central/what_is_prism_central
+  //what_is_prism_central/what_is_prism_central
   prism_central_overview/prism_central_overview
   prism_central_dashboards_reports/prism_central_dashboards_reports
 
@@ -16,7 +16,7 @@
   :name: _prism_pro
   :hidden:
 
-  what_is_prism_pro/what_is_prism_pro
+  //what_is_prism_pro/what_is_prism_pro
   prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
   prism_pro_resource_planning/prism_pro_resource_planning
   prism_pro_xplay/prism_pro_xplay
@@ -39,7 +39,7 @@
   :name: _calm
   :hidden:
 
-  what_is_calm/what_is_calm
+  //what_is_calm/what_is_calm
   calm_enable/calm_enable
   calm_projects/calm_projects
   calm_linux/calm_linux
@@ -51,7 +51,7 @@
   :name: _flow
   :hidden:
 
-  what_is_flow/what_is_flow
+  //what_is_flow/what_is_flow
   flow_enable/flow_enable
   flow_secure_app/flow_secure_app
   flow_isolate_environments/flow_isolate_environments
@@ -80,12 +80,13 @@
 .. _getting_started:
 
 ---------------
-Getting Started
+开动实验
 ---------------
 
-Welcome to the Nutanix Essentials Bootcamp! This workbook accompanies an instructor-led session that introduces Nutanix solutions and many common management tasks. Each section has a lesson and an exercise to give you hands-on practice. The instructor explains the exercises and answers any additional questions that you may have.
+欢迎来到Nutanix Essentials训练营！ 本实验手册伴随着讲师指导的培训，介绍了Nutanix解决方案和许多常见的管理任务。 每个部分都有一个课程和实验，为您提供实践练习。 讲师会讲解练习并回答您可能遇到的任何其他问题。
 
-At the end of the bootcamp, attendees should understand the basic concepts and technologies that make up the Nutanix Enterprise Cloud stack and should be well prepared for a hosted or onsite proof-of-concept (POC) engagement.
+在训练营结束时，与会者应该了解Nutanix企业云堆栈的基本概念和技术，并且应该为托管或现场概念验证（POC）参与做好充分准备。
+
 
 What's New
 ++++++++++
@@ -93,39 +94,40 @@ What's New
 - Workshop updated for the following software versions:
     - AOS & PC 5.11
 
-- Optional Lab Updates:
+- 可选的实验更新:
 
 
-Agenda
+日程
 ++++++
 
-- Introductions
+- 简介
 - Prism Pro
 - Files
 - Nutanix Calm
 - Nutanix Flow
 
-Introductions
+简介
 +++++++++++++
 
-- Name
-- Familiarity with Nutanix
+- 名称
+- 熟悉 Nutanix
 
-Initial Setup
+初识化设置
 +++++++++++++
 
-- Take note of the *Passwords* being used.
-- Log into your virtual desktops (connection info below)
+- 记下使用的密码。
+- 登录虚拟桌面（基于下面的连接信息）
 
-Environment Details
+环境说明
 +++++++++++++++++++
 
-Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. Your cluster will be provisioned with all necessary images, networks, and VMs required to complete the exercises.
+Nutanix Workshop旨在Nutanix Hosted POC环境中运行。 将为您的群集配置完成练习所需的所有必要图像，网络和VM。
 
-Networking
+
+网络
 ..........
 
-Hosted POC clusters follow a standard naming convention:
+Hosted POC 集群遵循标准命名约定:
 
 - **Cluster Name** - POC\ *XYZ*
 - **Subnet** - 10.**21**.\ *XYZ*\ .0
@@ -136,13 +138,13 @@ If provisioned from the marketing pool:
 - **Subnet** - 10.**20**.\ *XYZ*\ .0
 - **Cluster IP** - 10.**20**.\ *XYZ*\ .37
 
-For example:
+示例:
 
 - **Cluster Name** - POC055
 - **Subnet** - 10.21.55.0
 - **Cluster IP** - 10.21.55.37
 
-Throughout the Workshop there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
+在整个Workshop期间，有多个实例需要用* XYZ *替换正确的子网，例如:
 
 .. list-table::
    :widths: 25 75
@@ -157,7 +159,7 @@ Throughout the Workshop there are multiple instances where you will need to subs
    * - 10.21.\ *XYZ*\ .40
      - **DC** VM IP, NTNXLAB.local Domain Controller
 
-Each cluster is configured with 2 VLANs which can be used for VMs:
+每个群集配置有2个可用于VM的VLAN:
 
 .. list-table::
   :widths: 25 25 10 40
@@ -176,12 +178,12 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
     - *XYZ1*
     - 10.21.\ *XYZ*\ .132-10.21.\ *XYZ*\ .253
 
-Credentials
+认证
 ...........
 
 .. note::
 
-  The *<Cluster Password>* is unique to each cluster and will be provided by the leader of the Workshop.
+  The *<Cluster Password>* 对每个群集都是唯一的，将由Workshop的负责人提供.
 
 .. list-table::
    :widths: 25 35 40
@@ -203,7 +205,8 @@ Credentials
      - nutanix
      - *<Cluster Password>*
 
-Each cluster has a dedicated domain controller VM, **DC**, responsible for providing AD services for the **NTNXLAB.local** domain. The domain is populated with the following Users and Groups:
+每个群集都有一个专用的域控制器VM, **DC**, 负责为 **NTNXLAB.local** 域提供AD服务. 该域包括了以下用户和组：:
+
 
 .. list-table::
    :widths: 25 35 40
@@ -228,10 +231,10 @@ Each cluster has a dedicated domain controller VM, **DC**, responsible for provi
      - basicuser01-basicuser25
      - nutanix/4u
 
-Access Instructions
+访问说明
 +++++++++++++++++++
 
-The Nutanix Hosted POC environment can be accessed a number of different ways:
+可以通过多种不同方式访问Nutanix Hosted POC环境:
 
 Parallels VDI
 .................
@@ -241,29 +244,10 @@ Login to: https://xld-uswest1.nutanix.com (for PHX) or https://xld-useast1.nutan
 **Nutanix Employees** - Use your NUTANIXDC credentials
 **Non-Employees** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
 
-Pulse Secure VPN
-..........................
-
-To download the client: login to https://xlv-uswest1.nutanix.com or https://xlv-useast1.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
-
-Download and install the client.
-
-In Pulse Secure Client, **Add** a connection:
-
-For PHX:
-
-- **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - X-Labs - PHX
-- **Server URL** - xlv-uswest1.nutanix.com
-
-For RTP:
-
-- **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - X-Labs - RTP
-- **Server URL** - xlv-useast1.nutanix.com
 
 
-Nutanix Version Info
+
+Nutanix 版本信息
 ++++++++++++++++++++
 
 - **AHV Version** - AHV 20170830.279 (5.10+)

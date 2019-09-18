@@ -1,99 +1,99 @@
 .. _prism_pro_resource_planning:
 
 --------------------------------
-Prism Pro: Resource Planning
+Prism Pro: 资源规划
 --------------------------------
 
-Overview
+简介
 ++++++++
 
-This lab will introduce Prism Central’s resource planning features that help you stay on top of cluster utilization and more accurately predict cluster expansions.
+本实验将介绍Prism Central的资源规划功能，帮助您掌握集群利用率并更准确地预测集群扩展。
 
-Lab Setup
+Lab 创建
 +++++++++
 
-This lab requires a VM to be provisioned and will be stressed later in the lab to produce CPU and memory metrics.
+该实验需要配置VM，稍后将在实验室中说明生成CPU和内存矩阵。
 
-Applications provisioned as part of the  :ref:`linux_tools_vm` will be used to accomplish this.
-
-#. Please follow the instructions to deploy the :ref:`linux_tools_vm` before moving on with this lab.
+#. 在继续这个实验之前请按提示部署 :ref:`linux_tools_vm` 
 
 
-#. Right click the following URL to open a new tab and navigate to the webpage at http://10.42.247.70 and enter the details in the Setup portion of the form. Then click 'Begin Setup' once you have filled in all the fields. This will get your environment ready for this lab. **Keep this tab open during entire Prism Pro lab to return to as directed in later portions.**
+#. 右键单击以下URL以打开新选项卡，然后导航到http://10.42.247.70上的网页，并在表单的“设置”部分中输入详细信息。 填写完所有字段后，单击“开始设置”。 这将为您的环境做好准备。 **在整个Prism Pro实验室中保持此选项卡打开，以便按照以后部分的指示返回。**
 
    .. figure:: images/ppro_08.png
 
-#. After hitting continue, it will take a bit of time for the setup to complete. In the meantime, switch back to Prism Central and go through the labs.
+#. 点击继续后，设置完成需要一些时间。 在此期间，切换回Prism Central并通过实验室。
 
-Prism Central Resource Planning
+Prism Central 资源规划
 +++++++++++++++++++++++++++++++
 
-Nutanix utilizes our X-Fit machine learning and data analytics as part of Prism Pro. We utilize that machine learning and data analytics to provide Cluster Runway and just in time forecasting (What If Planning).
+Nutanix利用我们的X-Fit机器学习和数据分析作为Prism Pro的一部分。 我们利用该机器学习和数据分析来提供Cluster Runway资源倒计时和及时预测（What If规划）。
 
-Capacity Runway
+容量倒计时
 ...............
 
-Use Prism Central’s Capacity Runway feature to learn about cluster resource planning and recommendations.
+使用Prism Central的资源倒计时了解群集资源规划和建议的功能。
 
-Lets view the Capacity Runway of your lab cluster.
+让我们查看集群的资源倒计时
 
-#. In **Prism Central > Planning > Capacity Runway**.
+#. 在**Prism Central > Planning > Capacity Runway**.
 
-- Note the runway summaries showing the days left for each cluster.
-- How long does the current cluster has before it runs out of memory, CPU, and storage?
+- 请注意资源倒计时摘要显示每个群集的剩余天数。
+- 在内存，CPU和存储空间不足之前，当前集群有多长时间？
 
-#. Click on the **Prism-Pro-Cluster** cluster.
+#. 点击**Prism-Pro-Cluster** 集群。
 
-. You can now take a look at the Runway for Storage, CPU, and Memory.
+. 您现在可以查看存储，CPU和内存的剩余资源。
 
    .. figure:: images/ppro_12.png
 
-#. When selecting the Memory tab, you can see a Red Exclamation mark, indicating where this cluster will run out of Memory. You can hover the chart at this point to see on which day this will occur.
+#. 选择“内存”选项卡时，您可以看到红色感叹号，指示此群集将耗尽内存的位置。 此时您可以将图表悬停在图表上，以查看这将发生在哪一天。
 
    .. figure:: images/ppro_13.png
 
-#. Click on the **‘Optimize Resources’** button on left. This is where you can see the inefficient VMs in the environment with suggestions on how you can optimize these resources to be as efficient as possible.
+#. 点击**‘Optimize Resources’** 左边的按钮。 在这里，您可以看到环境中效率低下的虚拟机，并提供有关如何优化这些资源以尽可能高效的建议。
 
    .. figure:: images/ppro_14.png
 
-#. Close the optimize resources popup.
+#. 关闭优化资源弹出窗口。
 
-What If Planning
+What If 规划
 ................
 
-#. Under the **‘Adjust Resources’** section in the left side of this page, click the **‘Get Started’** button. We can now use this to start planning for new workloads and see how runway will need to be extended in the future.
+#. 在页面左边的的**‘Adjust Resources’** 下边, 点击 **‘Get Started’** 按钮. 我们现在可以使用它来开始规划新的工作负载，并了解将来如何扩展跑道。
 
-#. Click the **add/adjust** button in the left side underneath the ‘Workloads’ item.
+#. 点击左边‘Workloads’选项下面的 **add/adjust** 按钮。
 
    .. figure:: images/ppro_15.png
 
-#. Add one for VDI and select 1000 Users. You can also set a date for when this workload should be added to the system. Save this workload when you are done.
+#. 为VDI添加一个并选择1000个用户。 您还可以设置应将此工作负载添加到系统的日期。 完成后保存此工作负载。
 
    .. figure:: images/ppro_16.png
 
    .. figure:: images/ppro_17.png
 
-#. Add another workload of your choice.
+#. 添加另一个你选择的工作负载
 
-#. Now click the **‘Recommend’** button on the right side of the page.
+#. 点击右边页面的 **‘Recommend’** 按钮。
 
    .. figure:: images/ppro_18.png
 
-#. Once the Recommendation is available, toggle between list and chart view to get a better overview of your Scenario.
+#. 一旦建议书可用，在列表和图表视图之间切换，以更好地浏览您的场景。
 
    .. figure:: images/ppro_19.png
 
-#. Click the **Generate PDF** button in the upper right hand corner. This will open a new tab with a PDF report for the scenario/workloads you have created.
+#. 点击右上角的 **Generate PDF** 按钮。 这将打开一个新选项卡，其中包含您已创建的方案/工作负载的PDF报告。
 
    .. figure:: images/ppro_19b.png
 
-#. View your report.
+#. 查看报告
 
    .. figure:: images/ppro_20.png
 
-Takeaways
+概要总结
 +++++++++
 
-- The Capacity Runway view in the Planning dashboard allows you to view summary resource runway information for the registered clusters and access detailed runway information about each cluster.
-- The Scenarios view in the Planning dashboard allows you to create "what if" scenarios to assess the future resource requirements for potential work loads that you specify.
-- You must have a Prism Pro license to use the resource planning tools.
+ -  Planning仪表板中的Capacity Runway视图允许您查看已注册集群的摘要资源倒计时信息，并访问有关每个集群的详细资源倒计时信息。
+ -  规划仪表板中的“方案”视图允许您创建“假设”方案，以评估您指定的潜在工作负载的未来资源需求。
+ -  您必须拥有Prism Pro许可才能使用资源规划工具。
+
+

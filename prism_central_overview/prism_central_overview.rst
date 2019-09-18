@@ -1,34 +1,34 @@
 .. _prism_central_overview:
 
 -----------------------
-Prism Central: Overview
+Prism Central: 概述
 -----------------------
 
 Overview
 ++++++++
 
-This lab will introduce the Prism Central UI, and familiarize you with its layout and navigation.
+实验将介绍 Prism Central UI, 并熟悉它的布局和导航。
 
 Prism Central
 +++++++++++++
 
-#. Open https://<*Prism-Central-IP*>:9440
+#. 打开 https://<*Prism-Central-IP*>:9440
 
-#. Fill out the following fields and click **Enter**:
+#. 填写以下字段并单击 **Enter**:
 
 - **Username** - admin
 - **Password** - *HPOC Password*
 
-#. After you log in to Prism Central, familiarize yourself with the Prism UI.
+#. 在登录Prism Central后, 请自己熟悉Prism UI.
 
-#. Explore the information on the **Home** screen:
+#. 浏览**Home** 界面的有关信息:
 
 - Cluster Runway
 - Cluster Quick Access
 - Impacted Cluster | Alerts
 - tasks
 
-#. Review the **Explore** screen:
+#. 浏览 **Explore** 界面:
 
 - VMs
 - Images
@@ -39,7 +39,7 @@ Prism Central
 
 .. figure:: images/nutanix_tech_overview_10.png
 
-#. Review the other sections, and do a quick walk through:
+#. 查看其他部分，并快速浏览:
 
 - Planning
 - Analysis
@@ -52,45 +52,33 @@ Prism Central
 - User :fa:`user`
 
 .......................
-Prism Central UI Review
+Prism Central UI 浏览
 .......................
 
-How would you find the screen that shows you a table of all the hosts managed by an instance of Prism Central?
+如何找到被一个Prism Central实例管理的所有主机页面?
 
 .. figure:: images/nutanix_tech_overview_11.png
 
 .. note::
 
-  If this Prism Central instance was managing multiple clusters, this screen would show the hosts for all of the clusters being managed.
+  如果这个Prism Central 实例管理了多个集群, 这个页面会显示被管理的所有机器的主机。
 
-#. In **Prism Central > Explore**, click **Hosts** on left-hand menu.
+#. 在 **Prism Central > Explore**, 点击左手菜单的 **Hosts** .
 
-How would you find the screen that lists all of the VMs currently deployed. This screen looks similar to the figure below?
+你如何找到显示所有已部署的VMs页面. 这个页面是否和下图类似?
 
 .. figure:: images/nutanix_tech_overview_12.png
 
-#. In **Prism Central > Explore**, click **VMs** on left-hand menu.
+#. 在**Prism Central > Explore**, 点击左手菜单的**VMs**.
 
-What page would show you the latest activity in the system? On this page, you can monitor the progress of any task and keep track of what has been done in the past using time stamps. Can you figure out two different ways to get there?
+哪个页面会显示系统中的最新活动？ 在此页面上，您可以监控任何任务的进度，并使用时间戳跟踪过去所执行的操作。 你能想出两种不同的方法吗？
 
-#. First Way, In **Prism Central > Home**, click **View All Tasks**. Second Way, click :fa:`circle-o`
-
-.. note::
-
-  In ESXi:
-
-  - vCenter Server instances can be registered to Prism via Prism's :fa:`cog` icon.
-  - Registering a Nutanix Cluster running ESXi with vCenter allows to perform core VM management operations directly from Prism without switching to vCenter Server.
-  - The vCenter Server that is managing the hosts in the cluster is auto-discovered and its IP address is auto-populated in the Address field as shown in the example below.
-
-  Example view of vCenter registration to Prism:
+#. 第一种方法, 在 **Prism Central > Home**, 点击**View All Tasks**. 第二种方法, 点击 :fa:`circle-o`
 
 
-  .. figure:: images/nutanix_tech_overview_15.png
-
-Takeaways
+概要总结
 +++++++++
 
-- Prism is thoughtfully laid out UI
-- Critical information is displayed front and center
-- Prism Central can manage multiple clusters
+- Prism 是一个全面的UI界面
+- 关键信息显示在正中明显位置。
+- Prism Central 可以管理多个集群
