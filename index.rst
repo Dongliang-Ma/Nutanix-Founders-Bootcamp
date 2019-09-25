@@ -6,7 +6,7 @@
   :name: _prism_central
   :hidden:
 
-  //what_is_prism_central/what_is_prism_central
+  what_is_prism_central/what_is_prism_central
   prism_central_overview/prism_central_overview
   prism_central_dashboards_reports/prism_central_dashboards_reports
 
@@ -16,7 +16,7 @@
   :name: _prism_pro
   :hidden:
 
-  //what_is_prism_pro/what_is_prism_pro
+  what_is_prism_pro/what_is_prism_pro
   prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
   prism_pro_resource_planning/prism_pro_resource_planning
   prism_pro_xplay/prism_pro_xplay
@@ -39,7 +39,7 @@
   :name: _calm
   :hidden:
 
-  //what_is_calm/what_is_calm
+  what_is_calm/what_is_calm
   calm_enable/calm_enable
   calm_projects/calm_projects
   calm_linux/calm_linux
@@ -51,7 +51,7 @@
   :name: _flow
   :hidden:
 
-  //what_is_flow/what_is_flow
+  what_is_flow/what_is_flow
   flow_enable/flow_enable
   flow_secure_app/flow_secure_app
   flow_isolate_environments/flow_isolate_environments

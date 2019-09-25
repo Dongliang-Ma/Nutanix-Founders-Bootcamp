@@ -1,80 +1,79 @@
 .. _prism_pro_effeciency_anomaly:
 
 --------------------------------------------
-Prism Pro: VM Efficiency & Anomaly Detection
+Prism Pro: VM 效率 & 异常发现
 --------------------------------------------
 
-Overview
+简介
 ++++++++
 
 
 
-Lab Setup
+实验设置
 +++++++++
 
-This lab requires a VM to be provisioned and will be stressed later in the lab to produce CPU and memory metrics.
+该实验需要配置VM，稍后将在实验中加压力测试以生成CPU和内存指标。
 
-Applications provisioned as part of the  :ref:`linux_tools_vm` will be used to accomplish this.
+ :ref:`linux_tools_vm`中的应用部署部分将完成这部分内容。
+#. 在开始这个实验之前，请按照说明进行部署 :ref:`linux_tools_vm` 
 
-#. Please follow the instructions to deploy the :ref:`linux_tools_vm` before moving on with this lab.
 
-
-#. Right click the following URL to open a new tab and navigate to the webpage at http://10.42.247.70 and enter the details in the Setup portion of the form. Then click 'Begin Setup' once you have filled in all the fields. This will get your environment ready for this lab. **Keep this tab open during entire Prism Pro lab to return to as directed in later portions.**
+#. 右键单击以下URL以打开一个新选项卡，并导航至位于http://10.42.247.70的网页，然后在表单的“设置”部分中输入详细信息。 填写所有字段后，请点击“开始设置”。 这将为您准备好本实验的环境。 **请在整个Prism Pro实验期间将此标签保持打开状态，然后再按指示返回。**
 
    .. figure:: images/ppro_08.png
 
-#. After hitting continue, it will take a bit of time for the setup to complete. In the meantime, switch back to Prism Central and go through the labs.
+#. 点击继续后，安装过程将花费一些时间。 同时，切换回Prism Central并通过实验室。
 
 VM Efficiency
 +++++++++++++++++++++++++++
 
-Prism Pro uses X-Fit machine learning to detect the behaviors of VMs running within the managed clusters. Then applies a classification to VMs that are learned to be inefficient. The following are short descriptions of the different classifications:
+Prism Pro使用X-Fit机器学习来检测在托管群集中运行的VM的行为。 然后对被认为效率低下的VM进行分类。 以下是不同分类的简短说明：
 
-* **Overprovisioned:** VMs identified as using minimal amounts of assigned resources.
-* **Inactive:** VMs that have been powered off for a period of time or that are running VMs that do not consume any CPU, memory, or I/O resources.
-* **Constrained:** VMs that could see improved performance with additional resources.
-* **Bully:** VMs identified as using an abundance of resources and affecting other VMs.
+* **Overprovisioned:** 标识为使用最少数量的已分配资源的VM。
+* **Inactive:** 已关闭电源一段时间或正在运行的VM不会消耗任何CPU，内存或I / O资源。
+* **Constrained:** 可以通过其他资源来提高性能的VM。
+* **Bully:** 被确定为使用了大量资源并影响其他VM的VM。
 
-#. In **Prism Central**, select :fa:`bars` **> Dashboard** (if not already there).
+#. 在 **Prism Central**, 选择 :fa:`bars` **> Dashboard**.
 
-#. From the Dashboard, take a look at the VM Efficiency widget. This widget gives a summary of inefficient VMs that Prism Pro’s X-FIT machine learning has detected in your environment. Click on the ‘View All Inefficeint VMs’ link at the bottom of the widget to take a closer look.
+#. 在仪表板上，查看“ VM效率”小部件。 此小部件概述了Prism Pro的X-FIT机器学习在您的环境中检测到的低效VM。 点击小部件底部的“查看所有Inefficeint虚拟机”链接，以进行更仔细的查看。
 
    .. figure:: images/ppro_58.png
 
-#. You are now viewing the Efficiency focus in the VMs list view with more details about why Prism Pro flagged these VMs. You can hover the text in the Efficiency detail column to view the full description.
+#. 现在，您将在VM列表视图中查看“效率”焦点，并详细了解为何Prism Pro标记了这些VM。 您可以将鼠标悬停在“效率详细信息”列中的文本以查看完整的描述。
 
    .. figure:: images/ppro_59.png
 
-#. Once an admin has examined the list of VM on the efficiency list they can determine any that they wish to take action against. From VMs that have too many or too little resources they will require the individual VMs to be resized. This can be done in a number of ways with a few examples listed below:
+#. 管理员检查了效率列表中的VM列表后，他们可以确定希望对其采取行动的任何VM。 对于资源过多或不足的VM，它们将需要调整各个VM的大小。 可以通过以下几种示例以多种方式完成此操作：
 
-* **Manually:** An admin edits the VM configuration via Prism or vCenter for ESXi VMs and changes the assigned resources.
-* **X-Play:** Use X-Plays automated play books to resize VM(s) automatically via a trigger or admins direction. There will be a lab story example of this later in this lab.
-* **Automation:** Use some other method of automation such as powershell or REST-API to resize a VM.
+* **Manually:** 管理员通过Prism或vCenter为ESXi VM编辑VM配置并更改分配的资源。
+* **X-Play:** 使用X-Play自动剧本通过触发器或管理员指示自动调整VM的大小。 在本实验的后面，将有一个实验的例子。
+* **Automation:** 使用其他一些自动化方法，例如powershell或REST-API来调整VM的大小。
 
 
-Anomaly Detection
+异常检测
 +++++++++++++++++++++++++++++++
 
-In this lab story you will take a look at VMs with an anomaly. An anomaly is a deviation from the normal learned behavior of a VM. The X-FIT alogrithms learn the normal behavior of VMs and represent that as a baseline range on the different charts for each VM.
+在本实验中，您将了解异常的虚拟机。 异常是与VM正常学习行为的偏差。 X-FIT算法学习VM的正常行为，并将其表示为每个VM在不同图表上的基线范围。
 
-#. Now let's take a take a look at a VM by searching for ‘bootcamp_good’ and selecting ‘bootcamp_good_1’.
+#. 现在，通过搜索“ bootcamp_good”并选择“ bootcamp_good_1”来查看虚拟机。
 
    .. figure:: images/ppro_61.png
 
-#. Go to Metrics > CPU Usage. Notice a dark blue line, and a lighter blue area around it. The dark blue line is the CPU Usage. The light blue area is the expected CPU Usage range for this VM. This range is calculated using Prism Pro’s X-FIT machine learning engine. In this case, an anomaly has been raised for this VM, because the Usage is far below the expected range. You can also reduce the time range “Last 24 hours” to examine the chart more closely.
+#. 转到指标> CPU使用率。 请注意，一条深蓝色的线及其周围的浅蓝色区域。 深蓝色线是CPU使用率。 浅蓝色区域是此VM的预期CPU使用率范围。 该范围是使用Prism Pro的X-FIT机器学习引擎计算得出的。 在这种情况下，此虚拟机已出现异常，因为“使用情况”远低于预期范围。 您还可以缩短“过去24小时”的时间范围，以更仔细地检查图表。
 
    .. figure:: images/ppro_60.png
 
-#. Click **“Alert Setting”** to set an alert policy for this kind of situation.
+#. 单击**“Alert Setting”**来为这种情况设置警报策略。
 
-#. In the right hand side, you can change some of the configurations however you would like. In this example I have changed the Behavioral Anomaly threshold to ignore anomalies between 10% and 70%. All other anomalies will generate a Warning alert. I have also adjusted the Static threshold to Alert Critical if the CPU Usage on this VM exceeds 95%.
+#. 在右侧，您可以根据需要更改某些配置。 在此示例中，我更改了“行为异常”阈值以忽略10％到70％之间的异常。 所有其他异常将生成警告警报。 如果此VM上的CPU使用率超过95％，我还将“静态”阈值调整为“严重警报”。
 
    .. figure:: images/ppro_25.png
 
-#. Hit **Cancel** to exit the policy creation workflow.
+#. 点击**Cancel**退出策略创建工作流程。
 
-Takeaways
+概要总结
 +++++++++
 
-- Prism Pro is our solution to make IT OPS smarter and automated. It covers the IT OPS process ranging from intelligent detection to automated remediation.
-- X-FIT is our machine learning engine to support smart IT OPS, including forecast, anomaly detection, and inefficiency detection.
+-Prism Pro是我们使IT OPS更加智能和自动化的解决方案。 它涵盖从智能检测到自动修复的IT OPS流程。
+-X-FIT是我们的机器学习引擎，可支持智能IT OPS，包括预测，异常检测和效率低下检测。

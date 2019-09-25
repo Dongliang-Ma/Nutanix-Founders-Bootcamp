@@ -1,38 +1,38 @@
 .. _calm_linux:
 
 ---------------------
-Calm: Linux Workloads
+Calm: Linux 工作负载
 ---------------------
 
-*The estimated time to complete this lab is 60 minutes.*
+*预计 60 分钟完成.*
 
-Overview
+简介
 ++++++++
 
-Nutanix Calm allows you to seamlessly select, provision, and manage your business applications across your infrastructure for both the private and public clouds. Nutanix Calm provides App lifecycle, monitoring and remediation to manage your heterogeneous infrastructure, for example, VMs or bare-metal servers. Nutanix Calm supports multiple platforms so that you can use the single self-service and automation interface to manage all your infrastructure.
+Nutanix Calm允许您在私有云和公共云的基础架构中无缝选择，配置和管理业务应用程序。 Nutanix Calm提供应用程序生命周期，监控和修复，以管理异构基础架构，例如VM或裸机服务器。 Nutanix Calm支持多种平台，因此您可以使用单一的自助服务和自动化界面来管理所有基础架构。
 
-**In this lab you will explore the basics of Nutanix Calm by building and deploying a blueprint that installs and configures a multi-tier Task Manager web app using MySQL, nginix, and HAProxy.**
+**在本实验中，您将通过构建和部署使用MySQL，nginix和HAProxy安装和配置多层任务管理器Web应用程序的蓝图来探索Nutanix Calm的基础知识。**
 
-Creating a Blueprint
+创建蓝图
 ++++++++++++++++++++
 
-A blueprint is the framework for every application that you model by using Nutanix Calm. Blueprints are templates that describe all the steps that are required to provision, configure, and execute tasks on the services and applications that are created. You can create a blueprint to represent the architecture of your application and then run the blueprint repeatedly to create an instance, provision, and launch your applications. A blueprint also defines the lifecycle of an application and its underlying infrastructure starting from the creation of the application to the actions that are carried out on a blueprint until the termination of the application.
+蓝图是使用Nutanix Calm建模的每个应用程序的框架。 蓝图是描述在创建的服务和应用程序上配置，配置和执行任务所需的所有步骤的模板。 您可以创建蓝图来表示应用程序的体系结构，然后重复运行蓝图以创建实例，配置和启动应用程序。 蓝图还定义了应用程序及其底层基础架构的生命周期，从创建应用程序到在蓝图上执行的操作，直到应用程序终止。
 
-You can use blueprints to model the applications of various complexities; from simply provisioning a single virtual machine to provisioning and managing a multi-node, multi-tier application.
+您可以使用蓝图来模拟各种复杂性的应用程序; 从简单地配置单个虚拟机到配置和管理多节点，多层应用程序。
 
-#. In **Prism Central**, select :fa:`bars` **> Services > Calm**.
+#. 在 **Prism Central**, 选择 :fa:`bars` **> Services > Calm**.
 
    .. figure:: images/1.png
 
-#. Select |blueprints| **Blueprints** in the left hand toolbar to view and manage Calm bleuprints.
+#. 选择左边工具栏 |blueprints| **Blueprints** 来查看和管理Calm 蓝图。
 
    .. note::
 
-     Mousing over an icon will display its title.
+     将鼠标悬停在图标上将显示其标题。
 
-#. Click **+ Create Blueprint > Multi VM/Pod Blueprint**.
+#. 点击 **+ Create Blueprint > Multi VM/Pod Blueprint**.
 
-#. Fill out the following fields:
+#. 填写以下字段:
 
    - **Name** - *Initials*-CalmLinuxIntro
    - **Description** - [Task Manager Application](\http://@@{HAProxy.address}@@/)
@@ -40,22 +40,22 @@ You can use blueprints to model the applications of various complexities; from s
 
    .. figure:: images/2.png
 
-#. Click **Proceed** to launch the Blueprint Editor.
+#. 点击 **Proceed** 打开蓝图编辑器Blueprint Editor.
 
-   The Blueprint Editor provides a graphical representation of various components that enable you to visualize and configure the components and their dependencies in your environment.
+   Blueprint Editor提供了各种组件的图形表示，使您可以在环境中可视化和配置组件及其依赖项。
 
-Creating Credentials
+创建用户凭证
 ++++++++++++++++++++
 
-First you will create a credential that will be used to authenticate Calm to the CentOS VMs you will eventually deploy. Credentials are unique to each Blueprint, and are **not** exported as part of the Blueprint for security purposes. Each Blueprint requires a minimum of 1 credential.
+首先，您将创建一个凭证，用于向最终部署的CentOS VM验证Calm。 凭证对于每个蓝图都是唯一的，出于安全目的，**不会**作为蓝图的一部分导出。 每个蓝图至少需要1个凭证。
 
-This exercise uses a "Generic Cloud" CentOS image. This is a common option for multiple popular Linux distributions that is lightweight, supports Cloud-Init based configuration, and utilizes `SSH keypair authentication <https://www.ssh.com/ssh/public-key-authentication>`_ instead of passwords. Keypair based authentication is commonplace in all public cloud environments.
+本练习使用“Generic Cloud”CentOS映像。 对于多个流行的Linux发行版来说，这是一个常见的选项，它是轻量级的，支持基于Cloud-Init的配置，并利用 `SSH keypair authentication <https://www.ssh.com/ssh/public-key-authentication>`_ 而非密码。 基于密钥对的身份验证在所有公共云环境中都很常见。
 
-#. Click **Credentials**.
+#. 点击 **Credentials**.
 
    .. figure:: images/3.png
 
-#. Click **Credentials** :fa:`plus-circle` and fill out the following fields:
+#. 点击 **Credentials** :fa:`plus-circle` 填写以下字段:
 
    - **Credential Name** - CENTOS
    - **Username** - centos
@@ -94,9 +94,9 @@ This exercise uses a "Generic Cloud" CentOS image. This is a common option for m
 
    .. figure:: images/4.png
 
-#. Click **Save**, and then **Back**.
+#. 点击 **Save**, 然后 **Back**.
 
-Defining Variables
+定义变量
 ++++++++++++++++++
 
 Variables allow extensibility of Blueprints, meaning a single Blueprint can be used for multiple purposes and environments depending on the configuration of its variables.
@@ -107,6 +107,15 @@ By default, variables are stored as a **String** and are visible in the Configur
 Variables can be used in scripts executed against objects using the **@@{variable_name}@@** construct. Calm will expand and replace the variable with the appropriate value before sending to the VM.
 
 #. In the **Configuration Pane** on the right side of the Blueprint Editor, under **Variables**, add the following variables (**Runtime** is specified by toggling the **Running Man** icon to Blue):
+
+变量允许蓝图的可扩展性，这意味着单个蓝图可以用于多种用途和环境，具体取决于其变量的配置。
+变量可以是作为蓝图的一部分保存的静态值，也可以在**Runtime**（启动蓝图时）指定。变量特定于给定的** Application Profile **，它是部署蓝图的平台。例如，能够部署到AHV和AWS的蓝图将具有2个应用程序配置文件。每个配置文件可以具有单独的变量和VM配置。
+
+默认情况下，变量存储为** String **，并在配置窗格中可见。将变量设置为** Secret **将屏蔽该值，非常适用于密码等变量。除了String和Secret选项之外，还有整数，多行字符串，日期，时间和日期时间**数据类型**，以及更高级的**输入类型**，但这些不在此范围内实验室。
+
+可以使用** @@ {variable_name} @@ **构造在对象执行的脚本中使用变量。在发送到VM之前，Calm将使用适当的值扩展和替换变量。
+
+＃。在Blueprint Editor右侧的**配置窗格**中，在**变量**下，添加以下变量（**运行时**通过将** Running Man **图标切换为蓝色来指定）：
 
    +------------------------+-------------------------------+------------+-------------+
    | **Variable Name**      | **Data Type** | **Value**     | **Secret** | **Runtime** |
