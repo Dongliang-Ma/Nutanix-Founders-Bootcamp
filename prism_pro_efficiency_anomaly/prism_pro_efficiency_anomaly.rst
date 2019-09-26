@@ -14,7 +14,6 @@ Prism Pro: VM 效率 & 异常发现
 
 该实验需要配置VM，稍后将在实验中加压力测试以生成CPU和内存指标。
 
- :ref:`linux_tools_vm`中的应用部署部分将完成这部分内容。
 #. 在开始这个实验之前，请按照说明进行部署 :ref:`linux_tools_vm` 
 
 

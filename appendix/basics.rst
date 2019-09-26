@@ -1,105 +1,104 @@
-.. _calm_basics:
+.. _calm_basics：
 
 ***********
-Calm Basics
+Calm的基础知识
 ***********
 
-Accessing Calm
+访问Calm
 ==============
 
-Open \https://<*Prism-Central-IP*>:9440/ in a browser and log in.
+在浏览器中打开  \https://<*Prism-Central-IP*>:9440/ 并登录.
 
-From the navigation bar, select **Apps**.
+在导航栏中，选择**Apps**。
 
-The **Applications** tab shows all of the instances of applications that have been launched from a Blueprint.
+**Applications** 选项卡显示已从Blueprint启动的所有应用程序实例。
 
-Tabbed Navigation
+
+选项卡式导航
 =================
 
-Calm introduces a new sidebar to Prism Central. Note the titles and description of each tab:
+Calm为Prism Central引入了一个新的侧边栏。请注意每个标签的标题和说明：
 
-.. figure:: images/basics1.png
+.. figure :: images / basics1.png
 
-Blueprint Editor
+蓝图编辑器
 ================
 
-The Blueprint Editor is the UI within Prism Central used to graphically model applications that consist of one or more Services to be deployed to one or more Clouds. Note the key sections:
+Blueprint Editor是Prism Central中的UI，用于以图形方式建模由一个或多个要部署到一个或多个云的服务组成的应用程序。注意关键部分：
 
-.. figure:: images/basics2.png
+.. figure :: images / basics2.png
 
-Note the additional buttons below as they can be helpful when actively editing a Blueprint:
+请注意下面的其他按钮，因为在动态编辑蓝图时它们会很有用：
 
-.. figure:: images/basics3.png
+.. figure :: images / basics3.png
 
-Glossary
+词汇表
 ========
 
-Blueprint
+Blueprint 蓝图
 .........
 
-A blueprint is the framework for every application that you model by using Nutanix Calm. Blueprints are templates that describe all the steps that are required to provision, configure, and execute tasks on the services and applications that are created. You can create a blueprint to represent the architecture of your application and then run the blueprint repeatedly to create an instance, provision, and launch your applications. A blueprint also defines the lifecycle of an application and its underlying infrastructure starting from the creation of the application to the actions that are carried out on a blueprint until the termination of the application.
+蓝图是使用Nutanix Calm建模的每个应用程序的框架。蓝图是描述在创建的服务和应用程序上配置，配置和执行任务所需的所有步骤的模板。您可以创建蓝图来表示应用程序的体系结构，然后重复运行蓝图以创建实例，配置和启动应用程序。蓝图还定义了应用程序及其底层基础架构的生命周期，从创建应用程序到在蓝图上执行的操作，直到应用程序终止。
 
-You can use blueprints to model the applications of various complexities; from simply provisioning a single virtual machine to provisioning and managing a multi-node, multi-tier application.
+您可以使用蓝图来模拟各种复杂性的应用程序;从简单地配置单个虚拟机到配置和管理多节点，多层应用程序。
 
-Application
+Application 应用
 ...........
 
-A running instance of a Blueprint comprised of one or more Services.
+由一个或多个服务组成的蓝图的运行实例。
 
-Blueprint Editor
+Blueprint Editor 蓝图编辑器
 ................
 
-Provides graphical representation of an entire multi-tier application and a user interface for configuring application components and dependencies.
+提供整个多层应用程序的图形表示以及用于配置应用程序组件和依赖项的用户界面。
 
-Application Overview
+Application Overview 应用概述
 ....................
 
-The pane within the Blueprint Editor used to create and manage Blueprint Layers. Blueprint Layers consist of Services, Actions, and Application Profiles.
+蓝图编辑器中的窗格用于创建和管理蓝图图层。蓝图图层由服务、操作和应用程序配置文件组成。
 
-Service
+Service 服务
 .......
 
-Services are the virtual machine instances, existing machines or bare-metal machines, that you can provision and configure by using Nutanix Calm. You can either provision a single service instance or multiple services based on the topology of your application. Different Services serve different purposes (e.g. a web-tier Service and a database Service), but an individual Service can also be comprised of multiple VMs all providing the same functionality (e.g. scaling out a web-tier to multiple VMs). A Service is comprised of a VM, a Package, and a Service.
+服务是虚拟机实例，现有机器或裸机，您可以使用Nutanix Calm进行部署和配置。您可以根据应用程序的拓扑配置单个服务实例或多个服务。不同的服务用于不同的目的（例如，web层服务和数据库服务），但是单个服务也可以由多个VM组成，所有VM都提供相同的功能（例如，将web层扩展到多个VM）。服务由VM，包和服务组成。
 
-  - **VM** - A VM defines the configuration of the virtual machine instance, the platform on which the VM will be installed, and the connection information of the machine. Note this may also include existing machines that could be virtual or physical.
+   -  **VM**  -  VM定义虚拟机实例的配置，将安装VM的平台以及计算机的连接信息。请注意，这可能还包括现有的虚拟或物理计算机。
 
-  - **Package** - A package enables you to install and uninstall software on a VM by using a script. You need to provide the credentials of the VM on which you need to run the script. The package also defines the port number and the protocol that is used to access the service.
+   -  **程序包**  - 程序包使您可以使用脚本在VM上安装和卸载软件。您需要提供运行脚本所需的VM凭据。该程序包还定义了端口号和用于访问服务的协议。
 
-  - **Service** - A service enables you to create the variables that are used to define the service-level tasks and service-level actions. As part of the service, you can also define the number of replicas that you want to create of a service.
+   -  **服务**  - 通过服务，您可以创建用于定义服务级别任务和服务级别操作的变量。作为服务的一部分，您还可以定义要创建服务的副本数。
 
-Action
+Action 操作
 ......
 
-An action is a set of operations that you can run on your application that are created as a result of running a Blueprint. There are two types of Actions:
-
-  - **System Action** - Pre-defined functions including Create, Start, Stop, Delete, and Soft Delete. System Actions cannot be deleted.
-  - **Custom Action** - User created actions that can be used to carry out additional orchestration workflows, such as updating a running application.
-
-Application Profile
+Action是一组操作，您可以在应用程序上运行这些操作，这些操作是由于运行蓝图而创建的。有两种类型的操作：
+  - **System Action** - 预定义的功能，包括创建，启动，停止，删除和预删除。系统操作无法删除。
+  - **Custom Action** - 用户创建的操作可用于执行其他编排工作流程，例如更新正在运行的应用程序。
+ 
+Application Profile 应用程序概要文件
 ...................
 
-Alternate environment configurations to support running the same Blueprint on multiple platforms, such as launching the same Blueprint on both Nutanix AHV and AWS.
+支持在多个平台上运行相同蓝图的备选环境配置，例如在Nutanix AHV和AWS上启动相同蓝图。
 
-Dependency
+Dependency 依赖
 ..........
 
-Dependencies are used to define the dependence of one service in your application on another service or multiple other services for properties such as IP addresses and DNS names. For example, if service 2 is dependent on service 1, then service 1 starts first and stops after service 2.
+依赖关系用于定义应用程序中的一个服务对另一个服务或多个其他服务的依赖关系，以用于IP地址和DNS名称等属性。例如，如果服务2依赖于服务1，则服务1首先启动并在服务2之后停止。
 
-Macro
-.....
+Macro 宏
+..........
 
-Macros enable you to access the value of variables and properties that are set on Services. The variables can be user defined or system generated. Macros help in making scripts generic and creating reusable workflows.
+宏使您可以访问在服务上设置的变量和属性的值。变量可以是用户定义的或系统生成的。宏有助于使脚本通用并创建可重用的工作流。
 
-The syntax of a macro is @@{variable_name}@@, where variable_name is the name of the variable. See Calm documentation for additional details on using Macros, including working with built-in Macros and array Services.
+宏的语法是@@{variable_name}@@，其中variable_name是变量的名称。有关使用宏的其他详细信息，请参阅Calm文档，包括使用内置宏和阵列服务。
 
-Project
-.......
+Project 项目
+..........
 
-A project defines a set of Active Directory groups with a common set of requirements or a common structure and function, such as a team of engineers collaborating on a product. The project also specifies the roles to associate with its members, networks that they can use, infrastructure to deploy onto, and (optionally) usage limits on infrastructure resources.
+项目定义了一组Active Directory组，这些组具有一组通用的需求或一个通用的结构和功能，例如在产品上协作的工程师团队。该项目还指定了与其成员关联的角色，可以使用的网络，要部署的基础架构以及（可选）基础架构资源的使用限制。
 
-You can also define the environment associated with a project, in case you want to publish the applications into the Marketplace.
+如果要将应用程序发布到Marketplace中，还可以定义与项目关联的环境。
 
-Marketplace
-...........
-
-The Marketplace provides a set of pre-seeded application Blueprints that are available for you to use. The Marketplace is a common platform for both the publisher and the consumer. The Marketplace provides you with the ability to provision an application instantly.
+Marketplace 应用市场
+..........
+Marketplace提供了一组可供您使用的预置的应用程序蓝图。 Marketplace是发布者和消费者的共同平台。 Marketplace可让您立即配置应用程序。

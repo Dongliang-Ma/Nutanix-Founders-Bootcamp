@@ -1,101 +1,189 @@
 .. _what_is_prism_central:
 
 ---------------------
-What Is Prism Central
+什么是Prism Central
 ---------------------
 
-Overview
+概述
 ++++++++
 
-Nutanix Prism provides central access for administrators to configure, monitor, and manage virtual environments.
+Nutanix Prism为管理员提供了集中访问，可以配置，监控和管理虚拟化环境。
 
-Powered by advanced data analytics, heuristics, and rich automation, Prism offers unprecedented simplicity by combining several aspects of datacenter management into a single, consumer-grade solution.
+Prism采用先进的数据分析，启发式和丰富的自动化功能，通过将数据中心管理的多个方面组合到一个消费级解决方案中，提供前所未有的简便性。
 
-Using innovative machine learning technology, Prism can mine large volumes of system data easily and quickly and generate actionable insights for optimizing all aspects of virtual infrastructure management.
+利用创新的机器学习技术，Prism可以轻松快速地挖掘大量系统数据，并为优化虚拟基础架构管理的各个方面提供可操作的见解。
 
-Prism is a part of every Nutanix deployment and has two core components: Prism Element and Prism Central. Prism Element is a service built into the platform for every Nutanix cluster deployed. It provides the ability to fully configure, manage, and monitor Nutanix clusters running any hypervisor.
+Prism是每个Nutanix部署的一部分，有两个核心组件：Prism Element和Prism Central。 Prism Element是为部署的每个Nutanix集群构建在平台中的服务。它提供了完全配置，管理和监控运行任何虚拟机管理程序的Nutanix群集的功能。
 
-As organizations deploy multiple Nutanix clusters, they want to be able to manage all of them from a single Prism instance, so Nutanix introduced Prism Central.
+当组织部署多个Nutanix集群时，他们希望能够从单个Prism实例管理所有这些集群，因此Nutanix引入了Prism Central。
 
-This global management experience offers a single place to monitor performance, health, and inventory for all Nutanix clusters. Prism Central is available in a standard version included with every Nutanix deployment and as a Pro version that is licensed separately and enables several advanced features.
+这种全球管理经验为监控所有Nutanix集群的性能，运行状况和库存提供了一个单一界面。 Prism Central提供标准版本，包含在每个Nutanix部署中，也可作为Pro版本单独授权，并支持多种高级功能。
 
 Prism Central
 +++++++++++++
 
-Prism Central Customizable Dashboards
+Prism Central自定义仪表板
 .....................................
 
-What is it?
+定义：
 
-- Live dashboards for at-a-glance view of the entire infrastructure
-- Build/customize from pre-defined widgets
-- Customize charts, alerts, performance metrics amongst others
+ - 实时仪表板，可一目了然地查看整个基础架构
+ - 从预定义的小插件 创建/自定义
+ - 自定义图表，警报，性能指标等
 
-Benefits:
+优点：
 
-- Monitor everything from storage to apps from home screen
-- Reduce mean time to restore from failures
-- Different views for different employees
+ - 从主屏幕监控从存储到应用程序的所有内容
+ - 减少从故障中恢复的平均时间
+ - 针对不同员工的不同视图
 
-.. figure:: images/what_is_prismcentral_04.png
+.. figure :: images / what_is_prismcentral_04.png
 
-Customize Dashboards with Widgets
+使用窗口小插件自定义仪表板
 .................................
 
-.. figure:: images/what_is_prismcentral_16.png
+.. figure :: images / what_is_prismcentral_16.png
 
-Build A Performance Dashboard
+创建性能仪表板
 .............................
 
-.. figure:: images/what_is_prismcentral_17.png
+.. figure :: images / what_is_prismcentral_17.png
 
-Prism Self-Service
+Prism Central自助服务
 ..................
 
-What is it?
+定义：
 
-- Self-service access to IT resources
-- IT sets policies and provides access to end users such as developers
+ - 自助访问IT资源
+ - IT设置策略并提供对最终用户（如开发人员）的访问
 
-Components:
+组件：
 
-- Admin Portal: Create projects, set policies, assign users
-- End User Portal: Deploy and monitor applications
+ - 管理员门户：创建项目，设置策略，分配用户
+ - 最终用户门户：部署和监控应用程序
 
-Benefits:
+优点：
 
-- Frictionless service delivery
-- Developers empowered to get AWS like experience
+ - 流畅的服务交付
+ - 开发人员可以获得类似AWS的使用体验
 
-.. figure:: images/what_is_prismcentral_06.png
+.. figure :: images / what_is_prismcentral_06.png
 
-VM Management for ESXi
+ESXi的VM管理
 ......................
 
-What is it?
+定义：
 
-- ESXi Management from Prism
-- Does not displace vCenter
+ - 通过Prism管理ESXi
+ - 不能取代vCenter
 
-Use Prism for common use cases:
+Prism常见用例：
 
-- VM Create
-- VM Update
-- VM Delete
-- VM Power On/Off Ops
-- Launch console
-- Clone
+ - VM创建
+ - VM更新
+ - VM删除
+ - VM电源开/关操作
+ - 启动控制台
+ - 克隆
 
-Key Points:
+关键点：
 
-- Consumer-grade virtualization management across different hypervisors
-- Unified management plane for virtualization, storage and compute
+ - 跨不同Hypervisor的消费级虚拟化管理
+ - 用于虚拟化，存储和计算的统一管理平面
 
-.. figure:: images/what_is_prismcentral_12.png
+.. figure :: images / what_is_prismcentral_12.png
 
 Nutanix Calm
 ............
 
-Part of The Nutanix Solution Stack
+Nutanix解决方案堆栈的一部分
 
-.. figure:: images/what_is_prismcentral_07.png
+.. figure :: images / what_is_prismcentral_07.png
+
+Prism Pro
++++++++++
+
+Prism Central报告管理和机器学习能力
+.................................................. ...........
+
+通过PC机器学习，您可以：
+
+ - 分析资源使用情况。
+ - 监控资源消耗。
+ - 识别异常行为。
+ - 利用指导资源规划。
+
+根据报告管理，您可以：
+
+ - 配置并提供包含有关基础架构资源信息的历史报告。
+ - 根据您配置的计划，将基础架构的操作洞察信息添加到邮箱中。
+
+.. figure :: images / what_is_prismcentral_08.png
+
+可行的容量预测
+...............................
+
+定义：
+
+ - 详细的容量趋势
+ - 智能建议
+ - 由正在申请专利的X-FIT算法提供支持
+
+关键点：
+
+ - 随着容量扩张的增长，实现按需付费
+ - 消除猜测
+
+.. figure :: images / what_is_prismcentral_09.png
+
+容量预测
+...............................
+
+容量预测=工作负荷耗尽前的时间
+
+.. figure :: images / what_is_prismcentral_15.png
+
+容量优化建议书
+....................................
+
+.. figure :: images / what_is_prismcentral_14.png
+
+准时预测
+.....................
+
+定义：
+
+ - 基于机器学习的预测，预测容量扩展以满足未来的工作负载增长
+ - 根据现有/新的工作负载需求规划扩展
+ - 由X-FIT提供支持
+
+优点：
+
+ - 预先定义的工作负载友好输入，以节省计划时间并避免麻烦
+ - 随着容量扩张的增长，实现按需付费
+ - 消除猜测
+
+.. figure :: images / what_is_prismcentral_10.png
+
+规划即时扩展
+...................................
+
+调整容量扩展以满足未来的工作负载增长
+
+ - 由机器学习提供支持
+ - 专为按需付费而设计
+ - 与Workload-Friend简化
+
+.. figure:: images/what_is_prismcentral_13.png
+
+单击集中式群集升级
+.....................................
+
+ - 直接从实体资源管理器中对一个或多个群集进行一键式AOS升级
+ - 如果选择了多个群集，则可以选择滚动升级或同时升级
+ - 允许管理员能够从单点管理所有集群的AOS升级，简化管理
+
+丰富且富有洞察力的分析
+.............................
+
+.. figure:: images/what_is_prismcentral_11.png
