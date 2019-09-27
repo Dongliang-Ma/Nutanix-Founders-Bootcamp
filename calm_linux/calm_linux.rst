@@ -1,17 +1,17 @@
 .. _calm_linux:
 
 ---------------------
-Calm: Linux Workloads
+Calm: Linux 工作负载
 ---------------------
 
-*The estimated time to complete this lab is 60 minutes.*
+*完成本实验的估计时间为60分钟。*
 
-Overview
+简介
 ++++++++
 
-Nutanix Calm allows you to seamlessly select, provision, and manage your business applications across your infrastructure for both the private and public clouds. Nutanix Calm provides App lifecycle, monitoring and remediation to manage your heterogeneous infrastructure, for example, VMs or bare-metal servers. Nutanix Calm supports multiple platforms so that you can use the single self-service and automation interface to manage all your infrastructure.
+Nutanix Calm允许您跨私有云和公共云基础架构无缝选择、供应和管理业务应用程序。 Nutanix Calm提供应用程序生命周期，监视和修复，以管理您的异构基础架构，例如VM或裸机服务器。 Nutanix Calm支持多个平台，因此您可以使用单个自助服务和自动化界面来管理所有基础架构。
 
-**In this lab you will explore the basics of Nutanix Calm by building and deploying a blueprint that installs and configures a multi-tier Task Manager web app using MySQL, nginix, and HAProxy.**
+**在本实验中，您将通过构建和部署蓝图来探索Nutanix Calm的基础知识，该蓝图使用MySQL，nginix和HAProxy安装和配置多层Task Manager Web应用程序。**
 
 Creating a Blueprint
 ++++++++++++++++++++

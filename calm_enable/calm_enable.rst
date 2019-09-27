@@ -1,7 +1,7 @@
 .. _calm_enable：
 
 ------------
-Calm：Enable
+Calm：启用
 ------------
 
 概述
