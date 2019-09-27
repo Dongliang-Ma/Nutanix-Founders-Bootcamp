@@ -1,93 +1,93 @@
 .. _taskman:
 
 ----------------------
-Deploying Task Manager
+部署Task Manager
 ----------------------
 
-*The estimated time to complete this lab is 10 minutes.*
+*完成本实验的估计时间为10分钟。*
 
-Overview
+简介
 ++++++++
 
-**This exercise walks you through importing and launching a Calm blueprint to deploy a simple Task Manager application used in multiple labs. You do not need to complete this exercise unless directed to do so as staging for another lab.**
+**此练习将引导您完成导入和启动Calm蓝图的工作，以部署用于多个实验室的简单Task Manager应用程序。 您无需完成此练习，除非指示您转而准备另一个实验室。**
 
-Verifying the Default Project
+验证默认 Project
 +++++++++++++++++++++++++++++
 
-In **Prism Central**, select :fa:`bars` **> Services > Calm**.
+在 **Prism Central**, 选择 :fa:`bars` **> Services > Calm**.
 
 .. figure:: images/0.png
 
-Click |projects| **Projects** in the left hand toolbar and select the **default** project.
+在左手工具栏点击 |projects| **Projects** 并选择 **default** project.
 
 .. note::
 
-  Mousing over an icon will display its title.
+  将鼠标悬停在图标上将显示其标题。
 
-Under **AHV Cluster** verify your assigned cluster is selected from the drop-down list, otherwise select it.
+在 **AHV Cluster** 下确认从下拉列表中选择了您分配的集群，否则选择它。
 
 .. figure:: images/1.png
 
-Under **Network**, verify the **Primary** and **Secondary** networks are selected and the **Primary** network is the default. Otherwise, make the selections as shown below.
+在 **Network**下, 验证 **Primary** 和 **Secondary** 网络都被选择，**Primary** 网络为默认。 此外, 进行如下所示的选择。
 
 .. figure:: images/2.png
 
-If changes were made, click **Save**.
+如果进行了更改，请单击 **Save**.
 
-Importing the Blueprint
+导入蓝图
 +++++++++++++++++++++++
 
-Right-click on :download:`this link <TaskManager.json>` and **Save Link As...** to download the blueprint for the example application used in this exercise.
+右击 :download:`this link <TaskManager.json>` 并 **Save Link As...** 下载本练习中使用的示例应用程序的蓝图。
 
-Click |blueprints| **Blueprints** in the left hand toolbar to view available Calm blueprints.
+点击左侧工具栏中 |blueprints| **Blueprints** ，以查看可用的Calm蓝图。
 
-Click **Upload Blueprint** and select the **TaskManager.json** file previously downloaded.
+点击 **Upload Blueprint** 并选择之前下载好的 **TaskManager.json**。
 
-Fill out the following fields:
+填写以下字段
 
 - **Blueprint Name** - *Initials*-TaskManager
 - **Project** - default
 
 .. figure:: images/3.png
 
-Click **Upload**.
+点击 **Upload**.
 
 .. note::
 
-  If you receive an error trying to upload the blueprint, refresh your browser and try again.
+  如果您在尝试上传蓝图时遇到错误，请刷新浏览器，然后重试。
 
-Configuring the Blueprint
+配置蓝图
 +++++++++++++++++++++++++
 
-Before you can launch the blueprint, you must first provide specify the information not stored in exported Calm blueprints, including credentials.
+在启动蓝图之前，必须首先提供指定的信息，这些信息未存储在导出的Calm蓝图中，包括凭证。
 
-In the **Application Profile** pane on the right, fill out the following field:
+在左边 **Application Profile** 窗格, 填写以下字段：
 
 - **Mysql_password** - nutanix/4u
 
 .. figure:: images/4.png
 
-Select the **WinClient** service and in the pane on the right, under the **VM** tab, ensure the **Image** is set to the **Windows10** disk image as shown below.
+选择右边窗格的 **WinClient** 服务, 在 **VM** 选项卡下, 确保 **Image** 设置为 **Windows10** 镜像，如下所示。
 
 .. figure:: images/4b.png
 
-Under **Network Adapters (NICs)**, ensure that **NIC 1** is set to **Primary** as shown below.
+在**Network Adapters (NICs)**下, 确保 **NIC 1** 设置为 **Primary** ，如下所示.
 
 .. figure:: images/4c.png
 
-Select the **WebServer**, **HAProxy**, and **MySQL** services and ensure each has **NIC 1** set to **Primary**.
+选择 **WebServer**, **HAProxy**, 和 **MySQL** 服务并确保 **NIC 1** 设置为 **Primary**.
 
 .. figure:: images/4d.png
 
-Click **Save**.
+点击 **Save**.
 
 .. figure:: images/5.png
 
-Click **Credentials**.
+点击 **Credentials**.
 
 .. figure:: images/6.png
 
-Expand the **CENTOS** credential by clicking its name. Copy and paste the following key into the **SSH Private Key** field:
+通过点击其名字扩展 **CENTOS** 认证。 将以下密钥复制并粘贴到“ SSH私钥”字段中：
 
 ::
 
@@ -119,33 +119,33 @@ Expand the **CENTOS** credential by clicking its name. Copy and paste the follow
   gmznERCNf9Kaxl/hlyV5dZBe/2LIK+/jLGNu9EJLoraaCBFshJKF
   -----END RSA PRIVATE KEY-----
 
-Expand the **WIN_VM_CRED** credential by clicking its name. Enter **nutanix/4u** as the **Password**.
+点击其名字扩展 **WIN_VM_CRED** 认证。 输入 **nutanix/4u** 作为 **Password**.
 
 .. figure:: images/7.png
 
-Click **Save**.
+点击 **Save**.
 
-Once the blueprint has been saved, click **Back**.
+蓝图保存后, 点击 **Back**.
 
 .. figure:: images/8.png
 
-Launching the Blueprint
-+++++++++++++++++++++++
+运行蓝图
++++++++++++++++
 
-After the credentials have been provided, **Publish**, **Download**, and **Launch** are now available from the toolbar. Click **Launch**.
+在提供认证后, **Publish**, **Download**, 和 **Launch** 现在可以从工具栏中使用。 点击 **Launch**.
 
-Fill out the following fields:
+填写以下字段:
 
 - **Name of the Application** - *Initials*-TaskManager1
 - **User_initials** - *Initials*
 
 .. figure:: images/9.png
 
-Click **Create**.
+点击 **Create**.
 
-You can monitor the status of your application deployment by clicking |applications| **Applications** and clicking your application's name.
+您可以通过以下方式监视应用程序部署的状态： |applications| **Applications** 点击你应用程序的名字。
 
-Provisioning the complete application will take approximately 15 minutes. Proceed to the next section of the lab while the application is provisioning.
+设置完整的应用程序大约需要15分钟。 在配置应用程序时，继续进行实验的下一部分。
 
 .. |projects| image:: images/projects.png
 .. |blueprints| image:: images/blueprints.png

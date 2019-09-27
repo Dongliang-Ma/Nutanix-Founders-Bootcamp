@@ -447,30 +447,30 @@ Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix 
 
    对于许多应用程序，通常需要扩展给定的服务（例如Web层）以处理更多并发用户。 借助Calm，可以轻松地部署包含给定服务的多个副本的阵列。
 
-#. 在Workspace窗格中选择**WebServer**服务图标后，滚动到**Configuration Panel**的顶部，然后选择“服务”选项卡。With the **WebServer** service icon selected in the Workspace pane, scroll to the top of the **Configuration Panel**, and select the **Service** tab.
+#. 在Workspace窗格中选择**WebServer**服务图标后，滚动到**Configuration Panel**的顶部，然后选择**Service**选项卡。
 
-#. Under **Deployment Config > Number of Replicas**, increase the **Min** value from 1 to 2 and the **Max** value from 1 to 4.
+#. 在**Deployment Config > Number of Replicas**, 增加**Min** 的值从1到2 和 **Max** 的值从 1 到 4.
 
    .. figure:: images/12.png
 
-   This change will provision a minimum of 2 WebServer VMs for each deployment of the application, and allow the array to grow up to a total of 4 WebServer VMs.
+   此项更改将为应用程序的每次部署至少提供2个WebServer VM，并使阵列最多可以增长到4个WebServer VM。
 
    .. note::
 
-     Scaling an application in and out will require additional scripting so that the application understands how to leverage the additional VMs.
+     伸缩应用程序将需要其他脚本，以便应用程序了解如何利用其他VM。
 
-#. Click **Save**.
+#. 点击 **Save**.
 
 .. _haproxyinstall:
 
-Creating the Load Balancer Service
+创建负载均衡服务
 ..................................
 
-To take advantage of a scale out web tier, your application needs to be able to load balance connections across multiple web server VMs. HAProxy is a free, open source TCP/HTTP load balancer used to distribute workloads across multiple servers. It can be used anywhere from small, simple deployments to large web-scale environments such as GitHub, Instagram, and Twitter.
+为了利用横向扩展Web层，您的应用程序需要能够在多个Web服务器VM之间平衡连接的负载。 HAProxy是一个免费的开源TCP / HTTP负载平衡器，用于在多个服务器之间分配工作负载。 从小型，简单的部署到大型Web规模的环境（例如GitHub，Instagram和Twitter），都可以使用它。
 
-#. In **Application Overview > Services**, add an additional service.
+#. 在**Application Overview > Services**, 添加另一个服务。
 
-#. Select the new service and fill out the following **VM** fields in the **Configuration Panel**:
+#. 选择一个新服务并在**Configuration Panel**填写 **VM** 字段:
 
    - **Service Name** - HAProxy
    - **Name** - HAProxyAHV
@@ -498,17 +498,17 @@ To take advantage of a scale out web tier, your application needs to be able to 
                - @@{CENTOS.public_key}@@
              sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
-   - Select :fa:`plus-circle` under **Network Adapters (NICs)**
+   - 选择 :fa:`plus-circle` under **Network Adapters (NICs)**
    - **NIC 1** - Primary
    - **Credential** - CENTOS
 
-#. Select the **Package** tab.
+#. 选择 **Package** 选项卡。
 
-#. Specify a **Package Name** and click **Configure install**.
+#. 填写 **Package Name** 并选择 **Configure install**.
 
    - **Package Name** - HAProxy_PACKAGE
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
+#. 选择 **+ Task**, 填写以下字段 **Configuration Panel**:
 
    - **Name Task** - Install_HAProxy
    - **Type** - Execute
@@ -568,11 +568,11 @@ To take advantage of a scale out web tier, your application needs to be able to 
        sudo systemctl enable haproxy
        sudo systemctl restart haproxy
 
-   Note the use of the @@{WebServer.address}@@ macro in the script above. The macro returns a comma delimited list of all IPs of the VMs within that service. The script then uses the `tr <https://www.geeksforgeeks.org/tr-command-unixlinux-examples/>`_ command to replace commas with carriage returns. The result is an array, **$hosts**, containing strings of all WebServer IP addresses. Those addresses are then each added to the **HAProxy** configuration file.
+   注意在以上脚本中 @@{WebServer.address}@@ 宏的使用。 该宏返回该服务内VM的所有IP的逗号分隔列表。 然后，脚本使用 `tr <https://www.geeksforgeeks.org/tr-command-unixlinux-examples/>`_ 命令用回车符替换逗号。 结果是一个数组， **$hosts**, 包含所有WebServer IP地址的字符串。 然后将这些地址分别添加到 **HAProxy** 配置文件。
 
-#. Select the **Package** tab and click **Configure uninstall**.
+#. 选择 **Package** 选项卡并点击 **Configure uninstall**.
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
+#. 选择 **+ Task**, 并填写以下字段 **Configuration Panel**:
 
    - **Name Task** - Uninstall_HAProxy
    - **Type** - Execute
@@ -588,71 +588,71 @@ To take advantage of a scale out web tier, your application needs to be able to 
        sudo
        yum -y erase haproxy
 
-#. Click **Save**.
+#. 点击 **Save**.
 
-Adding Dependencies
+添加依赖项
 +++++++++++++++++++
 
-As our application will require the database to be running before the web server starts, our Blueprint requires a dependency to enforce this ordering.  There are a couple of ways to do this, one of which you've already done without likely realizing it.
+由于我们的应用程序将需要数据库在Web服务器启动之前运行，因此我们的蓝图需要依赖项来强制执行此排序。 有两种方法可以完成此操作，其中一种您已经完成但没有意识到。
 
-#. In the **Application Overview > Application Profile** section, expand the **Default** Application Profile and click the **Create** Action.
+#. 在 **Application Overview > Application Profile** 部分, 扩展 **Default** 应用程序配置文件，然后单击 **Create** 动作。
 
    .. figure:: images/13.png
 
-   Take note of the **Orange Orchestration Edge** going from the **MySQL Start** task to the **WebServer Package Install** task. This edge was automatically created by Calm due to the **@@{MySQL.address}@@** macro reference in the **WebServer Package Install** task. Since the system needs to know the IP Address of the MySQL service prior to being able to proceed with the WebServer Install task, Calm intelligently creates the orchestration edge for you. This requires the MySQL service to be started prior to moving on to the WebServer Install task.
+   注意** Orange Orchestration Edge **从** MySQL Start **任务转到** WebServer Package Install **任务。 由于“ WebServer Package Install”任务中的** @@ {MySQL.address} @@ **宏引用，Calm自动创建了此边缘。 由于系统在继续执行WebServer安装任务之前需要知道MySQL服务的IP地址，因此Calm会为您智能地创建业务流程边缘。 这要求在继续进行WebServer安装任务之前启动MySQL服务。
 
-#. Return to the **HAProxy Package Install** task, why are orchestration edges automatically created between the WebServer and HAProxy services?
+#. 返回 **HAProxy Package Install** 任务，为什么在WebServer和HAProxy服务之间自动创建业务流程边缘？
 
-#. Next, select the **Stop** Profile Action.
+#. 接下来，选择 **Stop** 配置文件操作。
 
-   Note that lack of orchestration edges between services when stopping an application. Why might issuing shutdown commands to all services within the application simultaneously create an issue?
+   请注意，停止应用程序时，服务之间的编排边缘不足。 为什么向应用程序内的所有服务发出关闭命令会同时导致问题？
 
-#. Click on each Profile Action to take note of the current presence (or lack thereof) of the orchestration edges.
+#. 单击每个Profile Action以记录当前编排边缘的存在（或不存在）。
 
    .. figure:: images/14.png
 
-   To resolve this, you'll manually define a dependencies between services.
+   要解决此问题，您将手动定义服务之间的依赖关系。
 
-#. Select the **WebServer** Service and click the **Create Dependency** icon that appears above the Service icon, and then click on the **MySQL** service.
+#. 选择 **WebServer** 服务，然后单击“服务”图标上方显示的**Create Dependency**图标，然后单击**MySQL**服务。
 
    .. figure:: images/15.png
 
-#. This represents that the **WebServer** service "depends" upon the **MySQL** service, meaning the **MySQL** service will start before, and stop after, the **WebServer** service.
+#. 这表示**WebServer**服务依赖于MySQL服务，这意味着**MySQL**服务将在W**MySQL**服务之前启动，然后在**MySQL**服务之后停止。
 
-#. Now create a dependency for the **HAProxy** service to depend on the **WebServer** service.
+#. 现在，为**HAProxy**服务创建依赖项以依赖**WebServer**服务。
 
-#. Click **Save**.
+#. 点击 **Save**.
 
-#. Re-visit the Profile Actions and confirm the edges now properly reflect the dependencies between the services, as shown below:
+#. 重新访问概要文件操作并确认边缘现在可以正确反映服务之间的依赖关系，如下所示：
 
    .. figure:: images/16.png
 
-   Drawing the white dependency arrows will cause Calm to create orchestration edges for all **System Defined Profile Actions** (Create, Start, Restart, Stop, Delete, and Soft Delete).
+   绘制白色的依赖关系箭头将使Calm为所有“系统定义的配置文件操作”（创建，开始，重新启动，停止，删除和软删除）创建编排边缘。
 
-Launching and Managing the Application
-++++++++++++++++++++++++++++++++++++++
+部署和管理应用
++++++++++++++
 
-#. From the upper toolbar in the Blueprint Editor, click **Launch**.
+#. 在蓝图编辑器的上方工具栏中，单击 **Launch**.
 
-#. Specify a unique **Application Name** (e.g. *Initials*\ -CalmLinuxIntro1) and your **User_initials** Runtime variable value for VM naming.
+#. 指定唯一 **Application Name** (e.g. *Initials*\ -CalmLinuxIntro1) 和你的 **User_initials** 为VM命名的Runtime变量值。
 
-#. Click **Create**.
+#. 点击 **Create**.
 
-   The **Audit** tab can be used to monitor the deployment of the application.
+    **Audit** 选项卡可用于监视应用程序的部署。
 
-   Why don't all of the CentOS based services deploy at the same time following the download of the disk image?
+   为什么在下载磁盘映像后所有基于CentOS的服务都不同时部署？
 
-#. Once the application reaches a **Running** status, navigate to the **Services** tab and select the **HAProxy** service to determine the IP address of your load balancer.
+#. 一旦应用进入 **Running** 状态, 导航到**Services**选项卡，然后选择**HAProxy**服务以确定您的负载均衡器的IP地址。
 
-#. In a new browser tab or window, navigate to \http://<HAProxy-IP>, and verify your Task Manager application is functioning.
+#. 在新的浏览器标签或窗口中，导航到 \http://<HAProxy-IP>, 并验证您的任务管理器应用程序是否正常运行。
 
    .. note::
 
-     You can also click the link in the Description of the Application.
+    您也可以单击“应用程序描述”中的链接。
 
    .. figure:: images/17.png
 
-Takeaways
+概要总结
 +++++++++
 
 您应该了解** Nutanix Calm **的关键要点是什么？
@@ -663,7 +663,7 @@ Takeaways
 
 -尽管视觉效果不佳，但即使是单个VM蓝图也会对客户产生巨大影响。印度的一家银行正在将Calm用于单VM部署，从而将这些应用程序的部署时间从3天减少到2小时。请记住，当今许多客户很少或根本没有自动化（或者他们拥有的自动化非常复杂/难以理解，因此限制了它的采用）。这意味着Calm可以立即，立即，即时地为他们提供帮助。
 
--“多云应用程序自动化和生命周期管理”听起来很吓人。 “未来”听起来很棒，但是许多操作员看不到通往那里的道路。聆听客户今天所苦恼的事情（备份需要专业技能，VM部署需要很长时间，升级很困难），并讲解Calm如何提供帮助；跳到多云自动化的故事，将Calm从“我现在需要这个”推到“一旦事情平静下来，让我们稍后再评估一下”（而且事情永远不会真正“安静下来”。）
+-“多云应用程序自动化和生命周期管理”听起来很吓人。 “未来”听起来很棒，但是许多操作员看不到通往那里的道路。聆听客户今天所苦恼的事情（备份需要专业技能，VM部署需要很长时间，升级很困难），并讲解Calm如何提供帮助；跳到多云自动化的故事，将Calm从“我现在需要这个”推到“一旦事情平静下来，让我们稍后再评估一下”（而且事情永远不会真正“安静下来（Calm）”。）
 
 -蓝图编辑器提供了一个简单的UI，用于为可能复杂的应用程序建模。
 

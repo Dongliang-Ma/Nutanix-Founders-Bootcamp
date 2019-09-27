@@ -1,22 +1,22 @@
 .. _calm_win:
 
 -----------------------
-Calm: Windows Workloads
+Calm: Windows 工作负载
 -----------------------
 
-*The estimated time to complete this lab is 60 minutes.*
+*完成本实验的估计时间为60分钟。*
 
-Overview
+简介
 ++++++++
 
-**In this exercise you will explore the basics of working with Windows workloads in Nutanix Calm by building and deploying a blueprint that installs and configures a multi-tier** `bug tracker <http://bugnetproject.com/documentation/>`_ **web app using Microsoft SQL Server database & IIS webserver. This lab assumes you are familiar with basic Calm functionality or have completed the** :ref:`calm_linux` **lab.**
+**在本练习中，您将通过构建和部署可安装和配置多层**的蓝图，探索在Nutanix Calm中使用Windows工作负载的基础知识。 `bug tracker <http://bugnetproject.com/documentation/>`_ **web app 使用 Microsoft SQL Server database & IIS webserver. 本实验假设您熟悉基本的Calm功能或已完成** :ref:`calm_linux` **lab.**
 
-Creating the Blueprint
+创建蓝图
 ++++++++++++++++++++++
 
-#. Within Calm, create a new **Multi VM/Pod Blueprint**.
+#. 在Calm中，创建一个新的 **Multi VM/Pod Blueprint**.
 
-#. Fill out the following fields and click **Proceed** to launch the Blueprint Editor:
+#. 填写以下字段，然后单击 **Proceed** 启动蓝图编辑器：
 
    - **Name** - *Initials*-CalmWindowsIntro
    - **Description** - [BugNET](\http://@@{MSIIS.address}@@/bugnet)
@@ -24,9 +24,9 @@ Creating the Blueprint
 
    .. note::
 
-     Using the description value provided will create a hyperlink to the BugNET application to launch once deployment has completed.
+     使用提供的描述值将创建指向BugNET应用程序的超链接，以在部署完成后启动。
 
-#. Click **Credentials** and create the following two credentials:
+#. 点击 **Credentials** 并创建以下两个凭证：
 
    +---------------------+---------------------+---------------------+
    | **Credential Name** | WIN_VM_CRED         | SQL_CRED            |
@@ -40,9 +40,9 @@ Creating the Blueprint
 
    .. figure:: images/credentials.png
 
-#. Click **Save** and return back to the Blueprint Editor.
+#. 点击 **Save** 并返回 Blueprint Editor.
 
-#. Click **Configuration** and create the following **Downloadable Image Configuration**:
+#. 点击 **Configuration** 并创建以下 **Downloadable Image Configuration**:
 
    - **Package Name** - MSSQL2014_ISO
    - **Description** - Microsoft SQL 2014 Installation ISO
@@ -57,9 +57,9 @@ Creating the Blueprint
 
    .. figure:: images/downloadable_image_config.png
 
-#. Click **Save** and return back to the Blueprint Editor.
+#. 点击 **Save** 然后返回到Blueprint Editor.
 
-#. Using the **Default** Application Profile, specify the following **Variables** in the **Configuration Panel**:
+#. 使用 **Default** 应用程序配置文件，指定以下内容 **Variables** 到 **Configuration Panel**:
 
    +---------------------+---------------+----------------+---------------+---------------+
    | **Name**            | **Data Type** | **Value**      | **Secret**    | **Runtime**   |
@@ -75,16 +75,16 @@ Creating the Blueprint
 
    .. figure:: images/variables.png
 
-#. Click **Save**.
+#. 点击 **Save**.
 
-Adding Services
+添加 Services
 +++++++++++++++
 
-#. Under **Application Overview > Services**, click :fa:`plus-circle` twice to add two new Services.
+#. 在 **Application Overview > Services**下, 点击 :fa:`plus-circle` 两次以加入两个新Service。
 
    .. figure:: images/create_service.png
 
-#. Use the table below to complete the **VM** fields for each service:
+#. 使用下表填写每个服务的**VM**字段：
 
    +------------------------------+---------------------------+---------------------------+
    | **Service Name**             | **MSSQL**                 | **MSIIS**                 |
@@ -237,20 +237,20 @@ Adding Services
        </settings>
      </unattend>
 
-   Take a minute to review the Sysprep script. You can see the VMs being configured to autologon to the local Administrator account using the WIN_VM_CRED password. While this exercise will not join the VMs to an Active Directory domain, you could use either Sysprep or a Package Install task script to automate the joining of a domain.
+   花一点时间查看Sysprep脚本。 您可以看到配置为使用WIN_VM_CRED密码自动登录到本地Administrator帐户的VM。 虽然此练习不会将VM加入到Active Directory域中，但是您可以使用Sysprep或Package Install任务脚本来自动加入域。
 
-   Additionally, the firewall is configured to allow port 5985 which Calm uses to execute PowerShell scripts against the host. For those familiar with previous versions of Calm, the **Karan** service VM is no longer required to proxy PowerShell commands to the service VMs. Instead, Calm has introduced native support for running PowerShell scripts on remote hosts.
+    此外，防火墙已配置为允许端口5985（Calm用于对主机执行PowerShell脚本）。 对于熟悉Calm早期版本的用户，不再需要 **Karan** 服务VM才能将PowerShell命令代理到服务VM。 相反，Calm引入了对在远程主机上运行PowerShell脚本的本机支持。
 
-   Similar to the Task Manager application in the :ref:`calm_linux` lab, you want to ensure the database is available prior to the IIS web server setup.
+    与:ref:`calm_linux` 实验中任务管理器中的应用类似, 您想要确保数据库在IIS Web服务器设置之前可用。
 
-#. In the Blueprint Editor, select the **MSIIS** service and create a dependency on the **MSSQL** service.
+#. 在Blueprint Editor, 选择 **MSIIS** 服务并创建对 **MSSQL** service的依赖关系。
 
    .. figure:: images/services.png
 
-Defining Package Install
+定义 Package Install
 ++++++++++++++++++++++++
 
-For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Type**, **Script Type**, and **Credential** fields will be the same:
+对于以下7个脚本中的**每个**脚本（对于MSSSQL为3个脚本，对于MSIIS为4个脚本），字段将相同：
 
 - **Type** - Execute
 - **Script Type** - PowerShell
@@ -258,16 +258,15 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
 
 .. note::
 
-  If you were working with domain joined VMs, you would require a separate domain credential to execute PowerShell scripts following the VM being joined to the domain.
+  如果您使用的是加入域的VM，则在将VM加入域之后，将需要单独的域凭据来执行PowerShell脚本。
 
-#. Select the **MSSQL** service and open the **Package** tab in the **Configuration Panel**.
+#. 选择 **MSSQL** 服务 在 **Configuration Panel**打开**Package**。
 
-#. Name the package and click **Configure install** to begin adding installation tasks.
+#. 为软件包命名，然后单击**Configure install**以开始添加安装任务。
 
-   You will add multiple scripts to complete each installation. Working with multiple scripts allows for easier maintenance and application of code across multiple services or blueprints using the Calm **Task Library**. The Task Library allows you to create modularized scripts to achieve certain common functions such as joining a domain or configuring common OS settings.
+   您将添加多个脚本来完成每个安装。 使用多个脚本可以使用Calm **Task Library**简化跨多个服务或蓝图的代码维护和应用。 任务库允许您创建模块化脚本来实现某些常用功能，例如加入域或配置常用OS设置。
 
-#. Under **MSSQL > Package Install**, click **+ Task** and fill out the following fields:
-
+#. 在 **MSSQL > Package Install**下, 点击 **+ Task** 并填写以下字段：
    - **Task Name** - InitializeDisk1
    - **Script** -
 
@@ -276,11 +275,11 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      Get-Disk -Number 1 | Initialize-Disk -ErrorAction SilentlyContinue
      New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter -ErrorAction SilentlyContinue | Format-Volume -Confirm:$false
 
-   The above script simply performs an initialization and format of the extra 100GB VDisk added during VM configuration of the service.
+   上面的脚本仅执行在服务的VM配置期间添加的额外100GB VDisk的初始化和格式。
 
-#. Click **Publish To Library > Publish** to save this task script to the Task Library for future use.
+#. 点击 **Publish To Library > Publish** 将此任务脚本保存到任务库中以备将来使用。
 
-#. Repeat clicking **+ Task** to add the remaining two scripts:
+#. 重复点击 **+ Task** 添加其余两个脚本：
 
    - **Task Name** - InstallMSSQL
    - **Script** -
@@ -315,9 +314,9 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      exit 1
      }
 
-   Reviewing the above script you can see it is performing an automated installation of SQL Server, using the SQL_CRED credential details and using the extra 100GB VDisk for the SQL data files.
+   查看上面的脚本，您可以看到它正在执行SQL Server的自动安装，使用SQL_CRED凭据详细信息，并使用额外的100GB VDisk存放SQL数据文件。
 
-   According to Nutanix best practices for production database deployments, what else would need to be added to the VM/installation?
+   根据Nutanix生产数据库部署的最佳做法，还需要在VM /安装中添加哪些内容？
 
    - **Task Name** - FirewallRules
    - **Script** -
@@ -331,29 +330,29 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      New-NetFirewallRule -DisplayName "SQL Debugger/RPC" -Direction Inbound -Protocol TCP -LocalPort 135 -Action allow
      New-NetFirewallRule -DisplayName "SQL Browser" -Direction Inbound -Protocol TCP -LocalPort 2382 -Action allow
 
-   Reviewing the above script you can see it is allowing inbound access through the Windows Firewall for key SQL services.
+   查看上面的脚本，您可以看到它允许通过Windows防火墙进行关键SQL服务的入站访问。
 
-   Once complete, your MSSQL service should look like this:
+    完成后，您的MSSQL服务应如下所示：
 
    .. figure:: images/mssql_package_install.png
 
-#. Select the **MSIIS** service and open the **Package** tab in the **Configuration Panel**.
+#. 选择**MSIIS**服务，然后在**Configuration Panel**中打开**Package**选项卡。
 
-#. Name the package and click **Configure install** to begin adding installation tasks.
+#. 为软件包命名，然后单击**Configure install**以开始添加安装任务。
 
-#. Under **MSSQL > Package Install**, click **+ Task**.
+#. 在 **MSSQL > Package Install**下, 单击 **+ Task**.
 
-#. Similar to the first step of the MSSQL service installation, you will need to initialize and format the additional 100GB VDisk. Rather than manually specifying the same script for this task, click **Browse Library**.
+#. 与安装MSSQL服务的第一步类似，您将需要初始化并格式化其他100GB VDisk。 单击而不是为此任务手动指定相同的脚本，请单击 **Browse Library**.
 
-#. Select the **InitializeDisk1** task you had previously published and click **Select > Copy**.
+#. 选择 **InitializeDisk1** 您先前发布的任务，然后单击 **Select > Copy**.
 
    .. figure:: images/task_library.png
 
    .. note::
 
-     The Task Library also gives you the ability to provide variable definitions if there are Calm macros present in the published task.
+     如果发布的任务中存在Calm宏，则任务库还使您能够提供变量定义。
 
-#. Specify the **Name** and **Credential**, then repeat clicking **+ Task** to add the remaining three scripts:
+#. 指定 **Name** 和 **Credential**, 然后重复点击 **+ Task** 添加其余三个脚本：
 
    - **Task Name** - InstallWebPI
    - **Script** -
@@ -366,7 +365,7 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      Start-Process 'c:/msi/WebPlatformInstaller_amd64_en-US.msi' '/qn' -PassThru | Wait-Process
      cd 'C:/Program Files/Microsoft/Web Platform Installer'; .\WebpiCmd.exe /Install /Products:'UrlRewrite2,ARRv3_0' /AcceptEULA /Log:c:/msi/WebpiCmd.log
 
-   The above script installs the Microsoft Web Platform Installer (WebPI), which is used to download, install, and update components of the Microsoft Web Platform, including Internet Information Services (IIS), IIS Media Platform technologies, SQL Server Express, .NET Framework, and Visual Web Developer.
+   上面的脚本将安装Microsoft Web Platform Installer（WebPI），该WebPI用于下载，安装和更新Microsoft Web Platform的组件，包括Internet信息服务（IIS），IIS媒体平台技术，SQL Server Express，.NET Framework 和Visual Web Developer。
 
    - **Task Name** - InstallNetFeatures
    - **Script** -
@@ -382,7 +381,7 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      Install-WindowsFeature -Name NET-Framework-Core
      Install-WindowsFeature -Name NET-WCF-Services45 -IncludeAllSubFeature
 
-   The above script installs .NET Framework 4.5 on the VM.
+   上面的脚本在VM上安装.NET Framework 4.5。
 
    - **Task Name** - InstallBugNetApp
    - **Script** -
@@ -403,34 +402,33 @@ For **each** of the following 7 scripts (3 for MSSSQL and 4 for MSIIS), the **Ty
      # Install the application via Web PI
      WebpiCmd-x64.exe /Install /UseRemoteDatabase /Application:BugNET@BugNET0.app /AcceptEula
 
-   The above script uses the Application Profile variables you defined at the beginning of the exercise to populate the configuration file of the Bug Tracker app. It then leverages WebPI to install the application from the `Microsoft Web App Gallery <https://webgallery.microsoft.com/gallery>`_. With minimal changes, you could leverage many popular applications from the Gallery, including apps for CMS, eCommerce, Wiki, ticketing, and more.
+   上面的脚本使用您在练习开始时定义的Application Profile变量来填充Bug Tracker应用程序的配置文件。 然后，它利用WebPI从以下位置安装应用程序： `Microsoft Web App Gallery <https://webgallery.microsoft.com/gallery>`_. 只需进行最小的更改，您就可以利用Gallery中许多受欢迎的应用程序，包括CMS，电子商务，Wiki，票务等应用程序。
 
-   Once complete, your MSIIS service should look like this:
+   完成后，您的MSIIS服务应如下所示：
 
    .. figure:: images/msiis_package_install.png
 
-#. Click **Save**.
+#. 单击 **Save**.
 
-Launching the Blueprint
+运行蓝图
 +++++++++++++++++++++++
 
-#. From the upper toolbar in the Blueprint Editor, click **Launch**.
+#. 在蓝图编辑器的上方工具栏中，单击 **Launch**.
 
-#. Specify a unique **Application Name** (e.g. *Initials*\ -BugNET) and your **User_initials** Runtime variable value for VM naming.
+#. 指定唯一 **Application Name** (e.g. *Initials*\ -BugNET) and your **User_initials** Runtime为VM命名的变量值。
 
-#. Click **Create**.
+#. 单击 **Create**.
 
-   The **Audit** tab can be used to monitor the deployment of the application. The application should take approximately 20 minutes to deploy.
+   **Audit** 选项卡可用于监视应用程序的部署。 该应用程序大约需要20分钟才能部署。
 
-#. Once the Create action completes, and the application is in a **Running** state, open the **BugNET** link in a new tab.
+#. 一旦“创建”操作完成，并且应用程序处于**Running**状态，请在新选项卡中打开**BugNET**链接。
 
    .. figure:: images/bugnet_link.png
 
-#. You'll be presented with an **Installation Status Report** page.  Wait for it to report **Installation Complete**, and then click the link at the bottom to access the application.
-
+#. 系统将显示**Installation Status Report**页面。 等待它报告“安装完成”**Installation Complete**，然后单击底部的链接以访问该应用程序。
    .. figure:: images/bugnet_setup.png
 
-   Congratulations! You now have a fully functional bug tracking application automatically provisioned leveraging Microsoft SQL Server and IIS.
+  恭喜！ 现在，您有了一个功能齐全的错误跟踪应用程序，可以利用Microsoft SQL Server和IIS自动进行配置。
 
    .. figure:: images/bugnet_app.png
 
@@ -439,33 +437,32 @@ Launching the Blueprint
 
 Leveraging the same approach from the :ref:`calm_linux` lab of having multiple web server replicas, can you add a CentOS based HAProxy service to this blueprint to allow for load balancing across multiple IIS servers?
 
-(Optional) Managing MSSQL with Era
+(Optional) 通过Era管理 MSSQL 
 ++++++++++++++++++++++++++++++++++
 
-Complete the :ref:`era` lab to gain a basic understanding of Era's capabilities and operation.
+完成 :ref:`era` 实验室，对Era的功能和操作有基本的了解。
 
-Log into your BugNET application with the default credentials (**admin/password**) and follow the wizard to create a new project.
+使用默认凭据（** admin / password **）登录到BugNET应用程序，然后按照向导创建一个新项目。
 
-You have just deployed your production BugNET application and now desire to rapidly deploy multiple dev/test instances using the latest available production data.
+您刚刚部署了生产BugNET应用程序，现在希望使用最新的可用生产数据快速部署多个开发/测试实例。
 
-Can you build a version of this Blueprint that leverages an Era clone of your SQL Server database?
+您是否可以构建一个利用SQL Server数据库的Era克隆版本的蓝图？
 
-**Hints**
+**提示**
 
-- Clone your existing blueprint first!
-- When registering the SQL Server source database in Era, this deployment uses the default MSSQLServer instance name. You can use Windows Authentication to access the SQL Server instance, using the WIN_VM_CRED credentials.
-- When adding services in Calm, one of the **Cloud** types is using an **Existing VM**. Existing VMs only require the IP address of the VM and a credential for login.
-- When cloning, the Windows License Key for the Windows Server 2012 R2 VM is ``W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9``.
-- You could use a semi-automated approach wherein you have a **Runtime** variable for your cloned database IP. In this instance, you would create a clone of your source database, wait for it to return an IP address, and provision the blueprint with the IP specified at runtime.
-- You could use a fully automated approach wherein you create a **Package Install Task** for your **Existing VM**. That task could execute an `EScript <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v240:nuc-supported-escript-modules-functions-c.html#nconcept_uxr_5dj_5bb>`_ to perform an API call to Era to initiate the DB clone operation and return the IP address.
-- Don't forget about dependencies!
+-首先克隆您现有的蓝图！
+-在Era中注册SQL Server源数据库时，此部署使用默认的MSSQLServer实例名称。 您可以使用Windows身份验证通过WIN_VM_CRED凭据访问SQL Server实例。
+-在“静默”中添加服务时，其中一种“云”类型使用的是“现有VM”。 现有的VM仅需要VM的IP地址和登录凭据。
+-克隆时，Windows Server 2012 R2 VM的Windows许可证密钥为``W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9''。
+-您可以使用半自动方法，其中对克隆的数据库IP使用** Runtime **变量。 在这种情况下，您将创建源数据库的克隆，等待它返回IP地址，并在运行时为蓝图提供指定的IP。
+-您可以使用完全自动化的方法，在其中为“现有VM”创建“软件包安装任务”。 该任务可以执行`EScript <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v240:nuc-supported-escript-modules-functions-c.html#nconcept_uxr_5dj_5bb>`_ 执行对Era的API调用以启动数据库克隆操作并返回IP地址。
+-不要忘记依赖项！
 
-Takeaways
+概要总结
 +++++++++
 
-- Calm provides the same application deployment and lifecycle management benefits for Windows workloads as it does for Linux workloads.
+-Calm为Windows工作负载提供了与Linux工作负载相同的应用程序部署和生命周期管理优势。
 
-- Calm can natively execute remote PowerShell scripts on Windows endpoints without the need for a Windows-based proxy.
-
+-Calm可以在Windows终结点上本地执行远程PowerShell脚本，而无需基于Windows的代理。
 
 .. |projects| image:: images/projects.png

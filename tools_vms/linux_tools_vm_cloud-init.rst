@@ -1,26 +1,26 @@
 .. _linux_tools_vm:
 
 ---------------
-Linux Tools VM
+Linux工具VM
 ---------------
 
-Overview
+简介
 +++++++++
 
-This CentOS VM image will be staged with packages used to support multiple lab exercises.
+此CentOS VM镜像将与用于支持多个实验室练习的软件包一起暂存。
 
-Deploy this VM on your assigned cluster if directed to do so as part of **Lab Setup**.
+如果指示这样做，请在** Lab Setup **中将此虚拟机部署到您分配的群集上。
 
 .. raw:: html
 
   <strong><font color="red">Only deploy the VM once, it does not need to be cleaned up as part of any lab completion.</font></strong>
 
-Deploying CentOS
+部署 CentOS
 ++++++++++++++++
 
-In **Prism Central** > select :fa:`bars` **> Virtual Infrastructure > VMs**, and click **Create VM**.
+在**Prism Central** > 选择 :fa:`bars` **> Virtual Infrastructure > VMs**, 并点击 **Create VM**.
 
-Fill out the following fields:
+填写以下字段：
 
 - **Name** - *Initials*-Linux-ToolsVM
 - **Description** - (Optional) Description for your VM.
@@ -28,19 +28,19 @@ Fill out the following fields:
 - **Number of Cores per vCPU** - 2
 - **Memory** - 2 GiB
 
-- Select **+ Add New Disk**
+- 选择 **+ Add New Disk**
     - **Type** - DISK
     - **Operation** - Clone from Image Service
     - **Image** - CentOS7.qcow2
-    - Select **Add**
+    - 选择 **Add**
 
-- Select **Add New NIC**
+- 选择 **Add New NIC**
     - **VLAN Name** - Secondary
-    - Select **Add**
+    - 选择 **Add**
 
-- Check **Custom Script**
-    - Select **Type or Paste Script**
-    - Paste Below script, and click **Save**
+- 检查 **Custom Script**
+    - 选择 **Type or Paste Script**
+    - 粘贴以下脚本并点击 **Save**
 
 .. code-block:: bash
 
@@ -97,13 +97,13 @@ Fill out the following fields:
   final_message: CentOS 7 Tools Machine setup successfully!
 
 
-Click **Save** to create the VM.
+点击 **Save** 创建VM
 
-Power on the VM.
+开启VM
 
-Verify Tools Install
+验证工具安装
 ++++++++++++++++++++
 
-Open Console session.
+打开控制台
 
-Watch as the Cloud-Init script is run, and once you see **CentOS 7 Tools Machine setup successfully!** you are done.
+观看the Cloud-Init 脚本的运行, 一旦看到 **CentOS 7 Tools Machine setup successfully!** 即完成部署。

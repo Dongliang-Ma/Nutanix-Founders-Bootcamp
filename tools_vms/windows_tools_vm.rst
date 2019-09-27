@@ -1,13 +1,13 @@
 .. _windows_tools_vm:
 
 ----------------
-Windows Tools VM
+Windows 工具 VM
 ----------------
 
-Overview
+简介
 +++++++++
 
-This Windows Server 2012 R2 image comes pre-installed with a number of tools, including:
+此Windows Server 2012 R2映像预装有许多工具，包括：
 
 - Microsoft Remote Server Administration Tools (RSAT)
 - PuTTY, CyberDuck, WinSCP
@@ -17,18 +17,18 @@ This Windows Server 2012 R2 image comes pre-installed with a number of tools, in
 - pgAdmin
 - Chocolatey Package Manager
 
-Deploy this VM on your assigned cluster if directed to do so as part of **Lab Setup**.
+如果指示这样做，请在** Lab Setup **中将此虚拟机部署到您分配的群集上。
 
 .. raw:: html
 
   <strong><font color="red">Only deploy the VM once, it does not need to be cleaned up as part of any lab completion.</font></strong>
 
-Deploying Tools VM
+部署工具VM
 ++++++++++++++++++
 
-In **Prism Central** > select :fa:`bars` **> Virtual Infrastructure > VMs**, and click **Create VM**.
+在 **Prism Central** > 选择:fa:`bars` **> Virtual Infrastructure > VMs**, 并单击 **Create VM**.
 
-Fill out the following fields:
+填写以下字段：
 
 - **Name** - *Initials*-Windows-ToolsVM
 - **Description** - (Optional) Description for your VM.
@@ -36,21 +36,21 @@ Fill out the following fields:
 - **Number of Cores per vCPU** - 2
 - **Memory** - 4 GiB
 
-- Select **+ Add New Disk**
+- 选择 **+ Add New Disk**
     - **Type** - DISK
     - **Operation** - Clone from Image Service
     - **Image** - ToolsVM.qcow2
-    - Select **Add**
+    - 选择 **Add**
 
-- Select **Add New NIC**
+- 选择 **Add New NIC**
     - **VLAN Name** - Secondary
-    - Select **Add**
+    - 选择 **Add**
 
-Click **Save** to create the VM.
+单击 **Save** 创建VM.
 
-Power on the VM.
+启动VM.
 
-Login to the VM via RDP or Console session, using the following credentials:
+使用以下凭据通过RDP或控制台会话登录到VM：
 
 - **Username** - NTNXLAB\\Administrator
 - **password** - nutanix/4u
