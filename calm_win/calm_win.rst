@@ -9,7 +9,7 @@ Calm: Windows 工作负载
 简介
 ++++++++
 
-**在本练习中，您将通过构建和部署可安装和配置多层**的蓝图，探索在Nutanix Calm中使用Windows工作负载的基础知识。 `bug tracker <http://bugnetproject.com/documentation/>`_ **web app 使用 Microsoft SQL Server database & IIS webserver. 本实验假设您熟悉基本的Calm功能或已完成** :ref:`calm_linux` **lab.**
+在本练习中，您将通过构建和部署可安装和配置多层的蓝图，探索在Nutanix Calm中使用Windows工作负载的基础知识。 `bug tracker <http://bugnetproject.com/documentation/>`_  web app 使用 Microsoft SQL Server database & IIS webserver. 本实验假设您熟悉基本的Calm功能或已完成 :ref:`calm_linux` **lab.**
 
 创建蓝图
 ++++++++++++++++++++++
@@ -451,11 +451,18 @@ Leveraging the same approach from the :ref:`calm_linux` lab of having multiple w
 **提示**
 
 -首先克隆您现有的蓝图！
+
 -在Era中注册SQL Server源数据库时，此部署使用默认的MSSQLServer实例名称。 您可以使用Windows身份验证通过WIN_VM_CRED凭据访问SQL Server实例。
+
 -在“静默”中添加服务时，其中一种“云”类型使用的是“现有VM”。 现有的VM仅需要VM的IP地址和登录凭据。
+
 -克隆时，Windows Server 2012 R2 VM的Windows许可证密钥为``W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9''。
+
 -您可以使用半自动方法，其中对克隆的数据库IP使用** Runtime **变量。 在这种情况下，您将创建源数据库的克隆，等待它返回IP地址，并在运行时为蓝图提供指定的IP。
--您可以使用完全自动化的方法，在其中为“现有VM”创建“软件包安装任务”。 该任务可以执行`EScript <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v240:nuc-supported-escript-modules-functions-c.html#nconcept_uxr_5dj_5bb>`_ 执行对Era的API调用以启动数据库克隆操作并返回IP地址。
+
+-您可以使用完全自动化的方法，在其中为“现有VM”创建“软件包安装任务”。 该任务可以执行 `EScript <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v240:nuc-supported-escript-modules-functions-c.html#nconcept_uxr_5dj_5bb>`_  
+执行对Era的API调用以启动数据库克隆操作并返回IP地址。
+
 -不要忘记依赖项！
 
 概要总结
