@@ -4,78 +4,77 @@
 Calm: Projects
 ------------
 
-Overview
+简介
 ++++++++
 
 .. note::
 
-  Review :ref:`calm_basics` before proceeding with the lab to familiarize yourself with the UI and common terminology used in Nutanix Calm.
+  在继续练习之前阅读 :ref:`calm_basics` ，您需要熟悉Nutanix Calm中使用的UI和常用术语。
 
-  Estimated time to complete: **15 MINUTES**
+  预计完成时间：**15 MINUTES**
 
-In this exercise you will configure a Project to contain your Blueprints and Applications created throughout the Bootcamp.
+在本练习中，您将配置一个包含在整个Bootcamp中创建的蓝图和应用程序Project。
 
-Creating A Project
+生成一个Project
 ++++++++++++++++++
 
-Projects are the logical construct that integrate Calm with Nutanix's native Self-Service Portal (SSP) capabilities, allowing an administrator to assign both infrastructure resources and the roles/permissions of Active Directory users/groups to specific Blueprints and Applications.
-
-#. Within the Calm UI, Select |proj-icon| **Projects** from the sidebar.
+Projects 是将Calm与Nutanix的内置自助服务门户（SSP）功能集成的逻辑结构，允许管理员将基础结构资源以及Active Directory用户/组的角色/权限分配给特定的蓝图和应用程序。
+#. 在Calm UI界面内, 从边栏选择|proj-icon| **Projects**。
 
    .. figure:: images/510projects1.png
 
-#. Click + Create Project
+#. 点击 + Create Project
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
    - **Project Name** - *initials*-Calm
    - **Description** - *initials*-Calm
 
-#. Under **Users, Groups, and Roles**, click **+ User**.
+#. 在 **Users, Groups, and Roles**下面, 点击**+ User**.
 
-#. Fill out the following fields and click **Save**:
+#. 填写以下字段，然后单击 **Save**:
 
    - **Name** - SSP Admins
    - **Role** - Project Admin
 
-#. Click **+ User**, fill out the following fields and click **Save**:
+#. 单击 **+ User**, 填写以下字段，然后单击 **Save**:
 
    - **Name** - SSP Developers
    - **Role** - Developer
 
-#. Click **+ User**, fill out the following fields and click **Save**:
+#. 单击 **+ User**, 填写以下字段，然后单击 **Save**:
 
    - **Name** - SSP Power Users
    - **Role** - Consumer
 
-#. Click **+ User**, fill out the following fields and click **Save**:
+#. 单击 **+ User**, 填写以下字段，然后单击 **Save**:
 
    - **Name** - SSP Basic Users
    - **Role** - Operator
 
    .. figure:: images/projects_name_users.png
 
-#. Under **Infrastructure**, click the blue **Select Provider** button, and then **Nutanix**.
+#. 在 **Infrastructure**下, 单击蓝色的 **Select Provider** 按钮, 之后是 **Nutanix**.
 
-#. In the box that appears, click the white **Select Clusters & Subnets** button, and in the pop-up, select your AHV cluster.  Once your cluster is selected, choose the **Primary** network, and if available, the **Secondary** network, and click **Confirm**.
+#. 在出现的框中，单击白色 **Select Clusters & Subnets** 按钮, 并在弹出窗口中，选择您的AHV群集。 选择集群后，选择 **Primary** 网络，如果有的话，再选择**Secondary**网络，然后单击**Confirm**.
 
    .. figure:: images/projects_cluster_subnet_selection.png
 
-#. Within the **Selected Subnets** table, select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the **Calm** project.
+#. 在 **Selected Subnets** 表内, 为**Primary**网络选择 :fa:`star`  使其成为**Calm** project里虚拟机中的默认虚拟网络 
 
    .. figure:: images/projects_infrastructure.png
 
-#. Click **Save**.
+#. 单击 **Save**.
 
 .. note::
 
-  Click `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v56:nuc-roles-responsibility-matrix-c.html>`_ to view the complete matrix of default SSP roles and associated permissions.
+  单击 `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Calm-Admin-Operations-Guide-v56:nuc-roles-responsibility-matrix-c.html>`_ 查看默认SSP角色和相关权限的完整列表。
 
-Takeaways
+概要总结
 +++++++++
 
-- Nutanix Calm is a fully integrated component of the Nutanix stack. Easily enabled, highly available out of the box in a Scale Out Prism Central deployment, and takes advantage of non-disruptive One Click upgrades for new features and fixes.
-- By using different projects assigned to different clusters and users, administrators can ensure that workloads are deployed the right way each time.  For example, a developer can be a Project Admin for a dev/test project, so they have full control to deploy to their development clusters or to a cloud, while having Read Only access to production projects, allowing them access to logs but no ability to alter production workloads.
+-Nutanix Calm是Nutanix堆栈的完全集成组件。 在Scale Out Prism Central部署中易于启用，高度可用，并且利用无中断的一键式升级来获得新功能和修复。
+-通过使用分配给不同群集和用户的不同项目，管理员可以确保每次都以正确的方式部署工作负载。 例如，开发人员可以是开发/测试项目的项目管理员，因此他们可以完全控制部署到其开发集群或云中，同时具有对生产项目的只读访问权限，从而使他们可以访问日志，但无权 改变生产工作量。
 
 .. |proj-icon| image:: ../images/projects_icon.png
 .. |mktmgr-icon| image:: ../images/marketplacemanager_icon.png

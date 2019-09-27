@@ -1,127 +1,128 @@
 .. _what_is_calm:
 
 ------------
-What Is Calm
+什么是Calm
 ------------
 
-Overview
+简介
 ++++++++
 
-Calm provides advanced application-level orchestration that transforms how IT teams manage applications and support the business. Fully integrated into the Nutanix platform, Calm delivers a powerful, common management framework that can be simultaneously leveraged by multiple IT teams to rapidly create and deliver applications.
+Calm提供了高级应用程序级编排，可改变IT团队管理应用程序和支持业务的方式。 完全集成到Nutanix平台中的Calm提供了一个强大的通用管理框架，多个IT团队可以同时利用该框架来快速创建和交付应用程序。
 
-By approaching applications as complete entities, not just virtual machines (VMs), Calm automates how applications are created, consumed and governed. Calm delivers simple, repeatable and automated management of applications across a variety of environments, including private and public clouds.
+通过将应用程序视为完整的实体，而不仅仅是虚拟机（VM），Calm可以自动创建，使用和管理应用程序。 Calm为包括私有云和公共云在内的各种环境提供了简单，可重复和自动化的应用程序管理。
 
-What is the State of Things Today
+当今的状态
 +++++++++++++++++++++++++++++++++
 
-Managing Apps Is Increasingly Challenging
+管理应用程序越来越具有挑战性
 .........................................
 
 .. figure:: images/what_is_calm_01.png
 
-How Does Nutanix Solve This Problem
+Nutanix如何解决这个问题
 +++++++++++++++++++++++++++++++++++
 
-Foundation For Enterprise Cloud
+企业云基础
 ...............................
 
-Nutanix provides the foundation for your Enterprise cloud.
+Nutanix为您的企业云提供了基础。
 
 .. figure:: images/what_is_calm_02.png
 
-Delivering the Enterprise Cloud Vision
+实现企业云愿景
 ......................................
 
-Application Automation
+应用自动化
 
-- App-centric orchestrationand lifecycle management
-- Policy-based governance
-- Self-Service provisioning
+- 应用为中心的编排和生命周期管理
+- 基于政策的治理
+- 自助服务供应
 
 .. figure:: images/what_is_calm_03.png
 
-Delivering the Enterprise Cloud Vision: Multi-Cloud
+交付企业云愿景：多云
 ...................................................
 
-Multi-Cloud Management
+多云管理
 
-- Abstract applications from cloud infrastructure
-- Deploy and manage applications on any cloud
-- Visibility and control of public cloud consumption
+-来自云基础架构的抽象应用程序
+-在任何云上部署和管理应用程序
+-公共云使用的可见性和控制
 
 .. figure:: images/what_is_calm_05.png
 
-Calm: Application Lifecycle Automation
+Calm: 应用程序生命周期自动化
 ++++++++++++++++++++++++++++++++++++++
 
-Blueprints Capture All Elements of the Application
+蓝图捕获了应用程序的所有元素
 ..................................................
 
 .. figure:: images/what_is_calm_07.png
 
-Make Sense of Complexity in a Visual Way
+以视觉方式理解复杂性
 ........................................
 
-- Capture organizational knowledge
-- Streamline provisioning and lifecycle tasks
-- Easy to understand dependencies
+-获取组织知识
+-简化配置和生命周期任务
+-易于理解的依赖关系
 
 .. figure:: images/what_is_calm_08.png
 
-Blueprints Are Flexible and Open
+蓝图灵活开放
 ................................
 
-- Utilize existing Bash or Powershell scripts
-- Call any external service using REST API
+-利用现有的Bash或Powershell脚本
+-使用REST API调用任何外部服务
 
 .. figure:: images/what_is_calm_09.png
 
-Blueprints Are Used for Lifecycle Management
+蓝图用于生命周期管理
 ............................................
 
-- Automate **routine** application management operations
-- Reduce errors,delays and downtime
+- 自动化**常规**应用程序管理操作
+- 减少错误，延迟和停机时间
+
 
 .. figure:: images/what_is_calm_10.png
 
-Calm: Self-Service and Governance
+Calm: 自助服务与治理
 +++++++++++++++++++++++++++++++++
 
-Nutanix Marketplace Empowers Self-Service
+Nutanix Marketplace 增强自助服务能力
 .........................................
 
-- One-Click App Provisioning
-- Pre-integrated blueprints
-- Self-service based onuser role and group
+- 一键式应用配置
+- 预整合的蓝图
+- 基于用户角色和组的自助服务
 
 .. figure:: images/what_is_calm_11.png
 
-Deploy in One-Click
+一键式部署
 .........................
 
 .. figure:: images/what_is_calm_12.png
 
-End-to-End Audits and Governance
+端到端审核和治理
 ................................
 
 .. figure:: images/what_is_calm_13.png
 
-Calm: Hybrid Cloud Management
+Calm: 混合云管理
 +++++++++++++++++++++++++++++
 
-Hybrid Cloud Management
+混合云管理
 .......................
 
 .. figure:: images/what_is_calm_14.png
 
-Deploy across Clouds Based on Need
+根据需要跨云部署
 ..................................
 
-- Cloud destination is configured once, then used with any blueprint
+- 云目标配置一次，然后与任何蓝图一起使用
 
 .. figure:: images/what_is_calm_15.png
 
-Automate. Empower. Relax
+自动 赋能 放松
 ........................
 
 .. figure:: images/what_is_calm_16.png
@@ -131,8 +132,8 @@ Takeaways
 
 Calms Native Capabilities:
 
-- **Application Lifecycle Management:** Fully automate the provisioning, scaling, and deletion of both traditional multi-tiered applications and modern distributed services using pre-integrated blueprints that make management of applications in private and public clouds extremely simple.
-- **Customizable Blueprints:** Simplify the set-up and management of custom enterprise applications by incorporating all elements of each app, including relevant VMs, configurations and related binaries, into an easy-to-use-blueprint that is managed by the infrastructure team. IT teams can eliminate the hours and days currently devoted to routine application management.
-- **Nutanix Marketplace:** Blueprints can be published directly to end users through the Nutanix Marketplace, giving application owners and developers the ability to request IT services that can then be instantly provisioned.
-- **Governance:** Calm maintains control with role-based governance that limits user operations based on permissions. Additionally, all activities and changes are centrally logged for end-to-end traceability, aiding security teams with key compliance initiatives.
-- **Hybrid Cloud Management:** Automate the provisioning of Hybrid Cloud architectures, scaling both multi-tiered and distributed applications across different cloud environments, including AWS. Calm shows the overall utilization and true cost of your public cloud consumption at a glance so that decisions are based on business needs and budget requirements.
+-**应用程序生命周期管理：** 使用预集成的蓝图，可以完全自动化传统多层应用程序和现代分布式服务的置备，扩展和删除，从而使私有云和公共云中的应用程序管理极为简单。
+-**可定制的蓝图：**通过将每个应用程序的所有元素（包括相关的VM，配置和相关的二进制文件）整合到易于管理的蓝图中，简化了定制企业应用程序的设置和管理，该蓝图由基础架构团队。 IT团队可以消除目前用于例行应用程序管理的时间和日子。
+-** Nutanix市场：**蓝图可以通过Nutanix市场直接发布给最终用户，使应用程序所有者和开发人员能够请求IT服务，然后可以立即对其进行配置。
+-**治理：** Calm通过基于角色的治理来维持控制，该治理基于权限来限制用户操作。此外，所有活动和更改都集中记录下来，以实现端到端的可追溯性，从而帮助安全团队制定关键合规性计划。
+-**混合云管理：**自动化混合云架构的配置，跨包括AWS在内的不同云环境扩展多层和分布式应用程序。 Calm可以一目了然地显示您的公共云消耗的总体利用率和真实成本，以便根据业务需求和预算要求做出决策。
