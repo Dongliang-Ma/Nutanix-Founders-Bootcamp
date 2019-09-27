@@ -7,7 +7,7 @@ Calm：启用
 概述
 ++++++++
 
-.. note:: 回顾：参考：`calm_basics`，然后继续实验，熟悉Nutanix Calm中使用的UI和常用术语。
+.. note:: 参考：`calm_的基础知识`，然后继续实验，熟悉Nutanix Calm中使用的UI和常用术语。
 
 预计完成时间：** 10分钟**
 
