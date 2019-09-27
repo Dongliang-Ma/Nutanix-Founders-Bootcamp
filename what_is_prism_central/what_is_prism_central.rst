@@ -1,10 +1,10 @@
 .. _what_is_prism_central:
 
 ---------------------
-什么是Prism Central
+Prism Central是什么
 ---------------------
 
-概述
+简介
 ++++++++
 
 Nutanix Prism为管理员提供了集中访问，可以配置，监控和管理虚拟化环境。
