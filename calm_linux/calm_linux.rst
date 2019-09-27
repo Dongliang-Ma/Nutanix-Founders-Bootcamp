@@ -13,26 +13,26 @@ Nutanix Calm允许您跨私有云和公共云基础架构无缝选择、供应�
 
 **在本实验中，您将通过构建和部署蓝图来探索Nutanix Calm的基础知识，该蓝图使用MySQL，nginix和HAProxy安装和配置多层Task Manager Web应用程序。**
 
-Creating a Blueprint
+创建蓝图
 ++++++++++++++++++++
 
-A blueprint is the framework for every application that you model by using Nutanix Calm. Blueprints are templates that describe all the steps that are required to provision, configure, and execute tasks on the services and applications that are created. You can create a blueprint to represent the architecture of your application and then run the blueprint repeatedly to create an instance, provision, and launch your applications. A blueprint also defines the lifecycle of an application and its underlying infrastructure starting from the creation of the application to the actions that are carried out on a blueprint until the termination of the application.
+蓝图是使用Nutanix Calm建模的每个应用程序的框架。 蓝图是模板，描述了在已创建的服务和应用程序上置备，配置和执行任务所需的所有步骤。 您可以创建一个代表您的应用程序体系结构的蓝图，然后重复运行该蓝图以创建实例，配置和启动您的应用程序。 蓝图还定义了应用程序及其底层基础结构的生命周期，从创建应用程序到对蓝图执行的操作直到应用程序终止为止。
 
-You can use blueprints to model the applications of various complexities; from simply provisioning a single virtual machine to provisioning and managing a multi-node, multi-tier application.
+您可以使用蓝图对各种复杂的应用程序进行建模。 从简单地配置单个虚拟机到配置和管理多节点，多层应用程序。
 
-#. In **Prism Central**, select :fa:`bars` **> Services > Calm**.
+#. 在 **Prism Central**, 选择 :fa:`bars` **> Services > Calm**.
 
    .. figure:: images/1.png
 
-#. Select |blueprints| **Blueprints** in the left hand toolbar to view and manage Calm bleuprints.
+#. 在左手工具栏选择 |blueprints| **Blueprints** 查看和管理 Calm 蓝图。
 
    .. note::
 
-     Mousing over an icon will display its title.
+     将鼠标悬停在图标上将显示其标题。
 
-#. Click **+ Create Blueprint > Multi VM/Pod Blueprint**.
+#. 单击 **+ Create Blueprint > Multi VM/Pod Blueprint**.
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
    - **Name** - *Initials*-CalmLinuxIntro
    - **Description** - [Task Manager Application](\http://@@{HAProxy.address}@@/)
@@ -40,22 +40,22 @@ You can use blueprints to model the applications of various complexities; from s
 
    .. figure:: images/2.png
 
-#. Click **Proceed** to launch the Blueprint Editor.
+#. 单击 **Proceed** 打开蓝图编辑器
 
-   The Blueprint Editor provides a graphical representation of various components that enable you to visualize and configure the components and their dependencies in your environment.
+   蓝图编辑器提供了各种组件的图形表示，使您可以在环境中可视化和配置组件及其依赖性。
 
-Creating Credentials
+创建凭证
 ++++++++++++++++++++
 
-First you will create a credential that will be used to authenticate Calm to the CentOS VMs you will eventually deploy. Credentials are unique to each Blueprint, and are **not** exported as part of the Blueprint for security purposes. Each Blueprint requires a minimum of 1 credential.
+首先，您将创建一个证书，该证书将用于对最终将部署的CentOS VM进行Calm身份验证。 凭证对于每个蓝图都是唯一的，出于安全目的，**不会**将其作为蓝图的一部分导出。 每个蓝图至少需要1个凭证。
 
-This exercise uses a "Generic Cloud" CentOS image. This is a common option for multiple popular Linux distributions that is lightweight, supports Cloud-Init based configuration, and utilizes `SSH keypair authentication <https://www.ssh.com/ssh/public-key-authentication>`_ instead of passwords. Keypair based authentication is commonplace in all public cloud environments.
+本练习使用“通用云” CentOS映像。 这是多个流行的Linux发行版的通用选项，这些发行版轻巧，支持基于Cloud-Init的配置并利用 `SSH keypair authentication <https://www.ssh.com/ssh/public-key-authentication>`_ 而不是密码。 基于密钥对的身份验证在所有公共云环境中都很普遍。
 
-#. Click **Credentials**.
+#. 单击 **Credentials**.
 
    .. figure:: images/3.png
 
-#. Click **Credentials** :fa:`plus-circle` and fill out the following fields:
+#. 单击 **Credentials** :fa:`plus-circle` 并填写以下字段：
 
    - **Credential Name** - CENTOS
    - **Username** - centos
@@ -94,19 +94,19 @@ This exercise uses a "Generic Cloud" CentOS image. This is a common option for m
 
    .. figure:: images/4.png
 
-#. Click **Save**, and then **Back**.
+#. 单击 **Save**, 然后 **Back**.
 
-Defining Variables
+定义变量
 ++++++++++++++++++
 
-Variables allow extensibility of Blueprints, meaning a single Blueprint can be used for multiple purposes and environments depending on the configuration of its variables.
-Variables can either be static values saved as part of the Blueprint or they can be specified at **Runtime** (when the Blueprint is launched).  Variables are specific to a given **Application Profile**, which is the platform on which the blueprint will be deployed. For example, a blueprint capable of being deployed to both AHV and AWS would have 2 Application Profiles. Each profile could have individual variables and VM configurations.
+变量允许蓝图的可扩展性，这意味着单个蓝图可以根据其变量的配置用于多种用途和环境。
+变量可以是保存为蓝图一部分的静态值，也可以在**Runtime** （启动蓝图）时指定。变量特定于给定的**Application Profile**，这是将在其上部署蓝图的平台。例如，能够同时部署到AHV和AWS的蓝图将具有2个应用程序配置文件。每个配置文件可以具有单独的变量和VM配置。
 
-By default, variables are stored as a **String** and are visible in the Configuration Pane. Setting a variable as **Secret** will mask the value and is ideal for variables such as passwords. In addition to the String and Secret options, there are Integer, Multi-line String, Date, Time, and Date Time **Data Types**, and more advanced **Input Types**, however these are outside the scope of this lab.
+默认情况下，变量存储为** String **，并且在“配置”窗格中可见。将变量设置为**Secret**将掩盖该值，并且非常适合诸如密码之类的变量。除了String和Secret选项外，还有Integer，Multi-line String，Date, Time, and Date Time **Data Types** 和更高级的**“输入类型” **，但是这些内容不在此范围之内。实验室。
 
-Variables can be used in scripts executed against objects using the **@@{variable_name}@@** construct. Calm will expand and replace the variable with the appropriate value before sending to the VM.
+可以在使用** @@ {variable_name} @@ **结构针对对象执行的脚本中使用变量。 Calm将展开并使用适当的值替换该变量，然后再发送到VM。
 
-#. In the **Configuration Pane** on the right side of the Blueprint Editor, under **Variables**, add the following variables (**Runtime** is specified by toggling the **Running Man** icon to Blue):
+#. 在Blueprint Editor右边的 **Configuration Pane** ，在 **Variables**下面, 添加下面变量 (**Runtime** 通过切换 **Running Man** 标识到蓝色来指定):
 
    +------------------------+-------------------------------+------------+-------------+
    | **Variable Name**      | **Data Type** | **Value**     | **Secret** | **Runtime** |
@@ -122,14 +122,14 @@ Variables can be used in scripts executed against objects using the **@@{variabl
 
    .. figure:: images/5.png
 
-#. Click **Save**.
+#. 单击 **Save**.
 
-Adding a Downloadable Image
+添加可下载的图像
 +++++++++++++++++++++++++++
 
-VMs in AHV can be deployed based on a disk image. With Calm, you can select a Downloadable Image via a URI. During the application deployment, Prism Central will automatically download and create the image specified. If an image with the same URI already exists on the cluster, it will skip the download and use the local image instead.
+可以基于磁盘映像部署AHV中的VM。 使用Calm，您可以通过URI选择可下载图像。 在应用程序部署期间，Prism Central将自动下载并创建指定的映像。 如果群集上已经存在具有相同URI的图像，它将跳过下载并改用本地图像。
 
-#. From the top toolbar, click **Configuration > Downloadable Image Configuration** :fa:`plus-circle` and fill out the following fields:
+#. 在顶部工具栏中，单击**Configuration > Downloadable Image Configuration** :fa:`plus-circle` 并填写以下字段：
 
    - **Package Name** - CentOS_7_Cloud
    - **Description** - CentOS 7 Cloud Image
@@ -141,37 +141,38 @@ VMs in AHV can be deployed based on a disk image. With Calm, you can select a Do
    - **Product Version** - 7
 
    .. note::
-      This Generic Cloud image is the same that's used for the majority of the Nutanix Pre-Seeded Application Blueprints.
+
+      此通用云镜像（Generic Cloud image）与大多数Nutanix预播应用程序蓝图使用的映像相同。
 
    .. figure:: images/6.png
 
-#. Click **Save**, and then **Back**.
+#. 单击 **Save**, 之后 **Back**.
 
-Creating Services
+创建Service
 +++++++++++++++++
 
-Services are the virtual machine instances, existing machines or bare-metal machines, that you can provision and configure by using Nutanix Calm.
+Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix Calm进行配置和配置。
 
-In this exercise you will create the database, webserver, and load balancer services that comprise your application.
+在本练习中，您将创建组成应用程序的数据库，Web服务器和负载平衡器服务。
 
-Creating the Database Service
+创建数据库服务
 .............................
 
-#. In **Application Overview > Services**, click :fa:`plus-circle` to add a new Service.
+#. 在 **Application Overview > Services**, 单击 :fa:`plus-circle` 增加新的 Service.
 
-   By default, the Application Overview is located in the lower right-hand corner of the Blueprint Editor and is used to create and manage Blueprint layers such as Services, Application Profiles, and Actions.
+   默认情况下，“应用程序概述”位于蓝图编辑器的右下角，用于创建和管理蓝图层，例如服务，应用程序配置文件和操作。
 
    .. figure:: images/7.png
 
-   Note **Service1** appears in the **Workspace** and the **Configuration Pane** reflects the configuration of the selected Service.
+   注意 **Service1** 出现在 **Workspace** 并且 **Configuration Pane** 反映所选服务的配置。
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
    - **Service Name** - MySQL
    - **Name** - MySQLAHV
 
    .. note::
-      This defines the name of the substrate within Calm. Names can only contain alphanumeric characters, spaces, and underscores.
+      这定义了Calm中基底的名称。 名称只能包含字母数字字符，空格和下划线。
 
    - **Cloud** - Nutanix
    - **OS** - Linux
@@ -179,7 +180,7 @@ Creating the Database Service
 
    .. note::
 
-     This will use the Runtime **User_initials** variable you previously provided to prepend the VM name with your initials. It will also use built-in macros to provide the array index (for scale out services) and a time stamp.
+     Runtime是将使用您先前提供的变量 **User_initials** ，用于在VM名称前加上首字母缩写。 它还将使用内置宏来提供数组索引（用于横向扩展服务）和时间戳。
 
    - **Image** - CentOS_7_Cloud
    - **Device Type** - Disk
@@ -204,35 +205,35 @@ Creating the Database Service
 
        .. note::
 
-         When using an SSH Private Key Credential, Calm is able to decode that private key into the matching public key, and makes the decoded value accessable via the @@{Credential_Name.public_key}@@ macro. Cloud-Init is then leveraged to populate the SSH public key value as an authorized key, allowing for the corresponding private key to be used to authenticate to the host.
+         使用SSH私钥凭据时，Calm可以将该私钥解码为匹配的公钥，并通过@@ {Credential_Name.public_key} @@宏访问已解码的值。 然后利用Cloud-Init将SSH公钥值填充为授权密钥，从而允许使用相应的私钥向主机进行身份验证。
 
-   - Select :fa:`plus-circle` under **Network Adapters (NICs)**
+   - 选择 **Network Adapters (NICs)**下面的 :fa:`plus-circle` 
    - **NIC 1** - Primary
    - **Credential** - CENTOS
 
-#. Click **Save**.
+#. 单击 **Save**.
 
    .. note::
 
-     If errors or warnings are presented after saving the blueprint, hover over the icon in the top toolbar to see a list of issues. Resolve any issues and **Save** the blueprint again.
+    如果在保存蓝图后出现错误或警告，请将鼠标悬停在顶部工具栏中的图标上，以查看问题列表。 解决所有问题，然后再次**保存**蓝图。
 
      .. figure:: images/8.png
 
-   Now that you have completed the deployment details for the VM associated with the service, the next step is to tell Calm how the application will be installed on the VM.
+   现在，您已经完成了与服务关联的VM的部署详细信息，下一步是告诉Calm如何在VM上安装应用程序。
 
-#. With the **MySQL** service icon selected in the Workspace pane, scroll to the top of the **Configuration Panel**, and select the **Package** tab.
+#. 在Workspace窗格中选择**MySQL**服务图标后，滚动到**Configuration Panel**的顶部，然后选择**Package**选项卡。
 
-   The Package is the configuration and application(s) installed on the Service, and is typically accomplished by executing a script on the Service VM.
+    软件包是在服务上安装的配置和应用程序，通常是通过在服务VM上执行脚本来完成的。
 
-#. Specify **MySQL_PACKAGE** as the **Package Name** and click **Configure install**.
+#. 填写 **MySQL_PACKAGE** 作为 **Package Name** 并点击 **Configure install**.
 
    - **Package Name** - MYSQL_PACKAGE
 
    .. figure:: images/9.png
 
-   Note the **Package install** field that appears on the MySQL service in the Workspace pane.
+   请注意，在Workspace窗格MySQL服务上出现的**Package install**字段。
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel** to define the script that Calm will remotely execute on the MySQL Service VM:
+#. 选择 **+ Task**, 并填写以下字段 **Configuration Panel** 以定义Calm将在MySQL Service VM上远程执行的脚本：
 
    - **Task Name** - Install_sql
    - **Type** - Execute
@@ -277,15 +278,15 @@ Creating the Database Service
    .. figure:: images/10.png
 
    .. note::
-      You can click the **Pop Out** icon on the script field for a larger window to view/edit scripts.
+      您可以单击脚本字段上的** Pop Out **图标以获得更大的窗口，以查看/编辑脚本。
 
-   Reviewing the script you can see the package will install MySQL, configure the credentials and create a database based on the variables specified earlier in the exercise.
+   查看脚本，您将看到该软件包将安装MySQL，配置凭据并根据练习中指定的变量创建数据库。
 
-#. Select the **MySQL** service icon in the Workspace pane again, select the **Package** tab in the **Configuration Panel**.
+#.  再次在“工作区”窗格中选择 **MySQL**服务图标，然后在 **Configuration Panel**中选择**Package**选项卡。
 
-#. Click **Configure uninstall**.
+#.  单击 **Configure uninstall**.
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
+#.  单击 **+ Task**, 并填写以下字段 **Configuration Panel**:
 
    - **Task Name** - Uninstall_sql
    - **Type** - Execute
@@ -301,18 +302,18 @@ Creating the Database Service
    .. figure:: images/11.png
 
    .. note::
-      The uninstall script can be used for removing packages, updating network services like DHCP and DNS, removing entries from Active Directory, etc. It is not being used for this simple example.
+      卸载脚本可用于删除程序包，更新网络服务（如DHCP和DNS），从Active Directory中删除条目等。此简单示例未使用该脚本。
 
-#. Click **Save**. You will be prompted with specific errors if there are validation issues such as missing fields or unacceptable characters.
+#. 单击 **Save**. 如果存在验证问题（例如缺少字段或不可接受的字符），系统将提示您特定的错误。
 
-Creating the Web Server Service
+创建Web服务器服务
 ................................
 
-You will now follow similar steps to define a web server service.
+现在，您将按照类似的步骤定义Web服务器服务。
 
-#. In **Application Overview > Services**, add an additional service.
+#. 在 **Application Overview > Services**, 添加其他服务。
 
-#. Select the new service and fill out the following **VM** fields in the **Configuration Panel**:
+#. 选择新服务，然后在“**Configuration Panel**中填写以下**VM** 字段： 
 
    - **Service Name** - WebServer
    - **Name** - WebServerAHV
@@ -322,11 +323,11 @@ You will now follow similar steps to define a web server service.
    - **Image** - CentOS_7_Cloud
    - **Device Type** - Disk
    - **Device Bus** - SCSI
-   - Select **Bootable**
+   - 选择 **Bootable**
    - **vCPUs** - 2
    - **Cores per vCPU** - 1
    - **Memory (GiB)** - 4
-   - Select **Guest Customization**
+   - 选择 **Guest Customization**
 
      - **Type** - Cloud-init
      - **Script** -
@@ -340,17 +341,17 @@ You will now follow similar steps to define a web server service.
                - @@{CENTOS.public_key}@@
              sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
-   - Select :fa:`plus-circle` under **Network Adapters (NICs)**
+   - 选择**Network Adapters (NICs)**下面的 :fa:`plus-circle`  
    - **NIC 1** - Primary
    - **Credential** - CENTOS
 
-#. Select the **Package** tab.
+#. 选择 **Package** 选项卡。
 
-#. Specify a **Package Name** and click **Configure install**.
+#. 填写 **Package Name** 并单击 **Configure install**.
 
    - **Package Name** - WebServer_PACKAGE
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
+#. 选择 **+ Task**, 并填写以下字段 **Configuration Panel**:
 
    - **Name Task** - Install_WebServer
    - **Type** - Execute
@@ -423,12 +424,12 @@ You will now follow similar steps to define a web server service.
        sudo chmod -R 777 /var/www/laravel/
        sudo systemctl restart nginx
 
-   This script installs PHP and Nginx to create a web server, and then a Laravel based web application.
-   It then configures the web application settings, including updating the **DB_HOST** with the MySQL IP address, accessed via the **@@{MySQL.address}@@** macro.
+   此脚本将安装PHP和Nginx来创建Web服务器，然后创建基于Laravel的Web应用程序。
+    然后，它配置Web应用程序设置，包括使用通过** @@ {MySQL.address} @@ **宏访问的MySQL IP地址更新** DB_HOST **。
 
-#. Select the **Package** tab and click **Configure uninstall**.
+#. 选择 **Package** 选项卡并单击 **Configure uninstall**.
 
-#. Select **+ Task**, and fill out the following fields in the **Configuration Panel**:
+#. 选择 **+ Task**, 在 **Configuration Panel**填写以下字段:
 
    - **Name Task** - Uninstall_WebServer
    - **Type** - Execute
@@ -444,9 +445,9 @@ You will now follow similar steps to define a web server service.
        sudo rm -rf /var/www/laravel
        sudo yum erase -y nginx
 
-   For many applications it is common to need to scale out a given service, such as the web tier in order to handle more concurrent users. Calm makes it simple to turn deploy an array containing multiple copies of a given service.
+   对于许多应用程序，通常需要扩展给定的服务（例如Web层）以处理更多并发用户。 借助Calm，可以轻松地部署包含给定服务的多个副本的阵列。
 
-#. With the **WebServer** service icon selected in the Workspace pane, scroll to the top of the **Configuration Panel**, and select the **Service** tab.
+#. 在Workspace窗格中选择**WebServer**服务图标后，滚动到**Configuration Panel**的顶部，然后选择“服务”选项卡。With the **WebServer** service icon selected in the Workspace pane, scroll to the top of the **Configuration Panel**, and select the **Service** tab.
 
 #. Under **Deployment Config > Number of Replicas**, increase the **Min** value from 1 to 2 and the **Max** value from 1 to 4.
 
@@ -654,35 +655,35 @@ Launching and Managing the Application
 Takeaways
 +++++++++
 
-What are the key things you should know about **Nutanix Calm**?
+您应该了解** Nutanix Calm **的关键要点是什么？
 
-- Nutanix Calm, as a native component of Prism, is built on and carries forward the benefits of the platform.  The simplicity provided by Acropolis lets Calm focus on applications, rather than trying to mask the complexity of the underlying infrastructure management.
+-Nutanix Calm作为Prism的本机组件，建立在该平台上并发扬光大。 Acropolis提供的简单性使Calm专注于应用程序，而不是试图掩盖基础架构管理的复杂性。
 
-- Calm blueprints are easy to use.  In 60 minutes you went from nothing to a full infrastructure stack deployment.  Because Calm uses standard tools for configuration - bash, PowerShell, Python, etc. - there's no new language to learn and you can immediately apply skills and code you already have.
+-Calm蓝图易于使用。在60分钟内，您从零开始进行了完整的基础架构堆栈部署。由于Calm使用标准工具（bash，PowerShell，Python等）进行配置，因此无需学习任何新语言，因此您可以立即应用已有的技能和代码。
 
-- While not as visually impressive, even single VM blueprints can have a massive effect on customers.  One bank in India is using Calm for single-VM deployments, reducing the time to deploy these applications from 3 days to 2 hours.  Remember that many customers have little or no automation today (or the automation they have is complex/hard to understand thus limiting it's adoption).  This means that Calm can help them right now, today, instantly.
+-尽管视觉效果不佳，但即使是单个VM蓝图也会对客户产生巨大影响。印度的一家银行正在将Calm用于单VM部署，从而将这些应用程序的部署时间从3天减少到2小时。请记住，当今许多客户很少或根本没有自动化（或者他们拥有的自动化非常复杂/难以理解，因此限制了它的采用）。这意味着Calm可以立即，立即，即时地为他们提供帮助。
 
-- "Multi-Cloud Application Automation and Lifecycle Management" sounds big and scary.  The 'future' sounds amazing, but many operators can't see the path to there.  Listen to what the customer is struggling with today (backups require specialized skills, VM deployment takes a long time, upgrades are hard) and speak to how Calm can help with that; jumping right to the multi-cloud automation story pushes Calm from a "I need this right now" to a "well let's evaluate this later on, once things have quieted down" (and things never truly 'quiet down'.
+-“多云应用程序自动化和生命周期管理”听起来很吓人。 “未来”听起来很棒，但是许多操作员看不到通往那里的道路。聆听客户今天所苦恼的事情（备份需要专业技能，VM部署需要很长时间，升级很困难），并讲解Calm如何提供帮助；跳到多云自动化的故事，将Calm从“我现在需要这个”推到“一旦事情平静下来，让我们稍后再评估一下”（而且事情永远不会真正“安静下来”。）
 
-- The Blueprint Editor provides a simple UI for modeling potentially complex applications.
+-蓝图编辑器提供了一个简单的UI，用于为可能复杂的应用程序建模。
 
-- Blueprints are tied to SSP Projects which can be used to enforce quotas and role based access control.
+-蓝图与SSP项目相关，可用于实施配额和基于角色的访问控制。
 
-- Having a Blueprint install and configure binaries means no longer creating specific images for individual applications. Instead the application can be modified through changes to the Blueprint or installation script, both of which can be stored in source code repositories.
+-具有蓝图安装和配置二进制文件意味着不再为单个应用程序创建特定的映像。相反，可以通过对蓝图或安装脚本的更改来修改应用程序，这两种方法都可以存储在源代码存储库中。
 
-- Variables allow another dimension of customizing an application without having to edit the underlying Blueprint.
+-变量允许自定义应用程序的另一个维度，而无需编辑基础蓝图。
 
-- There are multiple ways of authenticating to a VM (keys or passwords), which is dependent upon the source image.
+-有多种对VM进行身份验证的方法（密钥或密码），具体取决于源映像。
 
-- Application status can be monitored in real time.
+-可以实时监视应用程序状态。
 
-- Applications typically span across multiple VMs, each responsible for different services. Calm is capable of automated and orchestrating full applications.
+-应用程序通常跨多个VM，每个VM负责不同的服务。 Calm能够自动化和协调完整的应用程序。
 
-- Dependencies between services can be easily modeled in the Blueprint Editor.
+-服务之间的依赖关系可以在蓝图编辑器中轻松建模。
 
-- Users can quickly provision entire application stacks for production or testing for repeatable results without time lost to manual configuration.
+-用户可以快速调配整个应用程序堆栈以进行生产或测试，以获得可重复的结果，而不会浪费时间进行手动配置。
 
-- Interested in using Calm for more app lifecycle operations? Check out the :ref:`calm_day2`!
+-有兴趣使用Calm进行更多应用生命周期操作吗？看看 :ref:`calm_day2`!
 
 
 .. |proj-icon| image:: ../images/projects_icon.png
