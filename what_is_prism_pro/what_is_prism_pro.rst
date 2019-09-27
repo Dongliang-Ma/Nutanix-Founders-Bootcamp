@@ -1,105 +1,104 @@
 .. _what_is_prism_pro:
 
 ---------------------
-What Is Prism Pro
+Prism Pro是什么
 ---------------------
 
-Overview
+简介
 ++++++++
 
-Prism Pro is a product designed to make our customer IT operations smart and automated. Today, there is no solution that is specifically designed for data center IT operations built around HCI. The infrastructure in this type of data center is dynamic, scalable, and highly performed. Traditional performance monitoring and IT OPS tools are built for static infrastructure. When IT admins use the traditional tools to manage HCI environments, they are overwhelmed by the complexity and noisy signals the tool brings. This decreases the productivity of the operations and reduces the ROI from adopting HCI.
+Prism Pro是一种旨在使我们的客户IT操作变得智能和自动化的产品。如今，没有专门针对基于HCI构建的数据中心IT运营而设计的解决方案。这种类型的数据中心的基础架构是动态的，可伸缩的且性能卓越。传统的性能监控和IT OPS工具是为静态基础结构构建的。当IT管理员使用传统工具来管理HCI环境时，他们会被工具带来的复杂性和嘈杂的信号所淹没。这降低了操作的生产率，并降低了采用HCI的投资回报率。
 
-Prism Pro takes a unique approach that maximizes the operation efficiency of an HCI based data center. First, Prism Pro uses purpose-built machine learning (X-FIT) to extract the insights from the mass amount of operations data the HCI produces. The first three use cases Prism Pro shipped are capacity forecast and planning, VM right sizing, and anomaly detection. These use cases help our customers detect problems and waste with the actionable signal. Second, Prism Pro delivers an automation mechanism (X-Play) that enables customers to automate their operations tasks confidently to respond to the signal X-FIT detects.
+Prism Pro采用独特的方法，可最大化基于HCI的数据中心的运营效率。首先，Prism Pro使用专用的机器学习（X-FIT）从HCI产生的大量操作数据中提取见解。 Prism Pro交付的前三个用例是容量预测和计划，VM权限大小确定和异常检测。这些用例可帮助我们的客户发现问题并以可行的信号进行浪费。其次，Prism Pro提供了一种自动化机制（X-Play），使客户能够自信地自动化其操作任务，以响应X-FIT检测到的信号。
 
-X-Play is designed to address the number 1 pain point when customers deal with automation - the fear of amplified impact because of the complexity of the automation. Not like the solution, such as Calm, for the application lifecycle automation, X-Play’s goal is to automate the simple tasks that admins face daily. To eliminate the fear and give the control back to the admin, X-Play takes the codeless approach which has been proven in the companies such as IFTTT and Zapier that it is easy to adopt and extremely versatile.
+X-Play旨在解决客户在处理自动化时遇到的第一个痛苦点-由于自动化的复杂性而担心会放大影响。与应用程序生命周期自动化的解决方案（例如Calm）不同，X-Play的目标是使管理员每天面对的简单任务自动化。为了消除恐惧并将控制权交还给管理员，X-Play采用了无代码方法，该方法已在IFTTT和Zapier等公司中得到证明，该方法易于采用且功能极为丰富。
 
-There are no other tools in the market taking this approach and has the power to combine intelligence and codeless automation. The power of X-FIT and X-Play allows the customer to truly leverage the machine data the HCI infrastructure produces and operate it efficiently, confidently, and intelligently.
-
+市场上没有其他工具采用这种方法，并且具有将智能和无代码自动化相结合的能力。 X-FIT和X-Play的强大功能使客户能够真正利用HCI基础架构生成的机器数据，并高效，自信和智能地操作它。
 
 Prism Pro
 +++++++++
 
-Prism Central Report Managing and Machine Learning Capability
+Prism Central 报告管理和机器学习能力
 .............................................................
 
-With PC Machine learning you can:
+通过PC Machine Learning，您可以：
 
-- Analyze resource usage over time.
-- Monitor resource consumption.
-- Identify abnormal behavior.
-- Take advantage of guided resource planning.
+-分析一段时间内的资源使用情况。
+-监视资源消耗。
+-识别异常行为。
+-利用指导性资源计划。
 
-With report management you can:
+使用报表管理，您可以：
 
-- Configure and deliver the historical reports containing information about the infrastructure resources.
-- Gain operational insights of your infrastructure into your mailbox according to the schedule that you have configured.
+-配置并提供包含有关基础结构资源信息的历史报告。
+-根据您配置的时间表，将基础架构的运营洞察力延伸到您的邮箱中。
 
 .. figure:: images/what_is_prismcentral_08.png
 
-Actionable Capacity Forecasting
+可行的容量预测
 ...............................
 
-What is it?
+它是什么？
 
-- Detailed capacity trends
-- Intelligent recommendations
-- Powered by patent pendingX-FIT algorithm
+-详细的容量趋势
+-智能建议
+-由正在申请专利的X-FIT算法提供支持
 
-Key Points:
+关键点：
 
-- Enables pay as you grow capacity expansion
-- Eliminates guesswork
+-随着容量的增长而实现付费
+-消除猜测
 
 .. figure:: images/what_is_prismcentral_09.png
 
 Capacity Runway
 ...............................
 
-Capacity Runway = Time before workloads run out of capacity
+Capacity Runway = 工作负载用尽之前的时间
 
 .. figure:: images/what_is_prismcentral_15.png
 
-Capacity Optimization Recommendation
+Capacity 优化建议
 ....................................
 
 .. figure:: images/what_is_prismcentral_14.png
 
-Just-In-Time Forecast
+Just-In-Time 预测
 .....................
 
-What is it?
+它是什么？
 
-- Machine learning based forecast that predicts capacity expansion to meet future workload growth
-- Planning of expansion based on existing/new workload demands
-- Powered by X-FIT
+-基于机器学习的预测，预测容量扩展以适应未来的工作量增长
+-根据现有/新的工作量需求规划扩展
+-由X-FIT提供支持
 
-Benefits:
+优点：
 
-- Pre defined workload friendly inputs to save planning time and avoid hassle
-- Enables pay as you grow capacity expansion
-- Eliminates guesswork
+-预定义的工作负载友好输入可节省计划时间并避免麻烦
+-随着容量的增长而实现付费
+-消除猜测
 
 .. figure:: images/what_is_prismcentral_10.png
 
-Planning for Just-In-Time Expansion
+规划 Just-In-Time 扩展
 ...................................
 
-Align capacity expansion to meet future workload growth
+调整容量扩展以满足未来的工作量增长
 
-- Powered byMachine Learning
-- Designed forPay-as-You-Grow
-- Simplified withWorkload-Friendly Inputs
+-由机器学习提供支持
+-专为按需购买而设计
+-简化了工作负载的输入
 
 .. figure:: images/what_is_prismcentral_13.png
 
-One-click Centralized Cluster Upgrade
+一键式集中式集群升级
 .....................................
 
-- One-click AOS upgrade for one or more clusters directly from Entity Explorer
-- Option for rolling upgrade or simultaneous upgrade if multiple clusters are selected
-- Simplifies management by enabling admins to manage AOS upgrades for all clusters from a single point
+-直接从Entity Explorer中为一个或多个集群进行一键式AOS升级
+-如果选择了多个群集，则可以进行滚动升级或同时升级的选项
+-通过使管理员能够从一个点管理所有群集的AOS升级来简化管理
 
-Rich and Insightful Analytics
+丰富而有见地的分析
 .............................
 
 .. figure:: images/what_is_prismcentral_11.png
