@@ -1,23 +1,23 @@
 .. _files_nfs_export:
 
 ------------------------
-Files: Create NFS Export
+Files: 创建 NFS Export
 ------------------------
 
-Overview
+简介
 ++++++++
 
-In this exercise you will create and test a NFSv4 export, used to support clustered applications, store application data such as logging, or storing other unstructured file data commonly accessed by Linux clients.
+在本练习中，您将创建和测试NFSv4导出，该导出用于支持集群应用程序，存储应用程序数据（例如日志记录）或存储Linux客户端通常访问的其他非结构化文件数据。
 
-Using NFS Exports
+使用 NFS Exports
 +++++++++++++++++
 
-Creating the Export
+创建Export
 ...................
 
-#. In **Prism > File Server**, click **+ Share/Export**.
+#. 在 **Prism > File Server**, 单击 **+ Share/Export**.
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
    - **Name** - logs
    - **Description (Optional)** - File share for system logs
@@ -28,35 +28,35 @@ Creating the Export
 
    .. figure:: images/24.png
 
-#. Click **Next**.
+#. 单击 **Next**.
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
-   - Select **Enable Self Service Restore**
+   - 选择 **Enable Self Service Restore**
       - These snapshots appear as a .snapshot directory for NFS clients.
    - **Authentication** - System
    - **Default Access (For All Clients)** - No Access
-   - Select **+ Add exceptions**
+   - 选择 **+ Add exceptions**
    - **Clients with Read-Write Access** - *The first 3 octets of your cluster network*\ .* (e.g. 10.38.1.\*)
 
    .. figure:: images/25.png
 
-   By default an NFS export will allow read/write access to any host that mounts the export, but this can be restricted to specific IPs or IP ranges.
+   默认情况下，NFS导出将允许对安装exports的任何主机进行读/写访问，但是可以将其限制为特定的IP或IP范围。
 
-#. Click **Next**.
+#. 单击 **Next**.
 
-#. Review the **Summary** and click **Create**.
+#. 阅读 **Summary** 并单击 **Create**.
 
-Testing the Export
+测试 Export
 ..................
 
-You will first provision a CentOS VM to use as a client for your Files export.
+首先，您将提供一个CentOS VM用作Files exprot的客户端。
 
-.. note:: If you have already deployed the :ref:`linux_tools_vm` as part of another lab, you may use this VM as your NFS client instead.
+.. note:: 如果已在另一个实验部署 :ref:`linux_tools_vm` ，则可以将此VM用作NFS客户端。
 
-#. In **Prism > VM > Table**, click **+ Create VM**.
+#. 在 **Prism > VM > Table**, 点击 **+ Create VM**.
 
-#. Fill out the following fields:
+#. 填写以下字段:
 
    - **Name** - *Initials*\ -NFS-Client
    - **Description** - CentOS VM for testing Files NFS export
@@ -71,16 +71,16 @@ You will first provision a CentOS VM to use as a client for your Files export.
       - **VLAN Name** - Primary
       - Select **Add**
 
-#. Click **Save**.
+#. 点击 **Save**.
 
-#. Select the *Initials*\ **-NFS-Client** VM and click **Power on**.
+#. 选择 *Initials*\ **-NFS-Client** VM 并单击 **Power on**.
 
-#. Note the IP address of the VM in Prism, and connect via SSH using the following credentials:
+#. 在Prism中记下VM的IP地址，并使用以下凭据通过SSH连接：
 
    - **Username** - root
    - **Password** - nutanix/4u
 
-#. Execute the following:
+#. 执行以下命令：
 
      .. code-block:: bash
 
@@ -101,21 +101,19 @@ You will first provision a CentOS VM to use as a client for your Files export.
        total 1
        drwxrwxrwx. 2 root root 2 Mar  9 18:53 logs
 
-#. Observe that the **logs** directory is mounted in ``/filesmnt/logs``.
+#. 观察** logs **目录已安装在 ``/filesmnt/logs``.
 
-#. Reboot the VM and observe the export is no longer mounted. To persist the mount, add it to ``/etc/fstab`` by executing the following:
-
-     .. code-block:: bash
+#. 重新启动VM，并观察到出口不再挂载。 要保持挂载，通过执行以下命令将其添加到``/etc/fstab``中：
 
        echo 'Intials-Files.ntnxlab.local:/ /filesmnt nfs4' >> /etc/fstab
 
-#. The following command will add 100 2MB files filled with random data to ``/filesmnt/logs``:
+#. 以下命令将添加100个2MB的文件，其中填充了随机数据 ``/filesmnt/logs``:
 
      .. code-block:: bash
 
        mkdir /filesmnt/logs/host1
        for i in {1..100}; do dd if=/dev/urandom bs=8k count=256 of=/filesmnt/logs/host1/file$i; done
 
-#. Return to **Prism > File Server > Share > logs** to monitor performance and usage.
+#. 返回 **Prism > File Server > Share > logs** 监控性能和使用情况。
 
-   Note that the utilization data is updated every 10 minutes.
+  请注意，利用率数据每10分钟更新一次。

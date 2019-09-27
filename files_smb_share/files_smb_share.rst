@@ -1,23 +1,23 @@
 .. _files_smb_share:
 
 ----------------------------
-Files: Create SMB Share
+Files: 创建 SMB Share
 ----------------------------
 
-Overview
+简介
 ++++++++
 
-In this exercise you will create and test a SMB share, used to support home directories, user profiles, and other unstructured file data such as departmental shares commonly accessed by Windows clients.
+在本练习中，您将创建和测试SMB Share，用于支持主目录，用户配置文件以及其他非结构化文件数据，例如Windows客户端通常访问的部门Share。
 
-Using SMB Shares
+使用 SMB Shares
 ++++++++++++++++
 
-Creating the Share
+创建 Share
 ..................
 
-#. In **Prism > File Server**, click **+ Share/Export**.
+#. 在 **Prism > File Server**, 单击 **+ Share/Export**.
 
-#. Fill out the following fields:
+#. 填写以下字段：
 
    - **Name** - Marketing
    - **Description (Optional)** - Departmental share for marketing team
@@ -28,90 +28,90 @@ Creating the Share
 
    .. figure:: images/14.png
 
-#. Click **Next**.
+#. 单击 **Next**.
 
-#. Select **Enable Access Based Enumeration** and **Self Service Restore**.
+#. 选择 **Enable Access Based Enumeration** 和 **Self Service Restore**.
 
    .. figure:: images/15.png
 
-   As you are creating a departmental share, it should be created as a **Standard** share. This means that all top level directories and files within the share, as well as connections to the share, are served from a single Files VM.
+   在创建部门Share时，应将其创建为**Standard** Share。 这意味Share中的所有顶级目录和文件以及与Share的连接均由单个文件VM提供。
 
-   **Distributed** shares are appropriate for home directories, user profiles, and application folders. This type of share shards top level directories across all Files VMs and load balances connections across all Files VMs within the Files cluster.
+   **Distributed** Share适用于home主目录，用户配置文件和应用程序文件夹。 这种类型的Share在所有文件VM上分布顶级目录，并在文件群集内的所有文件VM之间平衡连接的负载。
+   **Access Based Enumeration (ABE)** 确保只有给定用户具有读取权限的文件和文件夹对该用户可见。 Windows文件Share通常启用此功能。
 
-   **Access Based Enumeration (ABE)** ensures that only files and folders which a given user has read access are visible to that user. This is commonly enabled for Windows file shares.
+   **Self Service Restore** 允许用户利用Windows先前版本轻松地将单个文件还原到基于Nutanix快照的先前版本。
 
-   **Self Service Restore** allows users to leverage Windows Previous Version to easily restore individual files to previous revisions based on Nutanix snapshots.
+#. 单击 **Next**.
 
-#. Click **Next**.
-
-#. Review the **Summary** and click **Create**.
+#. 查看 **Summary** 并单击 **Create**.
 
    .. figure:: images/16.png
 
-Testing the Share
+验证 Share
 .................
 
-#. Connect to your *Initials*\ **-ToolsVM** via RDP or console.
+#. 通过RDP或控制台连接 *Initials*\ **-ToolsVM**。
 
    .. note::
 
-     The Tools VM has already been joined to the **NTNXLAB.local** domain. You could use any domain joined VM to complete the following steps.
+     ToolsVM已加入** NTNXLAB.local **域。 您可以使用任何加入域的VM来完成以下步骤。
 
-#. Open ``\\<Intials>-Files.ntnxlab.local\`` in **File Explorer**.
+#. 在 **File Explorer**打开 ``\\<Intials>-Files.ntnxlab.local\``。
 
    .. figure:: images/17.png
 
-#. Test accessing the Marketing share by extracting the SampleData_Small.zip files downloaded in the previous step into the share.
+#. 通过将上一步中下载的SampleData_Small.zip文件解压缩到Share中，以测试对Marketing Share的访问。
 
    .. figure:: images/18.png
 
-   - The **NTNXLAB\\Administrator** user was specified as a Files Administrator during deployment of the Files cluster, giving it read/write access to all shares by default.
-   - Managing access for other users is no different than any other SMB share.
+    - **NTNXLAB\\Administrator** 在文件群集部署期间，该用户被指定为文件管理员，默认情况下授予该用户对所有Share的读/写访问权限。
+    - 管理其他用户的访问权限与任何其他SMB Share相同。
 
-#. Right-click **Marketing > Properties**.
+#. 右击 **Marketing > Properties**.
 
-#. Select the **Security** tab and click **Advanced**.
+#. 选择 **Security** 选项卡并点击 **Advanced**.
 
    .. figure:: images/19.png
 
-#. Select **Users (**\ *Initials*\ **-Files\\Users)** and click **Remove**.
+#. 选择 **Users (**\ *Initials*\ **-Files\\Users)** 并单击 **Remove**。
 
-#. Click **Add**.
+#. 单击 **Add**.
 
-#. Click **Select a principal** and specify **Everyone** in the **Object Name** field. Click **OK**.
+#. 单击 **Select a principal** 在**Object Name** 字段填写 **Everyone** 。 单击 **OK**。
 
    .. figure:: images/20.png
 
-#. Fill out the following fields and click **OK**:
+#. 填写以下字段，然后单击 **OK**:
 
    - **Type** - Allow
    - **Applies to** - This folder only
-   - Select **Read & execute**
-   - Select **List folder contents**
-   - Select **Read**
-   - Select **Write**
+   - 选择 **Read & execute**
+   - 选择 **List folder contents**
+   - 选择 **Read**
+   - 选择 **Write**
 
    .. figure:: images/21.png
 
-#. Click **OK > OK > OK** to save the permission changes.
+#. 单击 **OK > OK > OK** 保存权限更改。
 
-   All users will now be able to create folders and files within the Marketing share.
+   现在，所有用户都可以在Marketing Share中创建文件夹和文件。
 
-   It is common for shares utilized by many people to leverage quotas to ensure fair use of resources. Files offers the ability to set either soft or hard quotas on a per share basis for either individual users within Active Directory, or specific Active Directory Security Groups.
+    许多人利用share来利用配额以确保公平使用资源是很常见的。 通过文件，可以为Active Directory内的单个用户或特定的Active Directory安全组按份额设置软配额或硬配额。
 
-#. In **Prism > File Server > Share > Marketing**, click **+ Add Quota Policy**.
+#. 在 **Prism > File Server > Share > Marketing**, 单击 **+ Add Quota Policy**.
 
-#. Fill out the following fields and click **Save**:
+#. 填写以下字段，然后单击 **Save**:
 
-   - Select **Group**
+   - 选择 **Group**
    - **User or Group** - SSP Developers
    - **Quota** - 10 GiB
    - **Enforcement Type** - Hard Limit
 
    .. figure:: images/22.png
 
-#. Click **Save**.
+#. 单击 **Save**.
 
-#. With the Marketing share still selected, review the **Share Details**, **Usage** and **Performance** tabs to understand the available on a per share basis, including the number of files & connections, storage utilization over time, latency, throughput, and IOPS.
+#. 在仍选择“市场份额”的情况下，查看**Share Details**，**Usage** 和 **Performance** 选项卡以了解每个share的可用情况，包括文件和连接的数量，一段时间内的存储利用率 ，延迟，吞吐量和IOPS。
+
 
    .. figure:: images/23.png
