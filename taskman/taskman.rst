@@ -28,7 +28,7 @@
 
 .. figure:: images/1.png
 
-在 **Network**下, 验证 **Primary** 和 **Secondary** 网络都被选择，**Primary** 网络为默认。 此外, 进行如下所示的选择。
+在 **Network** 下, 验证 **Primary** 和 **Secondary** 网络都被选择，**Primary** 网络为默认。 此外, 进行如下所示的选择。
 
 .. figure:: images/2.png
 
@@ -71,7 +71,7 @@
 
 .. figure:: images/4b.png
 
-在**Network Adapters (NICs)**下, 确保 **NIC 1** 设置为 **Primary** ，如下所示.
+在 **Network Adapters (NICs)** 下, 确保 **NIC 1** 设置为 **Primary** ，如下所示.
 
 .. figure:: images/4c.png
 

@@ -41,7 +41,7 @@ Calm内置于Prism Central，无需额外的设备或控制台即可管理。在
 
 当我们等待Calm启用时，我们将添加一个Active Directory服务器。虽然Calmr基本使用不需要这样做，但是需要进行任何基于角色的访问控制，因此最好进行设置。
 
-#.  单击** 齿轮图标 **然后** Authentication **。
+#.  单击 **齿轮图标** 然后 **Authentication**。
 
 .. figure :: images / 510enable4.png
 

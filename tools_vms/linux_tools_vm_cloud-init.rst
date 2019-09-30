@@ -9,7 +9,7 @@ Linux工具VM
 
 此CentOS VM镜像将与用于支持多个实验室练习的软件包一起暂存。
 
-如果指示这样做，请在** Lab Setup **中将此虚拟机部署到您分配的群集上。
+如果指示这样做，请在 ** Lab Setup **中将此虚拟机部署到您分配的群集上。
 
 .. raw:: html
 
@@ -18,7 +18,7 @@ Linux工具VM
 部署 CentOS
 ++++++++++++++++
 
-在**Prism Central** > 选择 :fa:`bars` **> Virtual Infrastructure > VMs**, 并点击 **Create VM**.
+在 **Prism Central** > 选择 :fa:`bars` **> Virtual Infrastructure > VMs**, 并点击 **Create VM**.
 
 填写以下字段：
 

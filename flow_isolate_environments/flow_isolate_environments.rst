@@ -14,7 +14,7 @@ Flow: 环境隔离
 隔离环境
 ++++++++++++++++++++++
 
-当必须完全禁止一组虚拟机与其他一组虚拟机进行通信而没有任何白名单例外时，将会使用隔离策略。 一个常见的示例是使用隔离策略来阻止标记为**Environment: Dev**的虚拟机与**Environment: Production**中的虚拟机进行通信。 如果要在两个组之间创建例外，请不要使用隔离策略，而应使用允许白名单模型的应用程序策略。
+当必须完全禁止一组虚拟机与其他一组虚拟机进行通信而没有任何白名单例外时，将会使用隔离策略。 一个常见的示例是使用隔离策略来阻止标记为 **Environment: Dev**的虚拟机与 **Environment: Production**中的虚拟机进行通信。 如果要在两个组之间创建例外，请不要使用隔离策略，而应使用允许白名单模型的应用程序策略。
 
 在本练习中，你将创建一个新的环境类别并将其分配给任务管理器。 然后，您将创建并实施使用新建的类别的隔离安全策略，以限制未经授权的访问。
 
@@ -45,7 +45,7 @@ Flow: 环境隔离
 
 #. 使用复选框，选择与应用关联的4台虚拟机(HAProxy, MYSQL, WebServer-0, WebServer-1)，并选择**Actions > Manage Categories**。
 
-#. 在搜索栏指定 **Environment:**\ *Initials*-**Prod** 并点击 **Save** 图标，将类别批量分配给所有4台虚拟机。
+#. 在搜索栏指定 **Environment:**\ *Initials*- **Prod** 并点击 **Save** 图标，将类别批量分配给所有4台虚拟机。
 
    .. figure:: images/39.png
 
@@ -79,7 +79,7 @@ Flow: 环境隔离
 
 #. 在 **Prism Central**, 选择 :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies**.
 
-#. 选择 *Initials*-**Isolate-dev-prod** 并单击 **Actions > Delete**.
+#. 选择 *Initials*- **Isolate-dev-prod** 并单击 **Actions > Delete**.
 
 #. 在确认对话框中输入 **DELETE**  并单击 **OK** 以禁用该策略.
 

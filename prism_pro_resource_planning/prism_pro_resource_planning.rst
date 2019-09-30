@@ -35,12 +35,12 @@ Nutanix利用我们的X-Fit机器学习和数据分析作为Prism Pro的一部�
 
 让我们查看集群的资源倒计时
 
-#. 在**Prism Central > Planning > Capacity Runway**.
+#. 在 **Prism Central > Planning > Capacity Runway**.
 
   - 请注意资源倒计时摘要显示每个群集的剩余天数。
   - 在内存，CPU和存储空间不足之前，当前集群有多长时间？
 
-#. 点击**Prism-Pro-Cluster**集群。
+#. 点击 **Prism-Pro-Cluster**集群。
 
 . 您现在可以查看存储，CPU和内存的剩余资源。
 
@@ -50,7 +50,7 @@ Nutanix利用我们的X-Fit机器学习和数据分析作为Prism Pro的一部�
 
    .. figure:: images/ppro_13.png
 
-#. 点击**Optimize Resources**左边的按钮。 在这里，您可以看到环境中效率低下的虚拟机，并提供有关如何优化这些资源以尽可能高效的建议。
+#. 点击 **Optimize Resources**左边的按钮。 在这里，您可以看到环境中效率低下的虚拟机，并提供有关如何优化这些资源以尽可能高效的建议。
 
    .. figure:: images/ppro_14.png
 
@@ -59,9 +59,9 @@ Nutanix利用我们的X-Fit机器学习和数据分析作为Prism Pro的一部�
 What If 规划
 ................
 
-#. 在页面左边的的**Adjust Resources**下边, 点击**Get Started**按钮. 我们现在可以使用它来开始规划新的工作负载，并了解将来如何扩展跑道。
+#. 在页面左边的的 **Adjust Resources**下边, 点击 **Get Started**按钮. 我们现在可以使用它来开始规划新的工作负载，并了解将来如何扩展跑道。
 
-#. 点击左边**Workloads**选项下面的**add/adjust**按钮。
+#. 点击左边 **Workloads**选项下面的 **add/adjust**按钮。
 
    .. figure:: images/ppro_15.png
 

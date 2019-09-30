@@ -164,7 +164,7 @@ Nutanix Flow包含策略驱动的安全性框架，该框架使用以工作负�
 
 #. 点击 **Add**.
 
-#. 选择 **AppTier:**\ *Initials*-**TMDB**右边的 **+** 图标, 指定 **UDP** 端口 **53** 并点击 **Save** ，以允许DNS流量.
+#. 选择 **AppTier:**\ *Initials*- **TMDB** 右边的 **+** 图标, 指定 **UDP** 端口 **53** 并点击 **Save** ，以允许DNS流量.
 
    .. figure:: images/26.png
 

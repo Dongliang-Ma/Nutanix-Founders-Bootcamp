@@ -101,7 +101,7 @@ Files: 创建 NFS Export
        total 1
        drwxrwxrwx. 2 root root 2 Mar  9 18:53 logs
 
-#. 观察** logs **目录已安装在 ``/filesmnt/logs``.
+#. 观察 **logs**目录已安装在 ``/filesmnt/logs``.
 
 #. 重新启动VM，并观察到出口不再挂载。 要保持挂载，通过执行以下命令将其添加到``/etc/fstab``中：
 

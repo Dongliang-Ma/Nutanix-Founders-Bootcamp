@@ -26,19 +26,19 @@ File Analytics 扫描
 
    .. note:: 如果使用该应用程序打开文件，则可能需要完成一个简短的OpenOffice向导。
 
-#. 在浏览器中刷新**Dashboard**页面以查看**Top 5 active users**，**Top 5 accessed files** 和 **File Operations**面板的更新
+#. 在浏览器中刷新 **Dashboard**页面以查看 **Top 5 active users**，**Top 5 accessed files** 和 **File Operations**面板的更新
 
    .. figure:: images/37.png
 
-#. 在**Top 5 active users**下点击您的用户。 这将带您进入用户的审核跟踪。 
+#. 在 **Top 5 active users**下点击您的用户。 这将带您进入用户的审核跟踪。 
 
-#. 您也可以单击**Audit Trails**菜单，然后搜索您的用户或给定的文件。 您可以使用通配符进行搜索，例如**.doc **
+#. 您也可以单击 **Audit Trails**菜单，然后搜索您的用户或给定的文件。 您可以使用通配符进行搜索，例如 **.doc **
 
    .. figure:: images/38.png
 
 概要总结
 +++++++++
 
-关于** Nutanix File Analytics **，您应该了解哪些关键知识？
+关于 ** Nutanix File Analytics **，您应该了解哪些关键知识？
 
 -文件分析可帮助您更好地了解组织如何利用数据来满足您的数据审核，最小化数据访问和法规遵从性要求。

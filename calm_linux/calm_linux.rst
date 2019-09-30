@@ -47,7 +47,7 @@ Nutanix Calm允许您跨私有云和公共云基础架构无缝选择、供应�
 创建凭证
 ++++++++++++++++++++
 
-首先，您将创建一个证书，该证书将用于对最终将部署的CentOS VM进行Calm身份验证。 凭证对于每个蓝图都是唯一的，出于安全目的，**不会**将其作为蓝图的一部分导出。 每个蓝图至少需要1个凭证。
+首先，您将创建一个证书，该证书将用于对最终将部署的CentOS VM进行Calm身份验证。 凭证对于每个蓝图都是唯一的，出于安全目的， **不会** 将其作为蓝图的一部分导出。 每个蓝图至少需要1个凭证。
 
 本练习使用“通用云” CentOS映像。 这是多个流行的Linux发行版的通用选项，这些发行版轻巧，支持基于Cloud-Init的配置并利用 `SSH keypair authentication <https://www.ssh.com/ssh/public-key-authentication>`_ 而不是密码。 基于密钥对的身份验证在所有公共云环境中都很普遍。
 
@@ -102,11 +102,11 @@ Nutanix Calm允许您跨私有云和公共云基础架构无缝选择、供应�
 变量允许蓝图的可扩展性，这意味着单个蓝图可以根据其变量的配置用于多种用途和环境。
 变量可以是保存为蓝图一部分的静态值，也可以在**Runtime** （启动蓝图）时指定。变量特定于给定的**Application Profile**，这是将在其上部署蓝图的平台。例如，能够同时部署到AHV和AWS的蓝图将具有2个应用程序配置文件。每个配置文件可以具有单独的变量和VM配置。
 
-默认情况下，变量存储为** String **，并且在“配置”窗格中可见。将变量设置为**Secret**将掩盖该值，并且非常适合诸如密码之类的变量。除了String和Secret选项外，还有Integer，Multi-line String，Date, Time, and Date Time **Data Types** 和更高级的**“输入类型” **，但是这些内容不在此范围之内。实验室。
+默认情况下，变量存储为 ** String **，并且在“配置”窗格中可见。将变量设置为 **Secret**将掩盖该值，并且非常适合诸如密码之类的变量。除了String和Secret选项外，还有Integer，Multi-line String，Date, Time, and Date Time **Data Types** 和更高级的 **“输入类型” **，但是这些内容不在此范围之内。实验室。
 
-可以在使用** @@ {variable_name} @@ **结构针对对象执行的脚本中使用变量。 Calm将展开并使用适当的值替换该变量，然后再发送到VM。
+可以在使用 ** @@ {variable_name} @@ **结构针对对象执行的脚本中使用变量。 Calm将展开并使用适当的值替换该变量，然后再发送到VM。
 
-#. 在Blueprint Editor右边的 **Configuration Pane** ，在 **Variables**下面, 添加下面变量 (**Runtime** 通过切换 **Running Man** 标识到蓝色来指定):
+#. 在Blueprint Editor右边的 **Configuration Pane** ，在 **Variables**下面, 添加下面变量 ( **Runtime** 通过切换 **Running Man** 标识到蓝色来指定):
 
    +------------------------+-------------------------------+------------+-------------+
    | **Variable Name**      | **Data Type** | **Value**     | **Secret** | **Runtime** |
@@ -129,7 +129,7 @@ Nutanix Calm允许您跨私有云和公共云基础架构无缝选择、供应�
 
 可以基于磁盘映像部署AHV中的VM。 使用Calm，您可以通过URI选择可下载图像。 在应用程序部署期间，Prism Central将自动下载并创建指定的映像。 如果群集上已经存在具有相同URI的图像，它将跳过下载并改用本地图像。
 
-#. 在顶部工具栏中，单击**Configuration > Downloadable Image Configuration** :fa:`plus-circle` 并填写以下字段：
+#. 在顶部工具栏中，单击 **Configuration > Downloadable Image Configuration** :fa:`plus-circle` 并填写以下字段：
 
    - **Package Name** - CentOS_7_Cloud
    - **Description** - CentOS 7 Cloud Image
@@ -447,9 +447,9 @@ Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix 
 
    对于许多应用程序，通常需要扩展给定的服务（例如Web层）以处理更多并发用户。 借助Calm，可以轻松地部署包含给定服务的多个副本的阵列。
 
-#. 在Workspace窗格中选择**WebServer**服务图标后，滚动到**Configuration Panel**的顶部，然后选择**Service**选项卡。
+#. 在Workspace窗格中选择 **WebServer**服务图标后，滚动到 **Configuration Panel**的顶部，然后选择 **Service**选项卡。
 
-#. 在**Deployment Config > Number of Replicas**, 增加**Min** 的值从1到2 和 **Max** 的值从 1 到 4.
+#. 在 **Deployment Config > Number of Replicas**, 增加 **Min** 的值从1到2 和 **Max** 的值从 1 到 4.
 
    .. figure:: images/12.png
 
@@ -468,9 +468,9 @@ Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix 
 
 为了利用横向扩展Web层，您的应用程序需要能够在多个Web服务器VM之间平衡连接的负载。 HAProxy是一个免费的开源TCP / HTTP负载平衡器，用于在多个服务器之间分配工作负载。 从小型，简单的部署到大型Web规模的环境（例如GitHub，Instagram和Twitter），都可以使用它。
 
-#. 在**Application Overview > Services**, 添加另一个服务。
+#. 在 **Application Overview > Services**, 添加另一个服务。
 
-#. 选择一个新服务并在**Configuration Panel**填写 **VM** 字段:
+#. 选择一个新服务并在 **Configuration Panel**填写 **VM** 字段:
 
    - **Service Name** - HAProxy
    - **Name** - HAProxyAHV
@@ -613,13 +613,13 @@ Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix 
 
    要解决此问题，您将手动定义服务之间的依赖关系。
 
-#. 选择 **WebServer** 服务，然后单击“服务”图标上方显示的**Create Dependency**图标，然后单击**MySQL**服务。
+#. 选择 **WebServer** 服务，然后单击“服务”图标上方显示的 **Create Dependency**图标，然后单击 **MySQL**服务。
 
    .. figure:: images/15.png
 
-#. 这表示**WebServer**服务依赖于MySQL服务，这意味着**MySQL**服务将在W**MySQL**服务之前启动，然后在**MySQL**服务之后停止。
+#. 这表示 **WebServer**服务依赖于MySQL服务，这意味着 **MySQL**服务将在W**MySQL**服务之前启动，然后在 **MySQL**服务之后停止。
 
-#. 现在，为**HAProxy**服务创建依赖项以依赖**WebServer**服务。
+#. 现在，为 **HAProxy**服务创建依赖项以依赖 **WebServer**服务。
 
 #. 点击 **Save**.
 
@@ -655,7 +655,7 @@ Services 是虚拟机实例，现有计算机或裸机，您可以使用Nutanix 
 概要总结
 +++++++++
 
-您应该了解** Nutanix Calm **的关键要点是什么？
+您应该了解 ** Nutanix Calm **的关键要点是什么？
 
 -Nutanix Calm作为Prism的本机组件，建立在该平台上并发扬光大。 Acropolis提供的简单性使Calm专注于应用程序，而不是试图掩盖基础架构管理的复杂性。
 

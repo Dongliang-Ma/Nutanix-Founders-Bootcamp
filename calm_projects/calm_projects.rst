@@ -23,14 +23,14 @@ Projects 是将Calm与Nutanix的内置自助服务门户（SSP）功能集成的
 
    .. figure:: images/510projects1.png
 
-#. 点击 + Create Project
+#. 点击 **+ Create Project**
 
 #. 填写以下字段：
 
    - **Project Name** - *initials*-Calm
    - **Description** - *initials*-Calm
 
-#. 在 **Users, Groups, and Roles**下面, 点击**+ User**.
+#. 在 **Users, Groups, and Roles**下面, 点击 **+ User**.
 
 #. 填写以下字段，然后单击 **Save**:
 
@@ -56,11 +56,11 @@ Projects 是将Calm与Nutanix的内置自助服务门户（SSP）功能集成的
 
 #. 在 **Infrastructure**下, 单击蓝色的 **Select Provider** 按钮, 之后是 **Nutanix**.
 
-#. 在出现的框中，单击白色 **Select Clusters & Subnets** 按钮, 并在弹出窗口中，选择您的AHV群集。 选择集群后，选择 **Primary** 网络，如果有的话，再选择**Secondary**网络，然后单击**Confirm**.
+#. 在出现的框中，单击白色 **Select Clusters & Subnets** 按钮, 并在弹出窗口中，选择您的AHV群集。 选择集群后，选择 **Primary** 网络，如果有的话，再选择 **Secondary**网络，然后单击 **Confirm**.
 
    .. figure:: images/projects_cluster_subnet_selection.png
 
-#. 在 **Selected Subnets** 表内, 为**Primary**网络选择 :fa:`star`  使其成为**Calm** project里虚拟机中的默认虚拟网络 
+#. 在 **Selected Subnets** 表内, 为 **Primary**网络选择 :fa:`star`  使其成为 **Calm** project里虚拟机中的默认虚拟网络 
 
    .. figure:: images/projects_infrastructure.png
 

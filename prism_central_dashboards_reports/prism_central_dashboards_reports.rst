@@ -29,7 +29,7 @@ Prism Central 仪表板允许您快速查看在Prism Central实例下注册的�
 
 #. 此仪表板也可以自定义，但我们会创建新的仪表板。
 
-#. 点击**Manage Dashboards**打开“管理仪表板”窗口
+#. 点击 **Manage Dashboards** 打开“管理仪表板”窗口
 
 #. 点击 **+ New Dashboard**
 
@@ -52,17 +52,17 @@ Prism Central 仪表板允许您快速查看在Prism Central实例下注册的�
 - CLUSTER WIDGETS
 - APP WIDGETS
 
-#. 选择**CUSTOM WIDGETS**里您可能感兴趣的任何小部件，并注意右侧显示一组自定义参数以指定。
+#. 选择 **CUSTOM WIDGETS** 里您可能感兴趣的任何小部件，并注意右侧显示一组自定义参数以指定。
 
 #. 根据需要在选项中进行选择，然后单击 **Add to Dashboard**.
 
 .. figure:: images/510PC4.png
 
-#. 接下来，从**CLUSTER WIDGETS**列表中选择另一个小部件。 这次单击**Or, Add & Return to Dashboard.**返回新创建的仪表板。
+#. 接下来，从 **CLUSTER WIDGETS**列表中选择另一个小部件。 这次单击 **Or, Add & Return to Dashboard.** 返回新创建的仪表板。
 
 .. note::
 
-  Prism Central的右上角有一个**+ Add Widgets**按钮，可以随时添加更多小部件。
+  Prism Central的右上角有一个 **+ Add Widgets**按钮，可以随时添加更多小部件。
 
   另请注意，将鼠标悬停在仪表板上的任何小部件上都会在右上角显示一个灰色的X，可用于删除小部件。
 
@@ -84,7 +84,7 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
 #. 让我们运行 **Cluster Efficiency Summary** 报表.
 
-#. 选择 **Cluster Efficiency Summary**, 点击在 **Actions** 下拉菜单中的**Run** .
+#. 选择 **Cluster Efficiency Summary**, 点击在 **Actions** 下拉菜单中的 **Run** .
 
 .. figure:: images/monitoring_01.png
 
@@ -93,11 +93,11 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 - **Report instance Name** - *initials* - Cluster Efficiency 
 - **Time Period for Report** - Last 24 Hours
 
-#. 点击**Run**.
+#. 点击 **Run**.
 
 #. 现在我们来运行 **Environment Summary** 报表.
 
-#. 选择 **Environment Summary**, 从**Actions**下拉菜单点击 **Run** .
+#. 选择 **Environment Summary**, 从 **Actions**下拉菜单点击 **Run** .
 
 #. 接下来，填写以下字段并单击 **Run**:
 
@@ -124,7 +124,7 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
 .. figure:: images/510reports3.png
 
-#. 从 **CUSTOM VIEWS** 目录左边, 点击**Line Chart**填写下面信息:
+#. 从 **CUSTOM VIEWS** 目录左边, 点击 **Line Chart**填写下面信息:
 
 - **Entity Type** - Cluster
 - **Metric** - Memory Usage
@@ -156,7 +156,7 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
 #. 现在您的报告已保存，但请注意，它没有任何实例。 这是因为我们还没有运行报告。
 
-#. 点击右上角的**Run**来运行报告。
+#. 点击右上角的 **Run**来运行报告。
 
 .. figure:: images/510reports5.png
 
@@ -164,13 +164,13 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
   克隆报告对于利用现有报告并对其进行编辑以进一步进行自定义非常有用。
 
-#. 报告完成后，您将通过单**下载**下的**PDF**看到报告的第一个实例可供查看。
+#. 报告完成后，您将通过单 **下载**下的**PDF**看到报告的第一个实例可供查看。
 
 #. 然后单击右上角的X退出。
 
 #. 如果您按原样保留报告，它将自动运行并以设置的特定频率和时间发送到提供的电子邮件地址。
 
-#. 如果需要不同的颜色或徽标，也可以在**Report Settings**下自定义报告。
+#. 如果需要不同的颜色或徽标，也可以在 **Report Settings**下自定义报告。
 
 
 概要总结

@@ -34,7 +34,7 @@ Files: 创建 SMB Share
 
    .. figure:: images/15.png
 
-   在创建部门Share时，应将其创建为**Standard** Share。 这意味Share中的所有顶级目录和文件以及与Share的连接均由单个文件VM提供。
+   在创建部门Share时，应将其创建为 **Standard** Share。 这意味Share中的所有顶级目录和文件以及与Share的连接均由单个文件VM提供。
 
    **Distributed** Share适用于home主目录，用户配置文件和应用程序文件夹。 这种类型的Share在所有文件VM上分布顶级目录，并在文件群集内的所有文件VM之间平衡连接的负载。
    **Access Based Enumeration (ABE)** 确保只有给定用户具有读取权限的文件和文件夹对该用户可见。 Windows文件Share通常启用此功能。
@@ -54,7 +54,7 @@ Files: 创建 SMB Share
 
    .. note::
 
-     ToolsVM已加入** NTNXLAB.local **域。 您可以使用任何加入域的VM来完成以下步骤。
+     ToolsVM已加入 **NTNXLAB.local** 域。 您可以使用任何加入域的VM来完成以下步骤。
 
 #. 在 **File Explorer**打开 ``\\<Intials>-Files.ntnxlab.local\``。
 
@@ -77,7 +77,7 @@ Files: 创建 SMB Share
 
 #. 单击 **Add**.
 
-#. 单击 **Select a principal** 在**Object Name** 字段填写 **Everyone** 。 单击 **OK**。
+#. 单击 **Select a principal** 在 **Object Name** 字段填写 **Everyone** 。 单击 **OK**。
 
    .. figure:: images/20.png
 
@@ -111,7 +111,7 @@ Files: 创建 SMB Share
 
 #. 单击 **Save**.
 
-#. 在仍选择“市场份额”的情况下，查看**Share Details**，**Usage** 和 **Performance** 选项卡以了解每个share的可用情况，包括文件和连接的数量，一段时间内的存储利用率 ，延迟，吞吐量和IOPS。
+#. 在仍选择“市场份额”的情况下，查看 **Share Details**，**Usage** 和 **Performance** 选项卡以了解每个share的可用情况，包括文件和连接的数量，一段时间内的存储利用率 ，延迟，吞吐量和IOPS。
 
 
    .. figure:: images/23.png

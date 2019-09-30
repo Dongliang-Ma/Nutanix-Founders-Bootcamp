@@ -250,7 +250,7 @@ Calm: Windows 工作负载
 定义 Package Install
 ++++++++++++++++++++++++
 
-对于以下7个脚本中的**每个**脚本（对于MSSSQL为3个脚本，对于MSIIS为4个脚本），字段将相同：
+对于以下7个脚本中的 **每个**脚本（对于MSSSQL为3个脚本，对于MSIIS为4个脚本），字段将相同：
 
 - **Type** - Execute
 - **Script Type** - PowerShell
@@ -336,9 +336,9 @@ Calm: Windows 工作负载
 
    .. figure:: images/mssql_package_install.png
 
-#. 选择**MSIIS**服务，然后在**Configuration Panel**中打开**Package**选项卡。
+#. 选择 **MSIIS**服务，然后在 **Configuration Panel**中打开 **Package**选项卡。
 
-#. 为软件包命名，然后单击**Configure install**以开始添加安装任务。
+#. 为软件包命名，然后单击 **Configure install**以开始添加安装任务。
 
 #. 在 **MSSQL > Package Install**下, 单击 **+ Task**.
 
@@ -421,11 +421,11 @@ Calm: Windows 工作负载
 
    **Audit** 选项卡可用于监视应用程序的部署。 该应用程序大约需要20分钟才能部署。
 
-#. 一旦“创建”操作完成，并且应用程序处于**Running**状态，请在新选项卡中打开**BugNET**链接。
+#. 一旦“创建”操作完成，并且应用程序处于 **Running**状态，请在新选项卡中打开 **BugNET**链接。
 
    .. figure:: images/bugnet_link.png
 
-#. 系统将显示**Installation Status Report**页面。 等待它报告“安装完成”**Installation Complete**，然后单击底部的链接以访问该应用程序。
+#. 系统将显示 **Installation Status Report**页面。 等待它报告“安装完成” **Installation Complete**，然后单击底部的链接以访问该应用程序。
    .. figure:: images/bugnet_setup.png
 
   恭喜！ 现在，您有了一个功能齐全的错误跟踪应用程序，可以利用Microsoft SQL Server和IIS自动进行配置。
@@ -442,13 +442,13 @@ Leveraging the same approach from the :ref:`calm_linux` lab of having multiple w
 
 完成 :ref:`Era` 实验室，对Era的功能和操作有基本的了解。
 
-使用默认凭据（** admin / password **）登录到BugNET应用程序，然后按照向导创建一个新项目。
+使用默认凭据（ ** admin / password **）登录到BugNET应用程序，然后按照向导创建一个新项目。
 
 您刚刚部署了生产BugNET应用程序，现在希望使用最新的可用生产数据快速部署多个开发/测试实例。
 
 您是否可以构建一个利用SQL Server数据库的Era克隆版本的蓝图？
 
-**提示**
+ **提示**
 
 - 首先克隆您现有的蓝图！
 - 在Era中注册SQL Server源数据库时，此部署使用默认的MSSQLServer实例名称。 您可以使用Windows身份验证通过WIN_VM_CRED凭据访问SQL Server实例。
