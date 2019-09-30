@@ -95,9 +95,9 @@ Files: 部署Nutanix Files功能
 
 #. 点击 **Next**.
 
-#. F填写以下字段:
+#. 填写以下字段:
 
-   - 选择**Use SMB Protocol**
+   - 选择 **Use SMB Protocol**
    - **用户名** - Administrator@ntnxlab.local
    - **密码** - nutanix/4u
    - 选择 **Make this user a File Server admin**
@@ -139,9 +139,7 @@ Files: 部署Nutanix Files功能
    - `nutanix-file-analytics-2.0.0-metadata.json <http://10.42.194.11/workshop_staging/fileanalytics-2.0.0.json>`_
    - `nutanix-file-analytics-2.0.0.qcow2 <http://10.42.194.11/workshop_staging/nutanix-file_analytics-el7.6-release-2.0.0.qcow2>`_
 
-#. Upon completion, return to **Prism > File Server** and select the *Initials*\ **-Files** server and 点击 **Protect**.
-
-完成后，返回到“ Prism> File Server”，然后选择*Initials*\ **-Files** 服务器，然后单击 ** Protect ** ”。
+#. 完成后，返回到“ Prism> File Server”，然后选择*Initials*\ **-Files** 服务器，然后单击 **Protect**。
 
    .. figure:: images/12.png
 

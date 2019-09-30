@@ -21,7 +21,7 @@ Prism Central
 
 #. 在登录Prism Central后, 请自己熟悉Prism UI.
 
-#. 浏览**Home**界面的有关信息:
+#. 浏览 **Home** 界面的有关信息:
 
 - Cluster Runway
 - Cluster Quick Access
@@ -63,17 +63,17 @@ Prism Central UI 浏览
 
   如果这个Prism Central 实例管理了多个集群, 这个页面会显示被管理的所有机器的主机。
 
-#. 在**Prism Central > Explore**, 点击左手菜单的**Hosts**.
+#. 在 **Prism Central > Explore**, 点击左手菜单的 **Hosts**.
 
 你如何找到显示所有已部署的VMs页面. 这个页面是否和下图类似?
 
 .. figure:: images/nutanix_tech_overview_12.png
 
-#. 在**Prism Central > Explore**, 点击左手菜单的**VMs**.
+#. 在 **Prism Central > Explore** , 点击左手菜单的 **VMs** .
 
 哪个页面会显示系统中的最新活动？ 在此页面上，您可以监控任何任务的进度，并使用时间戳跟踪过去所执行的操作。 你能想出两种不同的方法吗？
 
-#. 第一种方法, 在 **Prism Central > Home**, 点击**View All Tasks**. 第二种方法, 点击 :fa:`circle-o`
+#. 第一种方法, 在 **Prism Central > Home**, 点击 **View All Tasks**. 第二种方法, 点击 :fa:`circle-o`
 
 
 概要总结
