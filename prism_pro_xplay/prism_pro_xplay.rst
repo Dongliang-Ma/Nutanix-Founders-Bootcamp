@@ -18,7 +18,7 @@ Prism Pro: X-Play
 
    .. figure:: images/ppro_26.png
 
-#. 我们将从创建Playbook开始。 单击表视图顶部的**Create Playbook **
+#. 我们将从创建Playbook开始。 单击表视图顶部的**Create Playbook**。
 
    .. figure:: images/ppro_27.png
 
@@ -34,15 +34,15 @@ Prism Pro: X-Play
 
    .. figure:: images/ppro_29b.png
 
-#. 我们首先需要对VM进行快照。 单击左侧的**Add actiion**，然后选择** VM Snapshot **操作。
+#. 我们首先需要对VM进行快照。 单击左侧的**Add actiion**，然后选择**VM Snapshot**操作。
 
    .. figure:: images/ppro_30.png
 
-#. 目标VM从Alert触发器自动填充源实体。 要完成此操作的详细信息填写，请在生存时间字段中输入值，例如** 1 **。
+#. 目标VM从Alert触发器自动填充源实体。 要完成此操作的详细信息填写，请在生存时间字段中输入值，例如**1**。
 
    .. figure:: images/ppro_32.png
 
-#. 接下来，我们希望通过向VM添加更多内存来修复受约束的内存。 单击 **Add Action** 以添加 **VM Add Memory** 操作。
+#. 接下来，我们希望通过向VM添加更多内存来修复受约束的内存。 单击**Add Action**以添加**VM Add Memory**操作。
 
    .. figure:: images/ppro_33.png
 
@@ -161,7 +161,7 @@ X-Play和3rd Party API结合使用
 
    .. figure:: images/ppro_50b.png
 
-#. 我们要做的第一件事是关闭虚拟机电源，因此我们可以确保它不会耗尽其他虚拟机的资源。 单击**Add Action** 按钮，然后选择**Power Off VM**。
+#. 我们要做的第一件事是关闭虚拟机电源，因此我们可以确保它不会耗尽其他虚拟机的资源。 单击**Add Action**按钮，然后选择**Power Off VM**。
 
    .. figure:: images/ppro_51.png
 
@@ -173,7 +173,7 @@ X-Play和3rd Party API结合使用
 
    .. figure:: images/ppro_54.png
 
-#. 保存并启用playbook。 您可以将其命名为“*Initials* - Power Off Bully VM for Investigation”。 **请确保启用‘Enabled’开关。**点击“保存”按钮。
+#. 保存并启用playbook。 您可以将其命名为“*Initials* - Power Off Bully VM for Investigation”。 **请确保启用‘Enabled’开关**，点击“保存”按钮。
 
    .. figure:: images/ppro_55.png
 
