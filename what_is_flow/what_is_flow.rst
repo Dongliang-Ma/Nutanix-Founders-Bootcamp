@@ -1,77 +1,78 @@
 .. _what_is_flow:
 
 ------------
-What Is Flow
+什么是Flow
 ------------
 
-Overview
+概述
 ++++++++
 
-Flow provides security using microsegmentation for VMs on AHV, combining centralized management (Prism Central) with distributed enforcement (Per Node), application centric policy management using Categories (logical grouping), rich visualization, and automation (APIs).
+Flow通过对AHV上的虚拟机使用微分段提供安全性，将集中管理（Prism Central）与分布式实施（每个节点）、使用类别（逻辑分组）实现以应用程序为中心的策略管理、丰富的可视化和自动化（API）相结合。
 
-What is the State of Things Today
+
+今天是什么情况呢？
 +++++++++++++++++++++++++++++++++
 
-Why Microsegmentation?
+为什么要做微分段？
 ......................
 
 .. figure:: images/what_is_flow_01.png
 
-Securing HCI with Flow + Microsegmentation
+通过Flow+微分段保护HCI
 ..........................................
 
 .. figure:: images/what_is_flow_02.png
 
-Flow: Under the hood
+Flow: 表面之下
 ....................
 
-- No Change to Physical Infrastructure
-- Nohting to install. Flow comes with Native AHV and OVS
-- Group VMs based on Application Topology (independent of Physical Infrastructure, VLANs, and Subnets)
-- Define Policies for Application tiers such as Web, App, and DB
-- Policies automatically applied to all existing and new VMs in the group
-- Rules are pushed (distributed) for local enforcement on each node
-- Centrally Manage, Operate, Govern
+- 对物理基础架构没有改变
+- 无需安装。Flow原生于AHV和OVS。
+- 虚拟机分组基于应用拓扑 (独立于物理架构，VLAN和子网）
+- 根据应用层定义策略，如Web，App和数据库。
+- 策略自动应用于组里所有现有和新建的虚拟机。
+- 规则推送（分发）到每个节点并本地实施。
+- 集中管理、运营和治理
 
 .. figure:: images/what_is_flow_03.png
 
-Why Flow?
+为什么是Flow?
 .........
 
 .. figure:: images/what_is_flow_04.png
 
-Use Case: App Segmentation
+用例: App分段
 ..........................
 
 .. figure:: images/what_is_flow_05.png
 
-Use Case: VDI Microsegmentation
+用例: 虚拟桌面微分段
 ...............................
 
 .. figure:: images/what_is_flow_06.png
 
-Use Case: Network & Security Automation
+用例: 网络与安全自动化
 .......................................
 
 .. figure:: images/what_is_flow_07.png
 
-Isolation Policy
+环境隔离策略
 ................
 
-- Isolation - Isolation policies restrict two defined groups of VMs from communicating with each other
+- 环境隔离 - 环境隔离策略限制两个已定义的虚拟机组相互通信
 
 .. figure:: images/what_is_flow_08.png
 
-Application Security Policy
+应用安全策略
 ...........................
 
-- Application - Flexible security policy, defining both inbound traffic sources and outbound destinations for a single or multi-tiered application.
+- 应用 - 灵活的安全策略, 为单层/多层应用定义进站流量来源和出站流量目的地。
 
 .. figure:: images/what_is_flow_09.png
 
-Quarantine Policy
+检疫隔离策略
 .................
 
-- Quarantine - Programmatic or manual restriction of network connections
+- 检疫隔离 - 程序化或手动限制网络连接
 
 .. figure:: images/what_is_flow_10.png

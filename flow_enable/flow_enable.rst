@@ -4,34 +4,35 @@
 Flow: Enable
 -------------
 
-*The estimated time to complete this lab is 10 minutes.*
+*完成本实验需要大约10分钟。*
 
-Overview
+概述
 ++++++++
 
-In this exercise you will enable Nutanix Flow.
+本练习中，你需要启用Flow.
 
-Enabling Flow
+启用 Flow
 ++++++++++++++++++++++++++
 
-Flow is built into Prism Central and requires no additional appliances or consoles to manage. Before you can begin securing your environment with Flow, the service must be enabled.
+Flow内置于Prism Central中，不需要额外的应用或控制台来管理。在开始用Flow保护你的环境之前，必须先启用该服务。
 
 .. note::
 
-  Flow can only be enabled once per Prism Central instance. If **Microsegmentation** displays a green check mark next to it, that means Flow has already been enabled for the Prism Central instance being used. Proceed to :ref:`flow_secure_app`.
+  每个Prism Central实例，Flow只能启用一次。 如果 **Microsegmentation** 旁边有显示绿色复选框，这意味着对于该Prism Central的Flow服务已经被启用。前往:ref:`flow_secure_app`.
+  
 
-#. In **Prism Central**, click the **?** drop down menu and select **Microsegmentation**.
+#. 在 **Prism Central**, 点击 **?** 下拉菜单并选择 **Microsegmentation**.
 
    .. figure:: images/10.png
+   
+   启用Flow，每个Prism Central虚拟机需要额外的1GB内存，但对于用户来说不需要额外的操作，这个操作是自动的。此外，启用流程会验证每台AHV主机至少有1GB的可用RAM。在启用窗口中会罗列具有Flow功能的AHV集群。
 
-   Enabling Flow will require an additional 1GB of memory for each Prism Central VM, but there is no action required by the user as this occurs automatically. Additionally, the enable process verifies that each connected AHV host has at least 1GB of free RAM. The list of Flow capable AHV clusters is listed in the enable window.
-
-#. Select **Enable Microsegmentation** and click **Enable**.
+#. 选择 **Enable Microsegmentation** 并点击 **Enable**.
 
    .. figure:: images/11.png
 
-Takeaways
+概要总结
 +++++++++
 
-- Microsegmentation, part of Flow, is a decentralized security enforcement framework centrally managed from Prism Central.
-- Once Flow is enabled in the cluster, VMs can be easily protected through Security Policies created in the Prism Central UI. Security Policies use simple text based categories to define groups of VMs. These function as labels that can easily be applied to VMs without any additional network setup.
+- 微分段，Flow的一部分，是一个非集中式的安全实施框架，由Prism Central集中式管理。
+- 集群中启用Flow后，即可通过Prism Central管理界面创建安全策略轻松保护虚拟机。安全策略是基于简单文本的类别来定义虚拟机组。这些功能用作标签，可以轻松将其应用于虚拟机，而无需任何其他网络设置。

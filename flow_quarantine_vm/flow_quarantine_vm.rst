@@ -1,73 +1,74 @@
 .. _flow_quarantine_vm:
 
 -------------------
-Flow: Quarantine VM
+Flow: 检疫隔离虚拟机（Quarantine）
 -------------------
 
-*The estimated time to complete this lab is 10 minutes.*
+*完成本实验预计需要10分钟.*
 
-Overview
+概述
 ++++++++
 
-Quarantine places a VM in a restricted policy, giving the admin an option to either block all traffic or allow a limited subset of traffic. Strict quarantine blocks a VM from all communication, while forensic quarantine allows a pre-defined list of inbound and outbound traffic. 
+检疫隔离可以分配虚拟机受限的策略，为管理员提供了要么阻止所有流量或允许部分子网流量的一个选项。严格检疫隔离（Strict）阻止虚拟机的所有通信，而取证检疫隔离（Forensic）则允许预定义列表的进站和出站流量。
 
-Quarantining a VM
+检疫隔离虚拟机
 +++++++++++++++++
 
-In this task we will place a VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy.
+在本任务中，我们会把一台虚拟机做检疫隔离，并观察这台虚拟机的行为。我们也将检查检疫隔离策略里面的可配置选项。
 
-#. Return to the *Initials*\ **-WinClient-0** console.
+#. 返回 *Initials*\ **-WinClient-0** 控制台.
 
-#. Open a **Command Prompt** and run ``ping -t HAPROXY-VM-IP`` to verify connectivity between the client and load balancer.
+#. 打开 **Command Prompt** 并运行 ``ping -t HAPROXY-VM-IP`` 以验证客户端与负载均衡器之间的连通性。
 
    .. note::
 
-     If the ping is unsuccessful you may need to update your Inbound Rule for **Environment:Dev** to **AppTier:**\ *Initials*-**TMLB** to include **Any** as the **Type** and **Code** for **ICMP** traffic as shown below. Apply the updated **AppTaskMan-**\ *Initials* policy and the ping should resume.
+     如果PING测试不成功，你可能需要将 **Environment:Dev** 的入站规则更新为 **AppTier:**\ *Initials*-**TMLB** ，把 **ICMP** 流量的 **Type** 和 **Code** 置为 **Any** ，如下图所示。应用更新后的 **AppTaskMan-**\ *Initials* 策略，PING应该可以成功。
 
      .. figure:: images/41.png
 
-#. In **Prism Central > Virtual Infrastructure > VMs**, select your *Initials*\ **-HAPROXY-0...** VM.
+#. 在 **Prism Central > Virtual Infrastructure > VMs**, 选择 *Initials*\ **-HAPROXY-0...** VM.
 
-#. Click **Actions > Quarantine VMs**.
+#. 单击 **Actions > Quarantine VMs**.
 
    .. figure:: images/42.png
 
-#. Select **Forensic** and click **Quarantine**.
+#. 选择 **Forensic** 并点击 **Quarantine**.
 
-   What happens with the continuous ping between your client and the load balancer? Can you access the Task Manager application web page from the client VM?
+   客户端和负载均衡器之间连续ping会怎样？ 您可以从客户端虚拟机访问任务管理器应用程序网页吗？
 
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies > Quarantine** to view all Quarantined VMs.
+#. 在 **Prism Central**, 选择 :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies > Quarantine** 以查看所有检疫隔离的虚拟机。
 
-#. Click **Update** to edit the Quarantine policy.
+#. 点击 **Update** 以编辑检疫隔离策略（Quarantine policy）.
 
-   To illustrate the capabilities of this special Flow policy, you will add your client VM as a "forensic tool". In production, VMs allowed inbound access to quarantined VMs could be used to run security and forensic suites such as Kali Linux or SANS SIFT.
+   为了说明Flow此特殊策略的功能，您将客户端虚拟机添加为“取证工具”。 在生产环境中，允许对检疫隔离虚拟机进行入站访问的虚拟机可用于运行安全性和取证套件，例如Kali Linux或SANS SIFT。
 
-#. Under **Inbound**, click **+ Add Source**.
+#. 在 **Inbound** 下, 点击 **+ Add Source**.
 
-#. Fill out the following fields:
+#. 填写以下字段:
 
-   - **Add source by:** - Select **Subnet/IP**
-   - Specify *Your WinClient VM IP*\ /32
+   - **Add source by:** - 选择 **Subnet/IP**
+   - 指定 *Your WinClient VM IP*\ /32
 
-   To what targets can this source be connected? What is the difference between the Forensic and Strict quarantine mode?
+   这个源端可以连接到哪些目标端呢？取证（Forensic）和严格（Strict）检疫隔离模式有什么区别呢？
 
-   Note that adding a VM to the **Strict** Quarantine policy disables all inbound and outbound communication to a VM. The **Strict** policy would apply to an VMs whose presence on the network poses a threat to the environment.
+   请注意，把虚拟机添加到 **Strict** 检疫隔离策略后，会禁止所有与虚拟机间的进站和出站通信。 **Strict** 策略适用于网络上对环境产生威胁的虚拟机。
 
-#. Click the :fa:`plus-circle` icon to the left of **Quarantine: Forensic** to create an Inbound Rule.
+#. 点击 :fa:`plus-circle` 图标左边的 **Quarantine: Forensic** 来创建进站规则.
 
-#. Click **Save** to allow any protocol on any port between the client VM and the **Quarantine: Forensic** category.
+#. 单击 **Save** 以允许客户虚拟机与 **Quarantine: Forensic** 类别之间的任意端口上的任意协议。
 
    .. figure:: images/43.png
 
-#. Click **Next > Apply Now** to save and apply the updated policy.
+#. 单击 **Next > Apply Now** 以保存和应用更新的策略。
 
-   What happens to the pings to the load balancer after the source is added? Can you access the Task Manager web application?
+   添加源后，与负载均衡器之间的PING会发生什么呢？你可以访问任务管理器Web应用吗？ 
 
-#. You can remove the load balancer VM from the **Quarantine: Forensic** category by selecting the VM in Prism Central and clicking **Actions > Unquarantine VMs**.
+#. 通过选定Prism Central中的虚拟机，单击 **Actions > Unquarantine VMs** ，你可以从 **Quarantine: Forensic** 类别中移除负载均衡器虚拟机。
 
-Takeaways
+概要总结
 +++++++++
 
-- In this exercise you utilized Flow to quarantine a VM using the two modalities of the quarantine policy, which are strict and forensic.
-- Quarantine policies are evaluated at a higher priority than application policies. A quarantine traffic can block traffic that would otherwise be allowed by an application policy.
-- The forensic modality is key to allow limited access a quarantined VM while the VM is quarantined.
+- 本练习中，你使用Flow来检疫隔离的两种模式来隔离一台虚拟机（Strict严格和Forensic取证）
+- 检疫隔离的策略的优先级高于应用策略。检疫隔离可以阻止被应用策略所允许的流量。
+- 当虚拟机被检疫隔离时，取证模式（Forensic）是允许对其有限访问的关键。
+
