@@ -23,13 +23,13 @@ Prism Central 仪表板允许您快速查看在Prism Central实例下注册的�
 
 仪表板也可以定制化
 
-#. #. 在**Prism Central > :fa:`fa-navicon` > Dashboard**, 或点击 **Home X**
+#. 点击 **Home X**
 
 主仪表板是系统首次安装时显示的第一个仪表板。
 
 #. 此仪表板也可以自定义，但我们会创建新的仪表板。
 
-#. 点击 **:fa: `fa-gear` Manage Dashboards** 打开“管理仪表板”窗口
+#. 点击**Manage Dashboards**打开“管理仪表板”窗口
 
 #. 点击 **+ New Dashboard**
 
@@ -58,11 +58,11 @@ Prism Central 仪表板允许您快速查看在Prism Central实例下注册的�
 
 .. figure:: images/510PC4.png
 
-#. 接下来，从**CLUSTER WIDGETS** 列表中选择另一个小部件。 这次单击**Or, Add & Return to Dashboard.** 返回新创建的仪表板。
+#. 接下来，从**CLUSTER WIDGETS**列表中选择另一个小部件。 这次单击**Or, Add & Return to Dashboard.**返回新创建的仪表板。
 
 .. note::
 
-  Prism Central的右上角有一个 **+ Add Widgets** 按钮，可以随时添加更多小部件。
+  Prism Central的右上角有一个**+ Add Widgets**按钮，可以随时添加更多小部件。
 
   另请注意，将鼠标悬停在仪表板上的任何小部件上都会在右上角显示一个灰色的X，可用于删除小部件。
 
@@ -73,7 +73,7 @@ Prism Central 报表
 
 Prism Central允许您生成有关群集环境的历史报告，可用于帮助管理员监控他们管理的群集的运行状况和性能。此类报告可包括资源消耗，异常行为和其他有价值的操作见解。这些报告可以手动生成，也可以从Prism Central自动生成，以便在最方便时通过电子邮件发送。
 
-#. 在 **Prism Central > :fa:`fa-navicon` > Operations > Reports**.
+#. 在 **Prism Central  > Operations > Reports**.
 
 #. 在那里，您将看到两个预定义的报告可供您立即使用:
 
@@ -93,11 +93,11 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 - **Report instance Name** - *initials* - Cluster Efficiency 
 - **Time Period for Report** - Last 24 Hours
 
-#. 点击 **Run**.
+#. 点击**Run**.
 
 #. 现在我们来运行 **Environment Summary** 报表.
 
-#. 选择 **Environment Summary**, 从**Actions** 下拉菜单点击 **Run** .
+#. 选择 **Environment Summary**, 从**Actions**下拉菜单点击 **Run** .
 
 #. 接下来，填写以下字段并单击 **Run**:
 
@@ -124,7 +124,7 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
 .. figure:: images/510reports3.png
 
-#. 从 **CUSTOM VIEWS** 目录左边, 点击**Line Chart** 填写下面信息:
+#. 从 **CUSTOM VIEWS** 目录左边, 点击**Line Chart**填写下面信息:
 
 - **Entity Type** - Cluster
 - **Metric** - Memory Usage
@@ -164,7 +164,7 @@ Prism Central允许您生成有关群集环境的历史报告，可用于帮助�
 
   克隆报告对于利用现有报告并对其进行编辑以进一步进行自定义非常有用。
 
-#. 报告完成后，您将通过单**下载**下的**PDF** 看到报告的第一个实例可供查看。
+#. 报告完成后，您将通过单**下载**下的**PDF**看到报告的第一个实例可供查看。
 
 #. 然后单击右上角的X退出。
 

@@ -21,7 +21,7 @@ Prism Central
 
 #. 在登录Prism Central后, 请自己熟悉Prism UI.
 
-#. 浏览**Home** 界面的有关信息:
+#. 浏览**Home**界面的有关信息:
 
 - Cluster Runway
 - Cluster Quick Access
@@ -63,7 +63,7 @@ Prism Central UI 浏览
 
   如果这个Prism Central 实例管理了多个集群, 这个页面会显示被管理的所有机器的主机。
 
-#. 在 **Prism Central > Explore**, 点击左手菜单的 **Hosts** .
+#. 在**Prism Central > Explore**, 点击左手菜单的**Hosts**.
 
 你如何找到显示所有已部署的VMs页面. 这个页面是否和下图类似?
 
