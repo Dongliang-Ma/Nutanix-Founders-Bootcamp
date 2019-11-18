@@ -23,6 +23,26 @@
 
 .. toctree::
   :maxdepth: 2
+  :caption: Flow
+  :name: _flow
+  :hidden:
+
+  what_is_flow/what_is_flow
+  flow_enable/flow_enable
+  flow_secure_app/flow_secure_app
+  flow_isolate_environments/flow_isolate_environments
+  flow_quarantine_vm/flow_quarantine_vm
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Era
+  :name: _era
+  :hidden:
+
+  era/era
+
+.. toctree::
+  :maxdepth: 2
   :caption:  Files Labs
   :name: _files_labs
   :hidden:
@@ -45,17 +65,6 @@
   calm_linux/calm_linux
   calm_win/calm_win
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Flow
-  :name: _flow
-  :hidden:
-
-  what_is_flow/what_is_flow
-  flow_enable/flow_enable
-  flow_secure_app/flow_secure_app
-  flow_isolate_environments/flow_isolate_environments
-  flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
   :maxdepth: 2
