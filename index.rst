@@ -187,16 +187,16 @@ Hosted POC 集群遵循标准命名约定:
      - Password
    * - Prism Element
      - admin
-     - *techX2019!*
+     - *<password>*
    * - Prism Central
      - admin
-     - *techX2019!*
+     - *<password>*
    * - Controller VM
      - nutanix
-     - *techX2019!*
+     - *<password>*
    * - Prism Central VM
      - nutanix
-     - *default password*
+     - *<password>*
 
 
 访问说明
