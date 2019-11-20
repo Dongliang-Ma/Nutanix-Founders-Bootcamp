@@ -1,14 +1,11 @@
 .. _era:
 
----
+-------------
 Era 数据库管理
----
+-------------
 
 *The estimated time to complete this lab is 60 minutes.*
 
-.. raw:: html
-
-  <iframe width="640" height="360" src="https://www.youtube.com/embed/AbPMhTQ40Mw?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 概览
 ++++++++
@@ -22,11 +19,11 @@ Nutanix Era以一键式数据库配置和复制数据管理（CDM）作为其第
 实验准备
 +++++++++
 
-This lab requires applications provisioned as part of the :ref:`windows_tools_vm`.
+如果是通过VPN连接国外实验环境可以通过这个链接安装工具Windows虚拟机 :ref:`windows_tools_vm`.
 
-If you have not yet deployed this VM, see the linked steps before proceeding with the lab.
+此外，也可以在自己的电脑上安装Postgresql数据库的管理工具pgadmin，下载地址为：https://www.pgadmin.org/download/ ，根据您客户端系统选择要安装的软件类型。
 
-Deploying Era
+部署Era
 +++++++++++++
 
 Era是一个虚拟机appliance，可以安装在AHV或ESXi上。在这个实验室中，您将把Era部署到AHV集群中。
@@ -41,6 +38,7 @@ Era是一个虚拟机appliance，可以安装在AHV或ESXi上。在这个实验�
 
 - **Name** - *Initials*-Era
 - **Description** - (可选) 该vm的描述
+- **Timezone** - (UTC)UTC
 - **vCPU(s)** - 4
 - **Number of Cores per vCPU** - 1
 - **Memory** - 16 GiB
@@ -62,7 +60,7 @@ Era是一个虚拟机appliance，可以安装在AHV或ESXi上。在这个实验�
 注册集群
 +++++++++++++++++++++
 
-在 **Prism Central > VMs > List**, 识别并确定刚才创建的ERA虚拟机的ip地址，使用 **IP Addresses** 列。
+在 **Prism Central > VMs > List**, 在 **IP Addresses** 列,识别并确定刚才创建的ERA虚拟机的ip地址，。
 
 在浏览器中打开 \https://*ERA-VM-IP:8443*/ 。
 
@@ -72,7 +70,7 @@ Era是一个虚拟机appliance，可以安装在AHV或ESXi上。在这个实验�
 
 选择 **I have read and agree to terms and conditions** 并点击 **Continue**.
 
-输入 **techX2019!** 作为 **admin** 的密码并点击**Set Password**.
+输入 **techX2019!** 作为 **admin** 的密码并点击 **Set Password** .
 
 通过如下用户名和密码登陆:
 
@@ -99,7 +97,7 @@ Era是一个虚拟机appliance，可以安装在AHV或ESXi上。在这个实验�
 
 .. figure:: images/3c.png
 
-选择 **Primary** VLAN. 这是Era在部署新数据库时将使用的默认网络配置文件。**不要**选择**Manage IP Address Pool**, 因为您的AHV集群已经为该网络配置了DHCP。
+选择 Primary VLAN. 这是Era在部署新数据库时将使用的默认网络配置文件。**不要** 选择 **Manage IP Address Pool** , 因为您的AHV集群已经为该网络配置了DHCP。
 
 .. figure:: images/3d.png
 
@@ -146,23 +144,23 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 点击 **Create**.
 
-选择 **Database Parameters > DEFAULT_POSTGRES_PARAMS**可看到由Era提供的PostgreSQL数据库的默认参数（保留原参数，无需修改）。
+选择 ** Database Parameters > DEFAULT_POSTGRES_PARAMS **可看到由Era提供的PostgreSQL数据库的默认参数（保留原参数，无需修改）。
 
-选择**Era > Profiles** 并点击 **Getting Started**.
+选择 **Era > Profiles** 并点击 **Getting Started**.
 
-在 **Getting Started** 页面, 点击**Provision a Database**下面的 **PostgreSQL**。
+在 **Getting Started** 页面, 点击 **Provision a Database** 下面的 **PostgreSQL**。
 
 .. figure:: images/4b2.png
 
-点击**Provision a Database**.
+点击 **Provision a Database** .
 
 .. figure:: images/4c.png
 
 选择 **PostgreSQL** engine并点击 **Next**.
 
-输入以下**Database Server** 参数:
+输入以下 **Database Server** 参数:
 
-- **Database Server** - 选择**Create New Server**
+- **Database Server** - 选择 **Create New Server**
 - **Database Server Name** - *Initials*-DBServer
 - **Compute Profile** - Lab（默认的或刚才自定义创建的Compute profile）
 - **Network Profile** - DEFAULT_OOB_NETWORK
@@ -218,7 +216,7 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 .. figure:: images/4g2.png
 
-完成后, 选择 **Dashboard** 菜单并注意到在 **Source Database**中已经有了一个新的数据库。
+完成后, 选择 **Dashboard** 菜单并注意到在 **Source Database** 中已经有了一个新的数据库。
 
 .. figure:: images/4i2.png
 
@@ -231,7 +229,7 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 从下拉菜单选择 **Era > Databases**。
 
-在**Sources**中，点击您所部署的数据库.
+在 **Sources** 中，点击您所部署的数据库.
 
 .. figure:: images/5a2.png
 
@@ -239,13 +237,13 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 .. figure:: images/5b.png
 
-使用 *Initials*\ **-Windows-ToolsVM**, 打开 **pgAdmin**.
+在Prism Central里，使用 *Initials*\ **-Windows-ToolsVM**, 打开tool文件夹里的 **pgAdmin**.
 
 .. note::
 
-  If installed, you can also use a local instance of pgAdmin. The Tools VM is provided to ensure a consistent experience.
+  如果已安装，您也可以用本地的 pgAdmin. Tools VM 是为了一致的用户体验。
 
-在 **Browser**下面, 右击 **Servers** 并选择 **Create > Server...** .
+在 **Browser** 下面, 右击 **Servers** 并选择 **Create > Server...** 。
 
 .. figure:: images/5c.png
 
@@ -261,7 +259,7 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 .. figure:: images/5d2.png
 
-展开 *Initials*\ **-DBServer > Databases** a并注意到Era已经部署了一个空的数据库。
+展开 *Initials*\ **-DBServer > Databases** 并注意到Era已经部署了一个空的数据库。
 
 .. figure:: images/5h2.png
 
@@ -315,7 +313,7 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 现在您已经创建了一个源数据库，您可以使用Era Time Machine轻松地克隆它。数据库克隆有助于开发和测试目的，允许非生产环境在不影响生产操作的情况下利用生产数据。Era克隆利用了nutanix本地写时复制克隆技术，允许零字节的数据库克隆。这种空间效率可以显著降低支持大量数据库克隆的环境的存储成本。
 
-在 **Era > Time Machines**, 为你的数据库实例选择 Time Machine instance，如以下图中的XYZ_LabDB_tm。
+在 **Era > Time Machines** , 为你的数据库实例选择 Time Machine instance，如以下图中的XYZ_LabDB_tm。
 
 .. figure:: images/16a2.png
 
@@ -372,8 +370,7 @@ Era可用于在已注册的Nutanix集群上提供数据库服务器和数据库�
 
 .. figure:: images/21b.png
 
-在完成克隆操作之后，您可以按照前一节中描述的那样连接到克隆实例，并连接到数据库。, `Connecting to the Database`_.
-
+在完成克隆操作之后，您可以按照前一节中描述的那样连接到克隆实例，并连接到数据库。
 .. figure:: images/23a2.png
 
 新创建的克隆数据库现在可以使用了。

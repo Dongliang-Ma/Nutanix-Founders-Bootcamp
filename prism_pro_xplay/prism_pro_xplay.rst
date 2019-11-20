@@ -14,7 +14,7 @@ Prism Pro: X-Play
 
 在本实验中，我们现在将使用X-Play创建一个Playbook，以便在检测到内存不足时自动将内存添加到之前创建的VM中。
 
-#. 使用搜索栏导航到 **Playbooks**页面。
+#. 使用搜索栏导航到 **Playbooks** 页面。
 
    .. figure:: images/ppro_26.png
 
@@ -34,15 +34,15 @@ Prism Pro: X-Play
 
    .. figure:: images/ppro_29b.png
 
-#. 我们首先需要对VM进行快照。 单击左侧的 **Add actiion**，然后选择 **VM Snapshot**操作。
+#. 我们首先需要对VM进行快照。 单击左侧的 **Add actiion** ，然后选择 **VM Snapshot** 操作。
 
    .. figure:: images/ppro_30.png
 
-#. 目标VM从Alert触发器自动填充源实体。 要完成此操作的详细信息填写，请在生存时间字段中输入值，例如**1**。
+#. 目标VM从Alert触发器自动填充源实体。 要完成此操作的详细信息填写，请在生存时间字段中输入值，例如 **1** 。
 
    .. figure:: images/ppro_32.png
 
-#. 接下来，我们希望通过向VM添加更多内存来修复受约束的内存。 单击 **Add Action**以添加 **VM Add Memory**操作。
+#. 接下来，我们希望通过向VM添加更多内存来修复受约束的内存。 单击 **Add Action** 以添加 **VM Add Memory** 操作。
 
    .. figure:: images/ppro_33.png
 
@@ -51,7 +51,7 @@ Prism Pro: X-Play
    .. figure:: images/ppro_34.png
 
 
-#. 接下来，我们想通知某人已采取自动操作。 单击 **Add Action**以添加电子邮件操作
+#. 接下来，我们想通知某人已采取自动操作。 单击 **Add Action** 以添加电子邮件操作
 
    .. figure:: images/ppro_35.png
 
@@ -101,7 +101,7 @@ Prism Pro: X-Play
 
    .. figure:: images/ppro_44.png
 
-#. 单击**Plays**选项卡，您应该看到播放刚刚完成。
+#. 单击 **Plays** 选项卡，您应该看到播放刚刚完成。
 
    .. figure:: images/ppro_45.png
 
@@ -149,19 +149,19 @@ X-Play和3rd Party API结合使用
 
    .. figure:: images/ppro_49.png
 
-#. 单击 **copy**按钮以保存操作。
+#. 单击 **copy** 按钮以保存操作。
 
 #. 使用搜索栏导航回到Playbooks页面。
 
-#. 选择 **Alert trigger**并搜索并选择警报策略**VM Bully {vm_name}**。 这是我们希望在系统检测到Bully VM时采取的警报。
+#. 选择 **Alert trigger** 搜索并选择警报策略**VM Bully {vm_name}**。 这是我们希望在系统检测到Bully VM时采取的警报。
 
    .. figure:: images/ppro_50.png
 
-#. 选择 **Specify VMs**单选按钮，然后选择您为实验室创建的虚拟机。 这样一来，只有在您的VM上发出的警报才会触发此Playbook。
+#. 选择 **Specify VMs** 单选按钮，然后选择您为实验室创建的虚拟机。 这样一来，只有在您的VM上发出的警报才会触发此Playbook。
 
    .. figure:: images/ppro_50b.png
 
-#. 我们要做的第一件事是关闭虚拟机电源，因此我们可以确保它不会耗尽其他虚拟机的资源。 单击 **Add Action**按钮，然后选择 **Power Off VM**。
+#. 我们要做的第一件事是关闭虚拟机电源，因此我们可以确保它不会耗尽其他虚拟机的资源。 单击 **Add Action**按钮，然后选择 **Power Off VM** 。
 
    .. figure:: images/ppro_51.png
 
