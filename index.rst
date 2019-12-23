@@ -178,8 +178,6 @@ Hosted POC 集群遵循标准命名约定:
 帐号信息
 ...........
 
-.. note::
-
   The *<Cluster Password>* 由Workshop的负责人提供.
 
 .. list-table::
